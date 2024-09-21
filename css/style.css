@@ -248,6 +248,7 @@ a {
 
 header{
     padding: 20px 0;
+    background-color: #2f0b27;
 }
 
 .navbar{
@@ -523,3 +524,88 @@ aside.pages{
     z-index: 2;
     background: #2f0b27;
 }
+
+.header-right-sidebar .close_rightsidebar{
+    background: transparent;
+    color: white;
+    border: 2px solid red;
+    padding: 3px;
+    border-radius: 50px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.header-right-sidebar .close_rightsidebar:hover{
+    background: red;
+    color: white;
+}
+
+.header-right-sidebar p{
+    color: #fff;
+    margin: 20px 0;
+}
+
+.header-right-sidebar a{
+    padding: 10px;
+    margin: 10px;
+}
+
+.header-right-sidebar a:hover{
+    color: #2f0b27;
+}
+
+.header-right-sidebar h4{
+    color: #fff;
+    margin: 20px 0;
+    text-decoration: underline;
+}
+
+.header-right-sidebar ul{
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+}
+
+/* .header-right-sidebar ul.flex{
+    display: flex;
+    justify-content: space-between;
+    align-items: left;
+    margin: 20px 0;
+} */
+
+.header-right-sidebar ul li{
+    margin: 15px 0;
+}
+
+.header-right-sidebar li a{
+    color: #fff;
+    transition: 500ms;
+    padding: 10px 0;
+}
+
+.header-right-sidebar span{
+    cursor: pointer;
+    margin: 20px 0;
+    justify-content: space-around;
+}
+
+.header-right-sidebar span i{
+    padding: 10px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.header-right-sidebar span i:hover{
+    background: #ff0000;
+    border: 1px solid #ff0000;
+}
+
+.header-right-sidebar .fa-bars{
+    color: #fff;
+    font-size: 17px;
+    background-color: #2f0b27;
+    padding: 7px 8px;
+    cursor: pointer;
+}
+
