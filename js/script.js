@@ -37,3 +37,11 @@ function closeSideNav(){
         console.error('error: sidepanel not found');
     }
 }
+
+document.getElementById("toggleCollapse").addEventListener("click", function(event) {
+    event.preventDefault();  // Prevent the default anchor behavior
+    var collapseElement = document.getElementById("pages");
+    
+    // Toggle the "show" class to collapse or expand the list
+    collapseElement.classList.toggle("show");
+});

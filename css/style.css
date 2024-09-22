@@ -241,7 +241,7 @@ a {
 }
 
 .header-index{
-    background-image: url('../images/bg/hero_bg.png');
+    background-image: url('../images/alertelogoo.png');
     background-position: center center;
     background-size: cover;
 }
@@ -493,6 +493,7 @@ aside.pages{
 .collapse-btn i:hover{
     background: #ff0000;
     border: 1px solid #ff0000;
+    color: #fff;
 }
 
 .plus_collapse{
@@ -509,6 +510,14 @@ aside.pages{
 .show{
     height: 500px !important;
     transition: height 0.34s ease;
+}
+
+.collapse{
+    display: none;
+}
+
+.collapse.show{
+    display: block;
 }
 
 .header-right-sidebar{
