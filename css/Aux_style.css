@@ -1,0 +1,105 @@
+.site-wrapper{
+    position: relative;
+}
+section.hero{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+}
+section.hero .hero-content{
+   
+    display: flex;
+
+}
+section.hero .hero-content .hero-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+section.hero .hero-content .hero-text h1{
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    font-family: "Raleway", sans-serif;
+}
+section.hero .hero-content .hero-text p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: "Barlow", sans-serif;
+}
+section.hero .hero-content .hero-text a{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 0.7rem 1.5rem;
+    text-transform: capitalize;
+    font-family: "Barlow", sans-serif;
+}
+section.hero .hero-content .hero-text a:hover{
+    background: #fff;
+    color: #333;
+}
+section.hero .hero-content .hero-img{
+    position: absolute;
+    z-index: 1;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+}
+section.hero .hero-content .hero-img img{
+    width: 100%;
+    height: auto;
+}
+
+@media screen and (max-width: 992px){
+    section.hero .hero-content{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    section.hero .hero-content .hero-text{
+        align-items: center;
+        text-align: center;
+    }
+    section.hero .hero-content .hero-text h1{
+        font-size: 36px;
+        line-height: 44px;
+    }
+    section.hero .hero-content .hero-img{
+        width: 100%;
+    }
+    
+}
+@media screen and (min-width: 768px){
+    section.hero .hero-content {
+        width: 50%;
+    }
+    section.hero::before{
+        content: "";
+        position: absolute;
+        width: 50rem;
+        height: 50rem;
+        background: #e00002;
+        z-index: -1;
+        top: 170px;
+        right: -200px;
+        border-radius: 50%;
+    }
+    section.hero::after{
+        content: "";
+        position: absolute;
+       
+        background: #dfe3e6;
+        z-index: -3;
+        inset: 0;
+    }
+  
+}

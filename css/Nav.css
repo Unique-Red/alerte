@@ -1,7 +1,7 @@
 nav{
-    background-color: #f8f9fa;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: relative;
+    /* background-color: #f8f9fa; */
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+    position: absolute;
     width: 100%;
     z-index: 1000;
     margin: 0 auto;
@@ -54,18 +54,26 @@ nav{
         display: none;
     }
     .navbar .aside {
-        position: absolute;
-        width: 40% !important;
+        position: fixed;
+        width: 25% !important;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
         top: 0;
         bottom: 0;
         right: 0;
+        background: transparent;
+        backdrop-filter: blur(11px);
         height: 100vh;
+        z-index: 1000;
+        transform: translateX(0%);
+        opacity: 1;
     }
     .navbar .aside.hidden{
         opacity: 0;
+        pointer-events: none;
+        z-index: -10;
+        transform: translateX(10%);
         transition: 0.3s ease-in-out;
     }
     .navbar .aside .nav-links{
@@ -76,6 +84,38 @@ nav{
     }
     .navbar .aside .nav-links a{
         opacity: 1;
+    }
+    .aside a.nav-link.aside-toggler {
+        position: absolute;
+        top: 5%;
+        right: 3%;
+        font-size: 2rem;
+    }
+    .aside-wrapper {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: center;
+        padding-top: 5rem;
+    }
+    .aside-links {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .aside-links ul{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        flex-direction: column;
+    }
+    .aside-links a.nav-link {
+        font-size: 1.2rem;
+        font-family: 'Raleway';
+        color:#060606;
     }
 }
 @media screen and (min-width: 1200px){

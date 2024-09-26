@@ -1,47 +1,25 @@
-function openNav(){
-    'use strict';
-    const sidepanel = document.getElementById('mySidepanel');
-    if(sidepanel){
-        sidepanel.style.left = '0';
-    } else{
-        console.error('error: sidepanel not found');
-    }
-}
+const Aside = document.querySelector('.aside');
+const asideToggler = document.querySelectorAll('.nav-link.aside-toggler');
 
-function closeNav(){
-    'use strict';
-    const sidepanel = document.getElementById('mySidepanel');
-    if(sidepanel){
-        sidepanel.style.left = '-320px';
-    } else{
-        console.error('error: sidepanel not found');
-    }
-}
+console.log(asideToggler)
+asideToggler.forEach((toggler)=>{
+    toggler.addEventListener('click', () => {
+        Aside.classList.toggle('hidden');
+        console.log("toggled")
+    })
+})
 
-function openSideNav(){
-    'use strict';
-    const sidepanel = document.getElementById('right_side');
-    if(sidepanel){
-        sidepanel.style.right = '0';
-    } else{
-        console.error('error: sidepanel not found');
-    }
+if(!Aside.classList.contains('hidden')){
+    document.addEventListener('click', (e) => {
+        if(e.target !== Aside && e.target !== asideToggler){
+            Aside.classList.add('hidden');
+        }
+    })
 }
-
-function closeSideNav(){
-    'use strict';
-    const sidepanel = document.getElementById('right_side');
-    if(sidepanel){
-        sidepanel.style.right = '-355px';
-    } else{
-        console.error('error: sidepanel not found');
-    }
+else{
+    document.addEventListener('click', (e) => {
+        if(e.target === asideToggler){
+            Aside.classList.remove('hidden');
+        }
+    })
 }
-
-document.getElementById("toggleCollapse").addEventListener("click", function(event) {
-    event.preventDefault();  // Prevent the default anchor behavior
-    var collapseElement = document.getElementById("pages");
-    
-    // Toggle the "show" class to collapse or expand the list
-    collapseElement.classList.toggle("show");
-});
