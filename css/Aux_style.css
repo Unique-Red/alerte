@@ -1,6 +1,10 @@
 .site-wrapper{
     position: relative;
 }
+
+/* hero-section */
+
+
 section.hero{
     position: relative;
     display: flex;
@@ -38,6 +42,7 @@ section.hero .hero-content .hero-text a{
     font-weight: 500;
     line-height: 22px;
     padding: 0.7rem 1.5rem;
+    /* box-shadow: 3px 1px 2px #333; */
     text-transform: capitalize;
     font-family: "Barlow", sans-serif;
 }
@@ -96,10 +101,106 @@ section.hero .hero-content .hero-img img{
     section.hero::after{
         content: "";
         position: absolute;
-       
         background: #dfe3e6;
         z-index: -3;
         inset: 0;
     }
   
 }
+
+/* About section */
+
+section.about{
+    padding: 5rem 0;
+}
+section.about .about-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}
+section.about .about-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+section.about .about-text h2{
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 44px;
+    font-family: "Raleway", sans-serif;
+}
+section.about .about-text p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: "Barlow", sans-serif;
+}
+section.about .about-text a{
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 22px;
+    padding: 0.7rem 1.5rem;
+    text-transform: capitalize;
+    font-family: "Barlow", sans-serif;
+}
+section.about  .about-text a:hover{
+    background: #fff;
+    color: #333;
+}
+section.about .about-content .about-cards {
+    display: grid;
+    width: 50%;
+    grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    gap: 2rem;
+}
+section.about .about-content .about-cards .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    border-radius: 50%;
+    padding: 2rem 1rem;
+    background: #fff;
+    width: 10rem;
+    height: 10rem;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+section.about .about-content .about-cards .card:hover{
+    transform: translateY(-10px);
+}
+section.about .about-content .about-cards .card .card-icon{
+    font-size: 2.5rem;
+    color: #e00002;
+}
+section.about .about-content .about-cards .card h3{
+    font-size: 1rem;
+    font-weight: 800;
+    line-height: 32px;
+    font-family: "Raleway", sans-serif;
+}
+section.about .about-content .about-cards .card p{
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 22px;
+    font-family: "Barlow", sans-serif;
+}
+
+section.about .about-content .about-img{
+    /* width: 40%; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section.about .about-content .about-img img{
+    width: 100%;
+    height: auto;
+}
+
