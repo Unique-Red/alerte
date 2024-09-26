@@ -7,6 +7,8 @@
     <title>Alerte Universal</title>
     <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/Aux_style.css">
+    <link rel="stylesheet" href="css/Nav.css">
     <link rel="stylesheet" href="css/slick.min.css">
     <link rel="stylesheet" href="css/easy.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
@@ -16,98 +18,79 @@
 </head>
 
 <body>
-    <div class="site-wrapper">
-        <div class="header-index">
-            <header>
-                <nav>
-                    <div class="container navbar">
-                        <div class="container-nav flex">
-                            <a href="#" class="navbar-logo"><img src="images/alertelogoo.png" alt="Alerte"></a>
-                            <button onclick="openNav()" class="navbar-toggler" type="button">
-                                <span><i class="fa-solid fa-bars"></i></span>
-                            </button>
-                            <ul class="navbar-nav flex">
-                                <li><a href="#" class="nav-link active">Home</a></li>
-                                <li><a href="#" class="nav-link">About</a></li>
-                                <li><a href="#" class="nav-link">Contact</a></li>
-                                <li class="dropdown"><a href="#" class="nav-link dropdown-toggle">Pages</a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="#" class="dropdown-item">Services</a></li>
-                                        <li><a href="#" class="dropdown-item">Pricing Plan</a></li>
-                                        <li><a href="#" class="dropdown-item">FAQ</a></li>
-                                        <li><a href="#" class="dropdown-item">Coming Soon</a></li>
-                                        <li><a href="#" class="dropdown-item">404</a></li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="nav-right flex">
-                            <p>Call us: <span>+123-4567-890</span></p>
-                            <button onclick="openSideNav()" class="right_slide" class="closebtn btn_hover1"><i class="fa-solid fa-bars"></i></button>
-                            
-                        </div>
-                    </div>
-                </nav>
-                <aside id="mySidepanel" class="sidepanel">
-                    <div class="sidebar flex">
-                        <img src="images/alertelogoo.png" alt="Alerte">
-                        <button onclick="closeNav()" type="button" class="closebtn btn_hover1">
-                            <i class="fa-solid fa-xmark"></i>
-                        </button>
-                    </div>
-                    <div>
-                        <ul>
+    <div class="site-container">
+        <nav>
+            <div class="navbar">
+                <div class="logo">
+                    <a href="#"><img src="images/alertelogoo.png" alt="Alerte"></a>
+                </div>
+                <div class="nav-items">
+                    <div class="nav-links">
+                        <ul class="flex">
                             <li><a href="#" class="nav-link active">Home</a></li>
                             <li><a href="#" class="nav-link">About</a></li>
                             <li><a href="#" class="nav-link">Contact</a></li>
                             <li class="pages"><a href="#">More</a></li>
-                            <li class="collapse-btn">
-                                <a href="#" class="nav-link plus_collapse" id="toggleCollapse"><i
-                                        class="fa-solid fa-plus"></i></a>
-                                <div class="collapse" id="pages">
-                                    <ul>
-                                        <li><a href="#" class="nav-link">Services</a></li>
-                                        <li><a href="#" class="nav-link">Pricing Plan</a></li>
-                                        <li><a href="#" class="nav-link">FAQ</a></li>
-                                        <li><a href="#" class="nav-link">Coming Soon</a></li>
-                                        <li><a href="#" class="nav-link">404</a></li>
-                                    </ul>
-                                </div>
-                            </li>
                         </ul>
                     </div>
-                </aside>
-                <section class="header-right-sidebar" id="right_side">
-                    <div class="flex flex-sb">
-                        <a href="#"><img src="images/alertelogoo.png" alt="Alerte"></a>
-                        <button onclick="closeSideNav()" class="close_rightsidebar fa-solid fa-xmark"></button>
+                    <div class="nav-icons">
+                        <a href="#" class="nav-link">Call us • +224***********</a>
+                        <a href="#" class="nav-link"><i class="fa-solid fa-bars" onclick="openNav()"></i></a>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium magnam quidem unde possimus repellendus officia consectetur, atque consequatur sit minima.</p>
-                    <a href="#" class="btn_hover1">Discover More</a>
-                    <hr>
-                    <h4>Connect with us:</h4>
-                    <ul class="flex">
-                        <li>
-                            <a href="#"><i class="fa-solid fa-envelope"></i></a>
-                            <a href="#" class="text-lowercase">info@alerteuniversal.com</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-solid fa-phone"></i></a>
-                            <a href="#">+123-4567-890</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa-solid fa-clock"></i></a>
-                            <a href="#">Office Hours: 24/7</a>
-                        </li>
-                    </ul>
-                    <span class="flex">
-                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
-                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    </span>
+                </div>
+                <div class="aside">
+                    <div class="aside-wrapper">
+
+                        <div class="aside-links">
+                            <ul class="flex">
+                                <li><a href="#" class="nav-link">Home</a></li>
+                                <li><a href="#" class="nav-link">About</a></li>
+                                <li><a href="#" class="nav-link">Contact</a></li>
+                                <li><a href="#" class="nav-link">Services</a></li>
+                                <li><a href="#" class="nav-link">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="aside-icons">
+                            <a href="#" class="nav-link"><i class="fa-solid fa-times" onclick="closeNav()"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="toggler">
+                    <button onclick="openSideNav()" class="toggler-btn"><i class="fa-solid fa-bars"></i></button>
+                </div>
+            </div>
+        </nav>
+        <div class="site-wrapper">
+            <main>
+                <section class="hero">
+                    <div class="container">
+                        <div class="hero-content flex">
+                            <div class="hero-text">
+                                <h1 data-aos="fade-up" data-aos-duration="1000">We are here to help you</h1>
+                                <p data-aos="fade-up" data-aos-duration="1500">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium magnam quidem unde possimus repellendus officia consectetur, atque consequatur sit minima.</p>
+                                <a href="#" class="btn_hover1" data-aos="fade-up" data-aos-duration="2000">Discover More</a>
+                            </div>
+                            <div class="hero-img" data-aos="fade-up" data-aos-duration="2500">
+                                <img src="images/hero-img.png" alt="Hero Image">
+                            </div>
+                        </div>
+                    </div>
                 </section>
-            </header>
+              
+                    <div class="container">
+                        <div class="about-content flex">
+                            <div class="about-text" data-aos="fade-up" data-aos-duration="1000">
+                                <h2>About Us</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium magnam quidem unde possimus repellendus officia consectetur, atque consequatur sit minima.</p>
+                                <a href="#" class="btn_hover1">Read More</a>
+                            </div>
+                            <div class="about-img" data-aos="fade-up" data-aos-duration="1500">
+                                <img src="images/about-img.png" alt="About Image">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </main>
         </div>
     </div>
 
