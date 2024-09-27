@@ -135,3 +135,68 @@ nav{
     }
     
 }
+@media screen and (max-width: 991px){
+    .navbar{justify-content: space-between;}
+    button.toggler-btn {
+        padding: 0 !important;
+        border: none;
+        font-size: 1.5rem;
+        background: transparent;
+    }
+    .navbar .aside {
+        display: none;
+    }
+    .navbar .aside.hidden{
+        display: none;
+    }
+    .navbar .aside .nav-links{
+        display: none;
+    }
+    .navbar .aside .nav-links a{
+        display: none;
+    }
+    .navbar .aside .nav-links a.aside-toggler{
+        display: block;
+    }
+    .navbar .aside .nav-links a.aside-toggler:hover{
+        opacity: 1;
+    }
+    .navbar .aside .nav-links a.aside-toggler:hover{
+        letter-spacing: 1.5px;
+    }
+    .navbar .aside .nav-links a.aside-toggler{
+        opacity: 0.7;
+        cursor: pointer;
+        font-family: "Raleway";
+        transition: 0.3s ease-in-out
+    }
+    .navbar .aside .nav-links a.aside-toggler{
+        display: block;
+    }
+
+    .nav-items {
+        position: absolute;
+        top: 0;
+        height: 100vh;
+        background:#e0e0e0;
+        flex-direction: column;
+        z-index: 1000;
+        transform: translateX(0%);
+        opacity: 1;
+        transition: 0.3s ease-in-out;
+        left: 0;
+    }
+    .nav-items.hidden{
+        opacity: 0;
+        pointer-events: none;
+        z-index: -10;
+        transform: translateX(-10%);
+        transition: 0.3s ease-in-out;
+
+
+    }
+    .nav-items ul {
+        
+        flex-direction: column;
+    }
+}

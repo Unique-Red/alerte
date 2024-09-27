@@ -75,12 +75,12 @@ section.hero .hero-content .hero-img img{
         text-align: center;
     }
     section.hero .hero-content .hero-text h1{
-        font-size: 36px;
-        line-height: 44px;
-    }
-    section.hero .hero-content .hero-img{
+        font-size: 2.25rem;
+        line-height: 2.75rem;
+        }
+    /* section.hero .hero-content .hero-img{
         width: 100%;
-    }
+    } */
     
 }
 @media screen and (min-width: 768px){
@@ -93,7 +93,7 @@ section.hero .hero-content .hero-img img{
         width: 50rem;
         height: 50rem;
         background: #e00002;
-        z-index: -1;
+        z-index: -3;
         top: 170px;
         right: -200px;
         border-radius: 50%;
@@ -183,8 +183,8 @@ section.about .about-content .about-cards .card::before{
     position: absolute;
     width: 100%;
     height: 100%;
-    background: #f0f0f0;
-    clip-path: polygon(0 10%, 20% 0, 170% -1%, -100% 100%);
+    top: -48%;
+    background: #e0e0e0;
         transition: all 0.3s ease;
 }
 section.about .about-content .about-cards .card:hover{
