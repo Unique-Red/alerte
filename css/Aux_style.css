@@ -161,6 +161,7 @@ section.about .about-content .about-cards {
 }
 section.about .about-content .about-cards .card{
     display: flex;
+    position:relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -169,9 +170,22 @@ section.about .about-content .about-cards .card{
     padding: 2rem 1rem;
     background: #fff;
     width: 10rem;
+    overflow: hidden;
     height: 10rem;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+}
+section.about .about-content .about-cards .card :is(.card-icon, h3, p){
+    z-index: 3;
+}
+section.about .about-content .about-cards .card::before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    clip-path: polygon(0 10%, 20% 0, 170% -1%, -100% 100%);
+        transition: all 0.3s ease;
 }
 section.about .about-content .about-cards .card:hover{
     transform: translateY(-10px);
@@ -200,6 +214,99 @@ section.about .about-content .about-img{
     align-items: center;
 }
 section.about .about-content .about-img img{
+    width: 100%;
+    height: auto;
+}
+
+/* vision and mission section */
+
+section.vision-mission{
+    padding: 5rem 0;
+
+}
+section.vision-mission .vision-mission-content{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 4rem;
+}
+section.vision-mission .vision{
+    position: relative;
+    height: 20rem;
+    padding: 2rem 4rem;
+    border-radius: 10px;
+    background: #dfe3e6;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+section.vision-mission .vision h2{
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 44px;
+    font-family: "Raleway", sans-serif;
+}
+section.vision-mission .vision p{
+    font-size: 16px;
+    font-weight: 400;
+    width: 50%;
+    line-height: 30px;
+    font-family: "Barlow", sans-serif;
+}
+section.vision-mission .vision .vision-img{
+    position: absolute;
+    z-index: 0;
+    right: 5%;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+section.vision-mission .vision .vision-img img{
+    width: 100%;
+    height: auto;
+}
+
+section.vision-mission .mission{
+    position: relative;
+    height: 20rem;
+    padding: 2rem 4rem;
+    border-radius: 10px;
+    background: #dfe3e6;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: flex-end;
+}
+section.vision-mission .mission h2{
+    font-size: 36px;
+    font-weight: 800;
+    line-height: 44px;
+    font-family: "Raleway", sans-serif;
+}
+section.vision-mission .mission p{
+    font-size: 16px;
+    font-weight: 400;
+    width: 50%;
+    line-height: 22px;
+    font-family: "Barlow", sans-serif;
+}
+section.vision-mission .mission .mission-img{
+    position: absolute;
+    z-index: 0;
+    left: 5%;
+    top: -128%;
+    width: 20rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+section.vision-mission .mission .mission-img img{
     width: 100%;
     height: auto;
 }
