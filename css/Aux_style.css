@@ -86,7 +86,6 @@ section.hero .hero-content .hero-img img {
     }
 
     section.hero .hero-content .hero-img {
-        position: relative;
         width: 80%;
     }
 }
@@ -128,7 +127,7 @@ section.hero .hero-content .hero-img img {
     }
 
     section.hero .hero-content .hero-img {
-        width: 100%;
+        width: 50%;
     }
 }
 
@@ -198,13 +197,13 @@ section.about .about-content .about-cards .card {
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    border-radius: 50%;
+    border-radius: 30%;
     padding: 2rem 1rem;
     background: #fff;
     width: 10rem;
     overflow: hidden;
     height: 10rem;
-    box-shadow: 0 0 1.25rem rgba(0, 0, 0, 0.1); /* 20px */
+    box-shadow: 0 0 1.25rem rgba(0, 0, 0 , 13%); /* 20px */
     transition: all 0.3s ease;
 }
 
@@ -296,6 +295,7 @@ section.vision-mission .vision {
 section.vision-mission .vision h2 {
     font-size: 2.25rem; /* 36px */
     font-weight: 800;
+    z-index: 2;
     line-height: 2.75rem; /* 44px */
     font-family: "Raleway", sans-serif;
 }
@@ -303,6 +303,7 @@ section.vision-mission .vision h2 {
 section.vision-mission .vision p {
     font-size: 1rem; /* 16px */
     font-weight: 400;
+    z-index: 2;
     width: 50%;
     line-height: 1.875rem; /* 30px */
     font-family: "Barlow", sans-serif;
@@ -339,6 +340,7 @@ section.vision-mission .mission {
 section.vision-mission .mission h2 {
     font-size: 2.25rem; /* 36px */
     font-weight: 800;
+    z-index: 2;
     line-height: 2.75rem; /* 44px */
     font-family: "Raleway", sans-serif;
 }
@@ -346,8 +348,9 @@ section.vision-mission .mission h2 {
 section.vision-mission .mission p {
     font-size: 1rem; /* 16px */
     font-weight: 400;
+    z-index: 2;
     width: 50%;
-    line-height: 1.375rem; /* 22px */
+    line-height: 1.875rem; /* 22px */
     font-family: "Barlow", sans-serif;
 }
 
@@ -379,13 +382,13 @@ section.vision-mission .mission .mission-img img {
         width: 100%;
     }
 
-    section.vision-mission .vision .vision-img,
-    section.vision-mission .mission .mission-img {
-        position: relative;
-        width: 100%;
-        top: 0;
-        left: 0;
-        right: 0;
+    section.vision-mission .vision .vision-img, section.vision-mission .mission .mission-img {
+        width: 20%;       
+    }
+    section.vision-mission .vision .vision-img {
+        z-index: 0;
+        right: 5%;
+        top: -60%;
     }
 }
 
@@ -407,6 +410,7 @@ footer .footer-content {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 2rem;
 }
 
