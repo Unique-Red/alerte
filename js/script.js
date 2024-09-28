@@ -1,31 +1,32 @@
-const Aside = document.querySelector('.aside');
-const sideNav = document.querySelector('.nav-items');
-const asideToggler = document.querySelectorAll('.nav-link.aside-toggler');
-const mainToggler = document.querySelector('.toggler button.toggler-btn');
-
-console.log(asideToggler)
-asideToggler.forEach((toggler)=>{
-    toggler.addEventListener('click', () => {
-        Aside.classList.toggle('hidden');
-        console.log("toggled")
-    })
-   
-})
-
-window.addEventListener('load',(e)=>{
-    window.addEventListener('resize',()=>{
-        if(window.innerWidth > 768){
-            sideNav.classList.remove('hidden')
-        }
-        else{
-            sideNav.classList.add('hidden')
-        }
-    })
-    console.log(e)
-    if(window.innerWidth < 768){
-        sideNav.classList.add('hidden')
+function openNav(){
+    'use strict';
+    const sidepanel = document.getElementById('mySidepanel');
+    if(sidepanel){
+        sidepanel.style.left = '0';
+    } else{
+        console.error('error: sidepanel not found');
     }
-})
+}
+
+function closeNav(){
+    'use strict';
+    const sidepanel = document.getElementById('mySidepanel');
+    if(sidepanel){
+        sidepanel.style.left = '-320px';
+    } else{
+        console.error('error: sidepanel not found');
+    }
+}
+
+function openSideNav(){
+    'use strict';
+    const sidepanel = document.getElementById('right_side');
+    if(sidepanel){
+        sidepanel.style.right = '0';
+    } else{
+        console.error('error: sidepanel not found');
+    }
+}
 
 function closeSideNav(){
     'use strict';
@@ -43,16 +44,4 @@ document.getElementById("toggleCollapse").addEventListener("click", function(eve
     
     // Toggle the "show" class to collapse or expand the list
     collapseElement.classList.toggle("show");
-});
-
-// script.js
-
-// Add interactivity for any animations or additional features if needed
-
-// For example: Animate the CTA button or trigger smooth scrolling when "Learn More" is clicked
-document.querySelector('.cta-btn').addEventListener('click', function() {
-    window.scrollTo({
-        top: document.querySelector('.about').offsetTop,
-        behavior: 'smooth'
-    });
 });
