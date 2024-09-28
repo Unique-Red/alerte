@@ -38,10 +38,10 @@ function closeSideNav(){
     }
 }
 
-document.getElementById("toggleCollapse").addEventListener("click", function(event) {
-    event.preventDefault();  // Prevent the default anchor behavior
-    var collapseElement = document.getElementById("pages");
+// document.getElementById("toggleCollapse").addEventListener("click", function(event) {
+//     event.preventDefault();  // Prevent the default anchor behavior
+//     var collapseElement = document.getElementById("pages");
     
-    // Toggle the "show" class to collapse or expand the list
-    collapseElement.classList.toggle("show");
-});
+//     // Toggle the "show" class to collapse or expand the list
+//     collapseElement.classList.toggle("show");
+// });
