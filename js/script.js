@@ -45,3 +45,15 @@ document.getElementById("toggleCollapse").addEventListener("click", function(eve
     // Toggle the "show" class to collapse or expand the list
     collapseElement.classList.toggle("show");
 });
+
+// script.js
+
+// Add interactivity for any animations or additional features if needed
+
+// For example: Animate the CTA button or trigger smooth scrolling when "Learn More" is clicked
+document.querySelector('.cta-btn').addEventListener('click', function() {
+    window.scrollTo({
+        top: document.querySelector('.about').offsetTop,
+        behavior: 'smooth'
+    });
+});

@@ -8,7 +8,7 @@ VISION – The vision of ALERTE APPLICATION is to help government create a safer
 MISSION – The mission is to get ALERTE APPLICATION on every device in the world.
 
 About Us
-Alerte Generic International Limited (AGIL) is a multi-operational with interest and expertise in the full value chain of the Information Technology industry. We believe in creating systems to help the government and enhance the government agencies and parastatals through customized technological solutions. We boast of robust workforce and vast network partnerships geared towards delivering our set objectives to our clients.
+alerte universal is a multi-operational with interest and expertise in the full value chain of the Information Technology industry. We believe in creating systems to help the government and enhance the government agencies and parastatals through customized technological solutions. We boast of robust workforce and vast network partnerships geared towards delivering our set objectives to our clients.
 Every venture is an avenue for (AGIL) to efficiently impact her environment through cost effective solutions.
 
 Alerte Core Values
