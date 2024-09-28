@@ -1,32 +1,31 @@
-function openNav(){
-    'use strict';
-    const sidepanel = document.getElementById('mySidepanel');
-    if(sidepanel){
-        sidepanel.style.left = '0';
-    } else{
-        console.error('error: sidepanel not found');
-    }
-}
+const Aside = document.querySelector('.aside');
+const sideNav = document.querySelector('.nav-items');
+const asideToggler = document.querySelectorAll('.nav-link.aside-toggler');
+const mainToggler = document.querySelector('.toggler button.toggler-btn');
 
-function closeNav(){
-    'use strict';
-    const sidepanel = document.getElementById('mySidepanel');
-    if(sidepanel){
-        sidepanel.style.left = '-320px';
-    } else{
-        console.error('error: sidepanel not found');
-    }
-}
+console.log(asideToggler)
+asideToggler.forEach((toggler)=>{
+    toggler.addEventListener('click', () => {
+        Aside.classList.toggle('hidden');
+        console.log("toggled")
+    })
+   
+})
 
-function openSideNav(){
-    'use strict';
-    const sidepanel = document.getElementById('right_side');
-    if(sidepanel){
-        sidepanel.style.right = '0';
-    } else{
-        console.error('error: sidepanel not found');
+window.addEventListener('load',(e)=>{
+    window.addEventListener('resize',()=>{
+        if(window.innerWidth > 768){
+            sideNav.classList.remove('hidden')
+        }
+        else{
+            sideNav.classList.add('hidden')
+        }
+    })
+    console.log(e)
+    if(window.innerWidth < 768){
+        sideNav.classList.add('hidden')
     }
-}
+})
 
 function closeSideNav(){
     'use strict';
