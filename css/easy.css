@@ -104,11 +104,11 @@
     position: relative;
     overflow: hidden;
     border-radius: 50px;
-    border: none;
+    border: 1.5px solid #ff0000;
+    color: #fff;
     z-index: 1;
     letter-spacing: 0.8px;
-    background: #e00002;
-    color:#fff;
+    background: linear-gradient(42deg, #c56139, #fd0303);
     cursor: pointer;
 }
 
@@ -123,10 +123,9 @@
     z-index: -1;
     top: 0;
     right: 0;
-    transition: all 0.3s ease-in;
 }
 
 .btn_hover1:hover::before{
     width: 0;
-    background: #e00002
+    background: linear-gradient(42deg, #c56139, #fd0303);
 }
