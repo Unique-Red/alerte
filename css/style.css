@@ -241,7 +241,7 @@ a {
 }
 
 .header-index {
-    background-image: url('../images/alertelogoo.png');
+    background-image: url('../static/images/alertelogoo.png');
     background-position: center center;
     background-size: cover;
 }
@@ -624,7 +624,7 @@ aside.pages {
 
 .hero {
     /* background-image: url(../images/herobg.svg); */
-    background-image: linear-gradient(rgb(117 8 8 / 50%), rgb(16 0 0 / 96%)), url(../images/herobg.svg);
+    background-image: linear-gradient(rgb(117 8 8 / 50%), rgb(16 0 0 / 96%)), url(../static/images/herobg.svg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -812,7 +812,7 @@ aside.pages {
 }
 
 .work-line {
-    background-image: url('../images/work-line.png');
+    background-image: url('../static/images/work-line.png');
     background-size: 100% 100%;
     background-position: center;
     min-height: 242px;
