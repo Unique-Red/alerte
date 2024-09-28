@@ -241,7 +241,7 @@ a {
 }
 
 .header-index {
-    background-image: url('../static/images/alertelogoo.png');
+    background-image: url('../static/images/alertelogo.png');
     background-position: center center;
     background-size: cover;
 }
@@ -623,8 +623,7 @@ aside.pages {
 }
 
 .hero {
-    /* background-image: url(../images/herobg.svg); */
-    background-image: linear-gradient(rgb(117 8 8 / 50%), rgb(16 0 0 / 96%)), url(../static/images/herobg.svg);
+    background-image: linear-gradient(rgb(117 8 8 / 50%), rgb(16 0 0 / 96%)), url(../static/images/hero.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
