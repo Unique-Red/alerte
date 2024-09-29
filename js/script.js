@@ -18,6 +18,12 @@ function closeNav(){
     }
 }
 
+document.querySelectorAll('#mySidepanel a').forEach(function(link) {
+    link.addEventListener('click', function() {
+        closeNav();
+    });
+});
+
 function openSideNav(){
     'use strict';
     const sidepanel = document.getElementById('right_side');
