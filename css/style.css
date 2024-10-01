@@ -632,6 +632,7 @@ aside.pages {
 
 .hero .container {
     position: relative;
+    overflow-x: hidden;
 }
 
 .hero h1 {
@@ -1003,7 +1004,7 @@ aside.pages {
 }
 
 /* For screens up to 425px (Mobile devices) */
-@media (max-width: 425px) {
+@media (max-width: 450px) {
     .work-para {
         padding: 0 30px;
     }
@@ -1133,6 +1134,7 @@ aside.pages {
     max-width: 1200px;
     margin: 0 auto;
     text-align: center;
+    overflow-x: hidden;
 }
 
 .section-title {
@@ -1227,6 +1229,7 @@ section.about .about-content {
     justify-content: space-between;
     align-items: center;
     gap: 2rem;
+    overflow-x: hidden;
 }
 
 section.about .about-text {
