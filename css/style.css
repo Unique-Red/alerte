@@ -746,6 +746,12 @@ aside.pages {
     margin: 20px 0 12px 0;
 }
 
+@media screen and (min-width: 800px){
+    .hero .container {
+        overflow-x: clip;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .hero h1 {
         font-size: 2.5rem;
