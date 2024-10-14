@@ -799,6 +799,14 @@ aside.pages {
 
 }
 
+@media screen and (max-width: 425px){
+    
+    .header-card {
+        width: auto !important;
+        margin-top: 20px;
+    }
+}
+
 .work {
     background-color: #4b4a54;
     /* background-image: url('../images/herobg.jpg');
