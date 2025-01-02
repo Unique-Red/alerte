@@ -44,6 +44,11 @@ function closeSideNav(){
     }
 }
 
+
+function toggleGradioModal() {
+    const modal = document.getElementById('gradioModal');
+    modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+}
 // document.getElementById("toggleCollapse").addEventListener("click", function(event) {
 //     event.preventDefault();  // Prevent the default anchor behavior
 //     var collapseElement = document.getElementById("pages");
