@@ -91,7 +91,6 @@ video {
     font-size: 100%;
 }
 
-/* HTML5 display-role reset for older browsers */
 
 article,
 aside,
@@ -158,7 +157,6 @@ iframe {
     width: 100%;
 }
 
-/* ===== 02. Global Style ===== */
 body {
     overflow-x: hidden;
 }
@@ -580,13 +578,6 @@ aside.pages {
     align-items: baseline;
 }
 
-/* .header-right-sidebar ul.flex{
-    display: flex;
-    justify-content: space-between;
-    align-items: left;
-    margin: 20px 0;
-} */
-
 .header-right-sidebar ul li {
     margin: 15px 0;
 }
@@ -691,7 +682,6 @@ aside.pages {
 
 .value {
     background-color: #000;
-    /* margin: -1px; */
     position: relative;
 }
 
@@ -809,9 +799,6 @@ aside.pages {
 
 .work {
     background-color: #4b4a54;
-    /* background-image: url('../images/herobg.jpg');
-    background-size: cover;
-    background-position: center; */
     padding: 120px 0;
     margin-top: -2px;
 }
@@ -963,7 +950,6 @@ aside.pages {
     }
 }
 
-/* For screens up to 768px (Tablet) */
 @media (max-width: 768px) {
     .work-para {
         padding: 0 50px;
@@ -1017,7 +1003,6 @@ aside.pages {
     }
 }
 
-/* For screens up to 425px (Mobile devices) */
 @media (max-width: 450px) {
     .work-para {
         padding: 0 30px;
@@ -1089,7 +1074,6 @@ aside.pages {
 
 }
 
-/* For screens below 425px (Small mobile devices) */
 @media (max-width: 375px) {
     .work-para {
         padding: 0 20px;
@@ -1138,7 +1122,6 @@ aside.pages {
 }
 
 
-/* Key Features Section */
 .key-features {
     background-color: #000;
     padding: 60px 20px;
@@ -1259,13 +1242,11 @@ aside.pages {
     background: #e71212;
     overflow: hidden;
     box-shadow: 0 0 1.25rem rgba(0, 0, 0, 13%);
-    /* 20px */
     transition: all 0.3s ease;
 }
 
 .feature-card:hover {
     transform: translateY(-0.625rem);
-    /* 10px */
 }
 
 .alerte_surveillance .surveillance-cta{
@@ -1303,7 +1284,7 @@ aside.pages {
     }
 
     .alerte_surveillance .right-side .feature-item{
-        width: 30rem;
+        width: 24rem;
     }
     .alerte_surveillance .surveillance-cta h3{
         font-size: 1.5rem;
@@ -1371,27 +1352,11 @@ section.about .about-text h2 {
 
 section.about .about-text p {
     font-size: 1rem;
-    /* 16px */
     font-weight: 400;
     line-height: 1.375rem;
-    /* 22px */
     font-family: "Barlow", sans-serif;
     color: #fff;
 }
-
-/* section.about .about-text a {
-    font-size: 1rem;
-    font-weight: 500;
-    line-height: 1.375rem;
-    padding: 0.7rem 1.5rem;
-    text-transform: capitalize;
-    font-family: "Barlow", sans-serif;
-}
-
-section.about .about-text a:hover {
-    background: #fff;
-    color: #333;
-}*/
 
 section.about .about-content .about-cards {
     display: grid;
@@ -1434,30 +1399,24 @@ section.about .about-content .about-cards .card::before {
 
 section.about .about-content .about-cards .card:hover {
     transform: translateY(-0.625rem);
-    /* 10px */
 }
 
 section.about .about-content .about-cards .card .card-icon {
     font-size: 2.5rem;
-    /* 40px */
     color: #dfe3e6;
 }
 
 section.about .about-content .about-cards .card h3 {
     font-size: 1rem;
-    /* 16px */
     font-weight: 800;
     line-height: 2rem;
-    /* 32px */
     font-family: "Raleway", sans-serif;
 }
 
 section.about .about-content .about-cards .card p {
     font-size: 1rem;
-    /* 16px */
     font-weight: 400;
     line-height: 1.375rem;
-    /* 22px */
     font-family: "Barlow", sans-serif;
 }
 
