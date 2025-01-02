@@ -1240,6 +1240,8 @@ aside.pages {
     justify-content: center;
     align-items: center;
     gap: 1.5rem;
+    padding: 10px;
+    margin: 10px;
 }
 
 .alerte_surveillance .right-side .feature-item{
