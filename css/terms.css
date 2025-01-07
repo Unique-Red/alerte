@@ -10,6 +10,10 @@ body {
     margin-bottom: 20px;
 }
 
+.header img{
+    width: 100px;
+}
+
 .accordion {
     background-color: #fff;
     color: #444;
@@ -39,6 +43,7 @@ body {
     justify-content: center;
     font-size: 16px;
     font-weight: bold;
+    margin-left: 10px;
 }
 
 .accordion.active, .accordion:hover {
@@ -91,6 +96,9 @@ footer a:hover {
 }
 
 @media screen and (max-width: 600px) {
+    body{
+        padding: 20px;
+    }
     .accordion {
         font-size: 12px;
         padding: 5px;
