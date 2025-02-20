@@ -621,6 +621,14 @@ aside.pages {
     padding: 172px 0 279px 0;
 }
 
+.hero-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
 .hero .container {
     position: relative;
     overflow-x: hidden;
@@ -746,6 +754,20 @@ aside.pages {
     .hero h1 {
         font-size: 2.5rem;
         line-height: 40px;
+    }
+
+    .hero-content {
+        flex-direction: column; /* Stack on top of each other */
+        text-align: center;
+    }
+
+    .center-btn {
+        flex-direction: column; /* Stack download buttons */
+        gap: 10px;
+    }
+
+    .center-btn img {
+        width: 180px; /* Increase size on mobile */
     }
 
     .hero-social-icon {
