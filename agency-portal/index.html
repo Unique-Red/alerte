@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerte Agency Portal</title>
+    <link rel="stylesheet" href="../css/agencyp.css">
+</head>
+<body>
+    <!-- Full-page loader -->
+    <div id="loader" class="loader-overlay hidden">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- ======================= -->
+    <!--     LOGIN CONTAINER     -->
+    <!-- ======================= -->
+    <div id="login-container" class="container">
+        <div class="form-container">
+            <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
+            <h2>Agency Portal Login</h2>
+            <p id="login-error-message" class="error-message"></p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" required autocomplete="current-password">
+                </div>
+                <button type="submit" id="login-button">Login</button>
+            </form>
+            <p class="form-footer">Don't have an agency account? <a href="#" id="show-signup-link">Register Here</a></p>
+        </div>
+    </div>
+    
+    <!-- ======================== -->
+    <!--     SIGNUP CONTAINER     -->
+    <!-- ======================== -->
+    <div id="signup-container" class="container hidden">
+        <div class="form-container">
+            <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
+            <h2>Register Your Agency</h2>
+            <p id="signup-error-message" class="error-message"></p>
+            <form id="signup-form">
+                <fieldset>
+                    <legend>Agency Details</legend>
+                    <div class="input-group">
+                        <label for="agency_name">Agency Name</label>
+                        <input type="text" id="agency_name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agency_type">Agency Type</label>
+                        <select id="agency_type" required>
+                            <option value="">-- Select Type --</option>
+                            <option value="POLICE">Police</option>
+                            <option value="FIRE">Fire Department</option>
+                            <option value="MEDICAL">Medical Services</option>
+                            <option value="GENERAL_EMERGENCY">General Emergency</option>
+                        </select>
+                    </div>
+                    <div class="input-group">
+                        <label for="agency_phone_number">Agency Phone</label>
+                        <input type="tel" id="agency_phone_number" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agency_email">Agency Email</label>
+                        <input type="email" id="agency_email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agency_city">Service City</label>
+                        <input type="text" id="agency_city" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agency_country">Service Country</label>
+                        <input type="text" id="agency_country" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agency_operating_hours">Operating Hours</label>
+                        <input type="text" id="agency_operating_hours" placeholder="e.g., 24/7" required>
+                    </div>
+                </fieldset>
+                
+                <fieldset>
+                    <legend>Administrator Account Details</legend>
+                    <div class="input-group">
+                        <label for="agent_full_name">Your Full Name</label>
+                        <input type="text" id="agent_full_name" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agent_email">Your Email (for login)</label>
+                        <input type="email" id="agent_email" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agent_password">Your Password</label>
+                        <input type="password" id="agent_password" minlength="8" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="agent_phone_number">Your Phone Number</label>
+                        <input type="tel" id="agent_phone_number" required>
+                    </div>
+                </fieldset>
+                
+                <button type="submit" id="signup-button">Register Agency</button>
+            </form>
+            <p class="form-footer">Already have an account? <a href="#" id="show-login-link">Login Here</a></p>
+        </div>
+    </div>
+
+    <!-- Dashboard View (Initially Hidden) -->
+    <div id="dashboard-container" class="container hidden">
+        <header class="dashboard-header">
+            <h1 id="agency-name-header">Agency Dashboard</h1>
+            <div>
+                <span id="agent-name-display">Welcome, Agent!</span>
+                <button id="logout-button" class="button-danger">Logout</button>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="dashboard-grid">
+                <!-- Agency Profile Card -->
+                <div id="agency-profile" class="info-card">
+                    <div class="card-header">
+                        <h2>Your Agency Profile</h2>
+                        <button id="edit-profile-btn" class="button-secondary">Edit Profile</button>
+                    </div>
+                    <div id="agency-profile-content">
+                        <p class="loading-text">Loading agency details...</p>
+                    </div>
+                </div>
+
+                <!-- Agent List Card -->
+                <div id="agent-list-card" class="info-card">
+                    <div class="card-header">
+                        <h2>Manage Agents</h2>
+                        <button id="add-agent-btn" class="button-primary">Add New Agent</button>
+                    </div>
+                    <div id="agent-list-content">
+                        <p class="loading-text">Loading agent list...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generic Modal (Initially Hidden) -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="modal-content" class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">×</button>
+            <h2 id="modal-title">Modal Title</h2>
+            <div id="modal-body">
+                <!-- Form content will be injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/agencyp.js"></script>
+</body>
+</html>

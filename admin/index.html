@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerte Super Admin Panel</title>
+    <link rel="stylesheet" href="../css/admin_style.css">
+</head>
+<body>
+    <!-- Full-page loader -->
+    <div id="loader" class="loader-overlay hidden">
+        <div class="loader-spinner"></div>
+    </div>
+
+    <!-- ======================= -->
+    <!--     LOGIN CONTAINER     -->
+    <!-- ======================= -->
+    <div id="login-container" class="container">
+        <div class="form-container">
+            <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
+            <h2>Super Admin Panel</h2>
+            <p id="login-error-message" class="error-message"></p>
+            <form id="login-form">
+                <div class="input-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+                </div>
+                <button type="submit" id="login-button">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- ========================== -->
+    <!--     MAIN APP CONTAINER     -->
+    <!-- ========================== -->
+    <div id="app-container" class="container hidden">
+        <header class="main-header">
+            <h1>Alerte Super Admin</h1>
+            <div>
+                <span id="welcome-message">Welcome, Admin!</span>
+                <button id="logout-button" class="button-danger">Logout</button>
+            </div>
+        </header>
+
+        <nav class="main-nav">
+            <a href="#dashboard" class="nav-link active" data-view="dashboard">Dashboard</a>
+            <a href="#pending-agencies" class="nav-link" data-view="pending-agencies">Pending Agencies</a>
+            <a href="#all-agencies" class="nav-link" data-view="all-agencies">All Agencies</a>
+            <a href="#test-notification" class="nav-link" data-view="test-notification">Test Notification</a>
+        </nav>
+
+        <main id="main-content">
+            <!-- Content for each view will be injected here by JavaScript -->
+        </main>
+    </div>
+    <!-- Dashboard View (Initially Hidden) -->
+    <div id="dashboard-container" class="container hidden">
+        <header class="dashboard-header">
+            <h1 id="agency-name-header">Agency Dashboard</h1>
+            <div>
+                <span id="agent-name-display">Welcome, Agent!</span>
+                <button id="logout-button" class="button-danger">Logout</button>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <div class="dashboard-grid">
+                <!-- Agency Profile Card -->
+                <div id="agency-profile" class="info-card">
+                    <div class="card-header">
+                        <h2>Your Agency Profile</h2>
+                        <button id="edit-profile-btn" class="button-secondary">Edit Profile</button>
+                    </div>
+                    <div id="agency-profile-content">
+                        <p class="loading-text">Loading agency details...</p>
+                    </div>
+                </div>
+
+                <!-- Agent List Card -->
+                <div id="agent-list-card" class="info-card">
+                    <div class="card-header">
+                        <h2>Manage Agents</h2>
+                        <button id="add-agent-btn" class="button-primary">Add New Agent</button>
+                    </div>
+                    <div id="agent-list-content">
+                        <p class="loading-text">Loading agent list...</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Generic Modal (Initially Hidden) -->
+    <div id="modal-overlay" class="modal-overlay hidden">
+        <div id="modal-content" class="modal-content">
+            <button id="modal-close-btn" class="modal-close-btn">×</button>
+            <h2 id="modal-title">Modal Title</h2>
+            <div id="modal-body">
+                <!-- Form content will be injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../js/admin_script.js"></script>
+</body>
+</html>
