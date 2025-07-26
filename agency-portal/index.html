@@ -4,7 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alerte Agency Portal</title>
+    <meta name="description" content="Login to the Alerte Agency Portal to manage your agency's operations, view notifications, and access administrative tools.">
+    <meta name="keywords" content="Alerte, Agency Portal, Emergency Services, Login, Dashboard, Notifications">
+    <meta name="author" content="Alerte Universal">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.alerteuniversal.com/agency-portal/">
+    <meta property="og:title" content="Alerte - Quick SOS Alerts, Instant Emergency Responses">
+    <meta property="og:description"
+        content="Alerte is a powerful, easy-to-use emergency alert system designed to connect you to the nearest emergency responders instantly, ensuring quick help when it matters most.">
+    <meta property="og:image" content="https://www.alerteuniversal.com/images/alerte.jpg">
+
     <link rel="stylesheet" href="../css/agencyp.css">
+
 </head>
 <body>
     <!-- Full-page loader -->
@@ -12,9 +23,6 @@
         <div class="loader-spinner"></div>
     </div>
 
-    <!-- ======================= -->
-    <!--     LOGIN CONTAINER     -->
-    <!-- ======================= -->
     <div id="login-container" class="container">
         <div class="form-container">
             <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
@@ -35,9 +43,6 @@
         </div>
     </div>
     
-    <!-- ======================== -->
-    <!--     SIGNUP CONTAINER     -->
-    <!-- ======================== -->
     <div id="signup-container" class="container hidden">
         <div class="form-container">
             <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
@@ -120,7 +125,6 @@
 
         <main class="dashboard-main">
             <div class="dashboard-grid">
-                <!-- Agency Profile Card -->
                 <div id="agency-profile" class="info-card">
                     <div class="card-header">
                         <h2>Your Agency Profile</h2>
@@ -131,7 +135,6 @@
                     </div>
                 </div>
 
-                <!-- Agent List Card -->
                 <div id="agent-list-card" class="info-card">
                     <div class="card-header">
                         <h2>Manage Agents</h2>
@@ -145,13 +148,11 @@
         </main>
     </div>
 
-    <!-- Generic Modal (Initially Hidden) -->
     <div id="modal-overlay" class="modal-overlay hidden">
         <div id="modal-content" class="modal-content">
             <button id="modal-close-btn" class="modal-close-btn">×</button>
             <h2 id="modal-title">Modal Title</h2>
             <div id="modal-body">
-                <!-- Form content will be injected here by JavaScript -->
             </div>
         </div>
     </div>

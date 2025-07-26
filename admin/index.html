@@ -7,18 +7,14 @@
     <link rel="stylesheet" href="../css/admin_style.css">
 </head>
 <body>
-    <!-- Full-page loader -->
     <div id="loader" class="loader-overlay hidden">
         <div class="loader-spinner"></div>
     </div>
 
-    <!-- ======================= -->
-    <!--     LOGIN CONTAINER     -->
-    <!-- ======================= -->
     <div id="login-container" class="container">
         <div class="form-container">
             <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
-            <h2>Super Admin Panel</h2>
+            <!-- <h2>Super Admin Panel</h2> -->
             <p id="login-error-message" class="error-message"></p>
             <form id="login-form">
                 <div class="input-group">
@@ -34,9 +30,6 @@
         </div>
     </div>
 
-    <!-- ========================== -->
-    <!--     MAIN APP CONTAINER     -->
-    <!-- ========================== -->
     <div id="app-container" class="container hidden">
         <header class="main-header">
             <h1>Alerte Super Admin</h1>
@@ -57,7 +50,6 @@
             <!-- Content for each view will be injected here by JavaScript -->
         </main>
     </div>
-    <!-- Dashboard View (Initially Hidden) -->
     <div id="dashboard-container" class="container hidden">
         <header class="dashboard-header">
             <h1 id="agency-name-header">Agency Dashboard</h1>
@@ -69,7 +61,6 @@
 
         <main class="dashboard-main">
             <div class="dashboard-grid">
-                <!-- Agency Profile Card -->
                 <div id="agency-profile" class="info-card">
                     <div class="card-header">
                         <h2>Your Agency Profile</h2>
@@ -94,13 +85,11 @@
         </main>
     </div>
 
-    <!-- Generic Modal (Initially Hidden) -->
     <div id="modal-overlay" class="modal-overlay hidden">
         <div id="modal-content" class="modal-content">
             <button id="modal-close-btn" class="modal-close-btn">×</button>
             <h2 id="modal-title">Modal Title</h2>
             <div id="modal-body">
-                <!-- Form content will be injected here by JavaScript -->
             </div>
         </div>
     </div>

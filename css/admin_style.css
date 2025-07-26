@@ -150,7 +150,11 @@ button:disabled {
 #welcome-message {
   margin-right: 15px;
 }
-#logout-button {
+
+#login-button{
+  background-color: var(--alerte-red-dark);
+}
+#logout-button{
   width: auto;
   padding: 8px 16px;
   font-size: 14px;
@@ -164,6 +168,7 @@ button:disabled {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
+  overflow-x: auto;
 }
 .nav-link {
   padding: 10px 15px;
@@ -185,6 +190,7 @@ button:disabled {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
 }
 #main-content h2 {
   margin-top: 0;

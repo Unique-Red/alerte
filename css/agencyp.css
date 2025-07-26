@@ -273,6 +273,9 @@ legend {
   padding: 5px 10px;
   width: auto;
 }
+#agent-list-content{
+  overflow-x: auto;
+}
 
 /* --- Modal Styles --- */
 .modal-overlay {
