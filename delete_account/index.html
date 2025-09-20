@@ -1,246 +1,350 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Delete Account - Alerte</title>
+
+    <!-- Google Identity Services Library -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    
+    <!-- Font Awesome for Icons (Optional, for password toggle) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"/>
+
     <style>
+      /* --- General Styles --- */
       body {
-        font-family: Arial, sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
         text-align: center;
         padding: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
       }
-      input,
-      button {
-        padding: 10px;
-        margin: 5px;
-        width: 250px;
+      .container {
+        background-color: #fff;
+        padding: 30px 40px;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 450px;
+      }
+      input, button, select {
+        padding: 12px;
+        margin: 8px 0;
+        width: 100%;
         font-size: 16px;
+        box-sizing: border-box;
+        border-radius: 6px;
+        border: 1px solid #ccc;
       }
       button {
-        background-color: red;
+        background-color: #e53935; /* Alerte Red */
         color: white;
         border: none;
         cursor: pointer;
+        font-weight: bold;
       }
-      button:hover {
-        background-color: darkred;
+      button:hover:not(:disabled) {
+        background-color: #c62828;
+      }
+      button:disabled {
+        background-color: #f0c3c3;
+        cursor: not-allowed;
       }
 
+      /* --- Header --- */
       .header {
         text-align: center;
         margin-bottom: 20px;
       }
-      /* Modal Styles */
+      .header img {
+        max-width: 180px;
+      }
+
+      /* --- Forms --- */
+      h2 { margin-top: 0; }
+      p { color: #606770; }
+      .input-group { position: relative; margin-bottom: 15px; }
+      .password-toggle { position: absolute; right: 15px; top: 50%; transform: translateY(-50%); cursor: pointer; color: #888; }
+      
+      .response-message {
+        color: #e53935;
+        font-weight: bold;
+        min-height: 20px;
+      }
+      .google-delete-section{
+        margin-top: 20px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .or-divider {
+        display: flex;
+        align-items: center;
+        text-align: center;
+        color: #888;
+        margin: 20px 0;
+      }
+      .or-divider::before, .or-divider::after {
+        content: ''; flex: 1; border-bottom: 1px solid #ccc;
+      }
+      .or-divider:not(:empty)::before { margin-right: .25em; }
+      .or-divider:not(:empty)::after { margin-left: .25em; }
+      
+      /* --- Modal Styles --- */
       .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgb(0, 0, 0);
-        background-color: rgba(0, 0, 0, 0.4);
+        display: none; position: fixed; z-index: 1; left: 0; top: 0;
+        width: 100%; height: 100%; overflow: auto; background-color: rgba(0, 0, 0, 0.5);
         padding-top: 60px;
       }
-
       .modal-content {
-        background-color: #fefefe;
-        margin: 5% auto;
-        padding: 20px;
-        border: 1px solid #888;
-        width: 350px;
-        text-align: center;
+        background-color: #fefefe; margin: 5% auto; padding: 20px;
+        border: 1px solid #888; width: 90%; max-width: 400px; text-align: center;
+        border-radius: 8px; position: relative;
       }
-
       .close {
-        color: #aaa;
-        float: right;
-        font-size: 28px;
-        font-weight: bold;
+        color: #aaa; position: absolute; top: 10px; right: 15px;
+        font-size: 28px; font-weight: bold; cursor: pointer;
       }
-
-      .close:hover,
-      .close:focus {
-        color: black;
-        text-decoration: none;
-        cursor: pointer;
-      }
-      .modal-content #responseMessage {
-        color: red;
-        margin-top: 10px;
-      }
-      .password-container {
-        position: relative;
-        display: inline-block;
-        width: 250px;
-      }
-      .password-container input {
-        width: 100%;
-      }
-      .password-toggle {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        cursor: pointer;
-      }
+      .close:hover, .close:focus { color: black; }
     </style>
   </head>
   <body>
     <div class="header">
       <a href="https://alerteuniversal.com">
-        <img src="/images/StayAlerte.jpg" alt="Alerte Universal Logo"
-      /></a>
+        <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo"/>
+      </a>
     </div>
 
-    <!-- Delete Account Form (Initial Form) -->
-    <form id="deleteAccountForm">
+    <div class="container" id="initial-container">
       <h2>Delete Your Alerte Account</h2>
-      <p>Enter your email and password to start the deletion process.</p>
-      <input type="email" id="email" placeholder="Enter your email" required />
-      <div class="password-container">
-        <input
-          type="password"
-          id="password"
-          placeholder="Enter your password"
-          required
-        />
-        <span class="password-toggle" onclick="togglePasswordVisibility()">
-          <i class="fa fa-eye-slash" id="password-icon"></i>
-        </span>
+      <p>Please confirm your identity to start the deletion process.</p>
+
+      <!-- Password Deletion Form -->
+      <form id="deleteAccountForm">
+        <p><strong>For users with a password:</strong></p>
+        <div class="input-group">
+          <input type="email" id="email" placeholder="Enter your email" required />
+        </div>
+        <div class="input-group">
+          <input type="password" id="password" placeholder="Enter your password" required />
+          <span class="password-toggle" onclick="togglePasswordVisibility()">
+            <i class="fa fa-eye-slash" id="password-icon"></i>
+          </span>
+        </div>
+        <button type="submit" id="deleteAccountBtn">Initiate Deletion with Password</button>
+        <p id="initialResponseMessage" class="response-message"></p>
+      </form>
+
+      <div class="or-divider">OR</div>
+
+      <!-- Google Deletion Button -->
+      <div class="google-delete-section" id="googleDeleteBtnContainer">
+        <p><strong>For users who signed up with Google:</strong></p>
+        <!-- Container for the new Google Sign-In Button -->
+        <div id="g_id_onload"
+             data-client_id="867465215592-7jc3fvg2hs1ea7glm1m14gsanetk2c85.apps.googleusercontent.com"
+             data-callback="onGoogleSignInSuccess"
+             data-auto_prompt="false">
+        </div>
+        <div class="g_id_signin"
+             data-type="standard"
+             data-size="large"
+             data-theme="outline"
+             data-text="continue_with"
+             data-shape="rectangular"
+             data-logo_alignment="left">
+        </div>
+        <p id="googleResponseMessage" class="response-message"></p>
       </div>
-      <button type="submit" id="deleteAccountBtn">Delete Account</button>
-      <p id="initialResponseMessage" style="color: red"></p>
-    </form>
+    </div>
 
     <!-- The Modal (for Token Input) -->
     <div id="tokenModal" class="modal">
       <div class="modal-content">
         <span class="close">×</span>
         <h2>Confirm Deletion</h2>
-        <p>
-          A token has been sent to your email. Please enter it below to confirm
-          account deletion.
-        </p>
+        <p>A token has been sent to your email. Please enter it below to permanently delete your account.</p>
         <form id="finalizeDeleteForm">
-          <input
-            type="text"
-            id="token"
-            placeholder="Enter your token"
-            required
-          />
-          <button type="submit">Confirm Deletion</button>
-          <p id="responseMessage" style="color: red"></p>
+          <input type="text" id="token" placeholder="Enter your OTP" required />
+          <button type="submit" id="finalizeDeleteBtn">Confirm Deletion</button>
+          <p id="responseMessage" class="response-message"></p>
         </form>
       </div>
     </div>
 
-    <script>
-      const deleteForm = document.getElementById("deleteAccountForm");
-      const deleteBtn = document.getElementById("deleteAccountBtn");
-      const tokenModal = document.getElementById("tokenModal");
-      const finalizeForm = document.getElementById("finalizeDeleteForm");
-      const responseMessage = document.getElementById("responseMessage");
-      const initialResponseMessage = document.getElementById(
-        "initialResponseMessage"
-      ); // Get the initial response message element
-      const closeBtn = document.getElementsByClassName("close")[0];
+<script>
+    // --- API Configuration ---
+    const API_BASE_URL = "https://alerte.pythonanywhere.com";
 
-      // Function to open the modal
-      function openModal() {
-        tokenModal.style.display = "block";
-      }
+    // --- DOM Element References ---
+    const deleteForm = document.getElementById("deleteAccountForm");
+    const deleteBtn = document.getElementById("deleteAccountBtn");
+    const tokenModal = document.getElementById("tokenModal");
+    const finalizeForm = document.getElementById("finalizeDeleteForm");
+    const finalizeDeleteBtn = document.getElementById("finalizeDeleteBtn");
+    const responseMessage = document.getElementById("responseMessage");
+    const initialResponseMessage = document.getElementById("initialResponseMessage");
+    const googleResponseMessage = document.getElementById("googleResponseMessage");
+    const emailInputForPassword = document.getElementById("email");
+    const closeBtn = document.getElementsByClassName("close")[0];
+    const passwordInput = document.getElementById("password");
+    const passwordIcon = document.getElementById("password-icon");
 
-      // Function to close the modal
-      function closeModal() {
-        tokenModal.style.display = "none";
-      }
+    // --- Modal Control ---
+    function openModal() { tokenModal.style.display = "block"; }
+    function closeModal() { tokenModal.style.display = "none"; }
+    closeBtn.onclick = closeModal;
+    window.onclick = function (event) { if (event.target == tokenModal) closeModal(); };
 
-      // Close the modal when the close button is clicked
-      closeBtn.onclick = closeModal;
-
-      // Close the modal when clicking outside of it
-      window.onclick = function (event) {
-        if (event.target == tokenModal) {
-          closeModal();
+    // --- Password Visibility ---
+    function togglePasswordVisibility() {
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordIcon.classList.remove("fa-eye-slash");
+            passwordIcon.classList.add("fa-eye");
+        } else {
+            passwordInput.type = "password";
+            passwordIcon.classList.remove("fa-eye");
+            passwordIcon.classList.add("fa-eye-slash");
         }
-      };
+    }
 
-      deleteForm.addEventListener("submit", async (e) => {
+    // --- Event Handlers ---
+
+    // Handler for the PASSWORD-based deletion form
+    deleteForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
+        deleteBtn.disabled = true;
+        deleteBtn.textContent = "Initiating...";
+        initialResponseMessage.textContent = "";
+
+        const email = emailInputForPassword.value;
+        const password = passwordInput.value;
 
         try {
-          const response = await fetch(
-            "https://alerte.pythonanywhere.com/users/initiate_delete_account",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email, password }),
-            }
-          );
-          const data = await response.json();
-
-          initialResponseMessage.textContent = data.message; // Set initial form's response message
-
-          if (response.ok) {
-            // Open the modal after successful initial request
-            openModal();
-          }
+            const response = await fetch(
+                `${API_BASE_URL}/users/initiate_delete_account`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, password }),
+                }
+            );
+            const data = await response.json();
+            
+            if (!response.ok) throw new Error(data.message || 'An unknown error occurred.');
+            
+            initialResponseMessage.textContent = data.message;
+            openModal(); // Open OTP modal on success
         } catch (error) {
-          initialResponseMessage.textContent =
-            "An error occurred. Please try again later.";
+            initialResponseMessage.textContent = error.message;
+        } finally {
+            deleteBtn.disabled = false;
+            deleteBtn.textContent = "Initiate Deletion with Password";
         }
-      });
+    });
 
-      finalizeForm.addEventListener("submit", async (e) => {
+    // Handler for the OTP finalization form
+    finalizeForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-        const email = document.getElementById("email").value; // Email should be available from the previous form
+        finalizeDeleteBtn.disabled = true;
+        finalizeDeleteBtn.textContent = "Deleting...";
+        responseMessage.textContent = "";
+
+        // Get email from the first form as it's needed for the finalize call
+        const email = emailInputForPassword.value; 
         const token = document.getElementById("token").value;
 
+        if (!email) {
+            responseMessage.textContent = "Email from the previous step is missing. Please restart the process.";
+            finalizeDeleteBtn.disabled = false;
+            finalizeDeleteBtn.textContent = "Confirm Deletion";
+            return;
+        }
+
         try {
-          const response = await fetch(
-            "https://alerte.pythonanywhere.com/users/finalize_delete_account",
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({ email, token }),
+            const response = await fetch(
+                `${API_BASE_URL}/users/finalize_delete_account`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, token }),
+                }
+            );
+            const data = await response.json();
+            responseMessage.textContent = data.message;
+
+            if (response.ok) {
+                // Success! Disable everything.
+                finalizeDeleteBtn.disabled = true;
+                deleteBtn.disabled = true;
+                document.getElementById('googleDeleteBtnContainer')?.remove(); // Assumes a container for google button
+                setTimeout(() => closeModal(), 5000); 
+            } else {
+                 finalizeDeleteBtn.disabled = false;
+                 finalizeDeleteBtn.textContent = "Confirm Deletion";
             }
-          );
-          const data = await response.json();
-          responseMessage.textContent = data.message; // Set modal's response message
-          if (response.ok) {
-            // Optionally close the modal on success
-            //    closeModal();
-          }
         } catch (error) {
-          responseMessage.textContent =
-            "An error occurred. Please try again later.";
+            responseMessage.textContent = "An error occurred. Please try again later.";
+            finalizeDeleteBtn.disabled = false;
+            finalizeDeleteBtn.textContent = "Confirm Deletion";
         }
-      });
+    });
+    
+    // --- Google Deletion Logic (using new GSI library) ---
 
-      function togglePasswordVisibility() {
-        const passwordInput = document.getElementById("password");
-        const passwordIcon = document.getElementById("password-icon");
-
-        if (passwordInput.type === "password") {
-          passwordInput.type = "text";
-          passwordIcon.classList.remove("fa-eye-slash");
-          passwordIcon.classList.add("fa-eye");
-        } else {
-          passwordInput.type = "password";
-          passwordIcon.classList.remove("fa-eye");
-          passwordIcon.classList.add("fa-eye-slash");
+    // This function is the callback for Google Sign-In.
+    // It MUST be in the global scope to be called by the GSI library.
+    async function onGoogleSignInSuccess(googleResponse) {
+        console.log("Google Sign-In successful. Received credential response.");
+        googleResponseMessage.textContent = "Verifying with Google...";
+        
+        const id_token = googleResponse.credential;
+        
+        let email = '';
+        try {
+            // Client-side decode to get email for the backend request
+            const payload = JSON.parse(atob(id_token.split('.')[1]));
+            email = payload.email;
+        } catch (e) {
+            googleResponseMessage.textContent = "Could not process Google token. Please try again.";
+            return;
         }
-      }
-    </script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
-    />
-  </body>
+
+        if (!email) {
+            googleResponseMessage.textContent = "Could not retrieve email from Google. Please try again.";
+            return;
+        }
+        
+        // Call backend to initiate the deletion process (which sends an OTP email)
+        try {
+            const response = await fetch(
+                `${API_BASE_URL}/users/initiate_delete_account`, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ email, id_token }), // Send email AND id_token
+                }
+            );
+            const data = await response.json();
+
+            if (!response.ok) throw new Error(data.message);
+            
+            // On success, show the OTP modal
+            googleResponseMessage.textContent = ""; 
+            initialResponseMessage.textContent = data.message;
+            emailInputForPassword.value = email; // Pre-fill email for the OTP form
+            emailInputForPassword.disabled = true; // Disable email field as it's now set
+            openModal();
+
+        } catch (error) {
+            googleResponseMessage.textContent = error.message || "An error occurred during verification.";
+        }
+    }
+</script>
+
+</body>
 </html>
