@@ -922,6 +922,20 @@ aside.pages {
     border: 1px solid;
 }
 
+.demo-video {
+    margin-top: 50px;
+    text-align: center;
+    color: #fff;
+    padding: 10px;
+}
+
+.demo-video video {
+    width: 100%;
+    border-radius: 1rem;
+    margin-top: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
 @media (max-width: 1024px) {
     .work-para {
         padding: 0 100px;
