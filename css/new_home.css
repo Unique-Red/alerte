@@ -875,6 +875,133 @@ footer {
   justify-content: center;
 }
 
+/* --- RESPONSIVE ADJUSTMENTS --- */
+
+@media (max-width: 900px) {
+  
+  /* 1. Make the Navbar Compact */
+  header {
+    padding: 15px 0; /* Shrink top/bottom padding */
+  }
+
+  .container {
+    padding: 0 15px; /* Reduce side padding for the whole site */
+  }
+
+  .logo img {
+    height: 30px; /* Force logo to be smaller */
+    width: auto;
+  }
+
+  /* 2. Hero Section: Reduce Text Size */
+  .hero {
+    padding-top: 100px; /* Reduced from 150px since nav is smaller */
+    padding-bottom: 50px;
+    text-align: center; /* Center align looks better on mobile */
+  }
+
+  .hero-content {
+    grid-template-columns: 1fr; /* Stack text and image */
+    gap: 40px;
+  }
+
+  .hero h1 {
+    font-size: 32px; /* Reduce from 48px */
+    line-height: 1.3;
+  }
+
+  .hero p {
+    font-size: 16px; /* Reduce from 18px */
+  }
+
+  /* Make the hero image smaller */
+  .hero-content img {
+    max-width: 80%;
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* 3. Global Section Padding: Tighter spacing */
+  .section-padding, 
+  .features-intro, 
+  .key-features, 
+  .pricing, 
+  .faq, 
+  .surveillance-features {
+    padding: 50px 0; /* Reduce from 80px */
+  }
+
+  h2 {
+    font-size: 28px !important; /* Reduce all section titles */
+    margin-bottom: 30px !important;
+  }
+
+  /* 4. Grids: Stack everything vertically */
+  .features-grid,
+  .features-detail-grid,
+  .pricing-grid,
+  .surveillance-features-detail-grid,
+  .footer-content {
+    grid-template-columns: 1fr; /* 1 column instead of 3 */
+    gap: 25px; /* Smaller gap between cards */
+  }
+
+  /* 5. How It Works: Stack Zig-Zag Layout */
+  .step-row, 
+  .step-row:nth-child(even) {
+    flex-direction: column; /* Stack text on top of image */
+    text-align: center;
+    gap: 30px;
+    margin-bottom: 50px;
+  }
+
+  .step-text h3 {
+    font-size: 1.5rem; /* Smaller step titles */
+  }
+
+  /* 6. Showcase Section */
+  .showcase-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .showcase-image img {
+    max-width: 60%; /* Make the center phone smaller */
+    margin: 0 auto;
+    display: block;
+  }
+
+  /* 7. Footer Adjustments */
+  .footer-content {
+    text-align: center; /* Center footer links */
+  }
+  
+  .footer-bottom {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* 8. AI Chat Widget: Make it fit mobile screens */
+  .ai-chat-container {
+    width: 90%; /* 90% of screen width */
+    height: 70vh; /* 70% of screen height */
+    right: 5%; /* Center horizontally (5% left + 90% width + 5% right) */
+    bottom: 80px; /* Lift above the toggle button */
+  }
+}
+
+/* Extra tweak for very small phones (iPhone SE, etc.) */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 28px;
+  }
+  
+  .btn {
+    text-align: center;
+  }
+  
+}
+
 @media (max-width: 768px) {
   .hero-content,
   .how-it-works-grid,
