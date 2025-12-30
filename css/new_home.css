@@ -449,7 +449,7 @@ nav {
   margin: 20px 0;
 }
 
-.price span{
+.price span {
   font-size: 18px;
 }
 
@@ -882,7 +882,6 @@ footer {
 /* --- RESPONSIVE ADJUSTMENTS --- */
 
 @media (max-width: 900px) {
-  
   /* 1. Make the Navbar Compact */
   header {
     padding: 15px 0; /* Shrink top/bottom padding */
@@ -926,11 +925,11 @@ footer {
   }
 
   /* 3. Global Section Padding: Tighter spacing */
-  .section-padding, 
-  .features-intro, 
-  .key-features, 
-  .pricing, 
-  .faq, 
+  .section-padding,
+  .features-intro,
+  .key-features,
+  .pricing,
+  .faq,
   .surveillance-features {
     padding: 50px 0; /* Reduce from 80px */
   }
@@ -951,7 +950,7 @@ footer {
   }
 
   /* 5. How It Works: Stack Zig-Zag Layout */
-  .step-row, 
+  .step-row,
   .step-row:nth-child(even) {
     flex-direction: column; /* Stack text on top of image */
     text-align: center;
@@ -968,7 +967,7 @@ footer {
     grid-template-columns: 1fr;
     gap: 30px;
   }
-  
+
   .showcase-image img {
     max-width: 60%; /* Make the center phone smaller */
     margin: 0 auto;
@@ -979,7 +978,7 @@ footer {
   .footer-content {
     text-align: center; /* Center footer links */
   }
-  
+
   .footer-bottom {
     flex-direction: column;
     gap: 20px;
@@ -999,11 +998,18 @@ footer {
   .hero h1 {
     font-size: 28px;
   }
-  
+
   .btn {
     text-align: center;
   }
   
+  /* 8. AI Chat Widget: Make it fit mobile screens */
+  .ai-chat-container {
+    width: 90%; /* 90% of screen width */
+    height: 60vh; /* 70% of screen height */
+    right: 5%; /* Center horizontally (5% left + 90% width + 5% right) */
+    bottom: 80px; /* Lift above the toggle button */
+  }
 }
 
 @media (max-width: 768px) {
@@ -1051,11 +1057,11 @@ footer {
   .price span {
     font-size: 10px;
   }
-.price-features li {
-  font-size: 12px;
-  padding: 5px 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-}
+  .price-features li {
+    font-size: 12px;
+    padding: 5px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
   .footer-bottom {
     flex-direction: column-reverse;
     justify-content: space-around;
@@ -1070,12 +1076,5 @@ footer {
   }
   .pricing-card {
     padding: 20px;
-  }
-
-  .ai-chat-container {
-    width: 90%;
-    right: 5%;
-    height: 75vh;
-    bottom: 80px;
   }
 }
