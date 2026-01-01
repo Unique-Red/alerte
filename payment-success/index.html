@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful | Alerte Universal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/new_home.css"> 
+    <style>
+        
+        header{
+            background-color: #000;
+        }
+        .payment-status-section {
+            padding: 120px 20px 80px; /* Top padding clears the fixed navbar */
+            min-height: 80vh; /* Takes up most of the screen */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: #f9f9f9;
+        }
+        .status-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            max-width: 500px;
+            width: 100%;
+        }
+        .icon-circle {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+        }
+        .success-icon {
+            background: #e8f5e9;
+            color: #2e7d32; /* Green for success */
+        }
+        .status-card h1 {
+            color: #2e7d32;
+            margin-bottom: 15px;
+            font-size: 2rem;
+        }
+        .status-card p {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        .ref-box {
+            background: #f1f1f1;
+            padding: 10px;
+            border-radius: 8px;
+            font-family: monospace;
+            color: #333;
+            margin-bottom: 30px;
+            word-break: break-all;
+            font-size: 0.9rem;
+        }
+        .ref-label {
+            display: block;
+            font-size: 0.8rem;
+            color: #888;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><a href="/"><img src="../static/Images/logo.png" alt="Alerte Logo"></a></div>
+                <ul class="nav-links">
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                </ul>
+                <a href="https://onelink.to/xe7ty9" class="btn btn-primary">Download App</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="payment-status-section">
+        <div class="status-card">
+            <div class="icon-circle success-icon">
+                <i class="fa-solid fa-check" style="font-size: 40px;"></i>
+            </div>
+            
+            <h1>Payment Successful!</h1>
+            <p>Thank you for subscribing to Alerte Premium. Your account has been upgraded and you are now fully protected.</p>
+            
+            <div class="ref-box" id="refContainer" style="display:none;">
+                <span class="ref-label">Transaction Reference</span>
+                <span id="sessionId">...</span>
+            </div>
+
+            <a href="https://onelink.to/xe7ty9" class="btn btn-primary" style="width: 100%; display: block; margin-bottom: 10px;">
+                Open App
+            </a>
+            <a href="/" style="color: #666; text-decoration: none; font-size: 0.9rem;">Return to Website</a>
+        </div>
+    </section>
+
+    <script>
+        // Extract Session ID from URL to show to user
+        document.addEventListener('DOMContentLoaded', function() {
+            const params = new URLSearchParams(window.location.search);
+            const sessionId = params.get('session_id');
+            
+            if (sessionId) {
+                // Show the last 10 characters only to keep it clean, or full ID
+                document.getElementById('sessionId').textContent = sessionId;
+                document.getElementById('refContainer').style.display = 'block';
+            }
+        });
+    </script>
+
+</body>
+</html>
