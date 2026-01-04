@@ -103,7 +103,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2025 Alerte. All rights reserved. | Privacy Policy | Terms of Service</p>
+                <p>&copy; <span id="currentYear"></span> Alerte Universal Limited. All rights reserved.</p>
                 <div class="social-icons">
                 <a href="https://www.facebook.com/profile.php?id=61569380452071" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
 
@@ -117,6 +117,8 @@
             </div>
         </div>
     </footer>
-
+<script>
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
