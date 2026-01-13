@@ -1,9 +1,5 @@
-// script.js
 document.addEventListener('DOMContentLoaded', () => {
 
-    // ==================================
-    // --- CONFIGURATION & STATE ---
-    // ==================================
     const API_BASE_URL = 'https://alerte.pythonanywhere.com'; // IMPORTANT: REPLACE
     const state = {
         tokens: {
@@ -15,27 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
         agentList: [],
     };
 
-    // ==================================
-    // --- DOM ELEMENT REFERENCES ---
-    // ==================================
     const loginContainer = document.getElementById('login-container');
     const signupContainer = document.getElementById('signup-container');
     const dashboardContainer = document.getElementById('dashboard-container');
     const loader = document.getElementById('loader');
 
-    // Login
     const loginForm = document.getElementById('login-form');
     const loginButton = document.getElementById('login-button');
     const loginErrorMessage = document.getElementById('login-error-message');
     const showSignupLink = document.getElementById('show-signup-link');
     
-    // Signup
     const signupForm = document.getElementById('signup-form');
     const signupButton = document.getElementById('signup-button');
     const signupErrorMessage = document.getElementById('signup-error-message');
     const showLoginLink = document.getElementById('show-login-link');
     
-    // Dashboard
     const agentNameDisplay = document.getElementById('agent-name-display');
     const agencyNameHeader = document.getElementById('agency-name-header');
     const agencyProfileContent = document.getElementById('agency-profile-content');
@@ -44,15 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
     const editProfileBtn = document.getElementById('edit-profile-btn');
     const addAgentBtn = document.getElementById('add-agent-btn');
     
-    // Modal
     const modalOverlay = document.getElementById('modal-overlay');
     const modalTitle = document.getElementById('modal-title');
     const modalBody = document.getElementById('modal-body');
     const modalCloseBtn = document.getElementById('modal-close-btn');
 
-    // ==================================
-    // --- API CLIENT ---
-    // ==================================
     const apiClient = {
         async request(method, path, data = null) {
             showLoader(true);
@@ -106,27 +92,35 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!state.agentList) return;
         const rows = state.agentList.map(agent => `
             <tr>
-                <td>${agent.full_name}</td>
-                <td>${agent.email}</td>
-                <td>${agent.is_agency_admin ? 'Admin' : 'Agent'}</td>
-                <td>${agent.is_active ? 'Active' : 'Inactive'}</td>
+                <td><strong>${agent.full_name}</strong></td>
+                <td title="${agent.email}">${agent.email}</td>
+                <td><span style="background:${agent.is_agency_admin ? '#e3f2fd' : '#f5f5f5'}; color:${agent.is_agency_admin ? '#1565c0' : '#666'}; padding:2px 8px; border-radius:10px; font-size:0.75rem;">${agent.is_agency_admin ? 'Admin' : 'Agent'}</span></td>
+                <td><span style="color:${agent.is_active ? 'green' : 'red'};">●</span> ${agent.is_active ? 'Active' : 'Inactive'}</td>
                 <td class="action-buttons">
-                    <button class="button-secondary" data-action="edit-agent" data-agent-id="${agent.id}">Edit</button>
-                    <button class="button-danger" data-action="deactivate-agent" data-agent-id="${agent.id}">Deactivate</button>
+                    <button class="button-secondary" data-action="edit-agent" data-agent-id="${agent.id}"><i class="fa-solid fa-pen"></i> Edit</button>
+                    <button class="button-danger" data-action="deactivate-agent" data-agent-id="${agent.id}"><i class="fa-solid fa-ban"></i></button>
                 </td>
             </tr>
         `).join('');
 
+        // Added "table-responsive" wrapper below
         agentListContent.innerHTML = `
-            <table class="agent-table">
-                <thead><tr><th>Name</th><th>Email</th><th>Role</th><th>Status</th><th>Actions</th></tr></thead>
-                <tbody>${rows.length > 0 ? rows : '<tr><td colspan="5">No agents found.</td></tr>'}</tbody>
-            </table>`;
+            <div class="table-responsive">
+                <table class="agent-table">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Role</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>${rows.length > 0 ? rows : '<tr><td colspan="5" style="text-align:center; padding:20px;">No agents found.</td></tr>'}</tbody>
+                </table>
+            </div>`;
     }
 
-    // ==================================
-    // --- MODAL & FORM LOGIC ---
-    // ==================================
     function openModal(title, formHtml) {
         modalTitle.textContent = title;
         modalBody.innerHTML = formHtml;
@@ -164,8 +158,14 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function showEditAgentForm(agentId) {
-        const agent = state.agentList.find(a => a.id === agentId);
-        if (!agent) return;
+        // Use loose equality (==) to match string "5" with number 5
+        const agent = state.agentList.find(a => a.id == agentId); 
+        
+        if (!agent) {
+            console.error("Agent not found for ID:", agentId);
+            return;
+        }
+
         openModal(`Edit Agent: ${agent.full_name}`, `
             <form id="edit-agent-form" class="modal-form" data-agent-id="${agent.id}">
                 <div class="input-group"><label for="e_name">Full Name</label><input type="text" id="e_name" value="${agent.full_name}" required></div>
@@ -175,9 +175,6 @@ document.addEventListener('DOMContentLoaded', () => {
             </form>`);
     }
 
-    // ==================================
-    // --- DASHBOARD DATA FETCHING ---
-    // ==================================
     async function loadDashboardData() {
         try {
             const [profileData, agentsData] = await Promise.all([
@@ -194,9 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ==================================
-    // --- EVENT HANDLERS ---
-    // ==================================
     function setupEventListeners() {
         loginForm.addEventListener('submit', handleLogin);
         signupForm.addEventListener('submit', handleSignup);
@@ -263,13 +257,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     async function handleActionClicks(e) {
-        if (e.target.tagName !== 'BUTTON' || !e.target.dataset.action) return;
+        const btn = e.target.closest('button'); 
         
-        const action = e.target.dataset.action;
-        const agentId = e.target.dataset.agentId;
+        if (!btn || !btn.dataset.action) return;
+        
+        const action = btn.dataset.action;
+        const agentId = btn.dataset.agentId;
 
         if (action === 'edit-agent') {
-            showEditAgentForm(parseInt(agentId));
+            showEditAgentForm(parseInt(agentId)); 
         }
 
         if (action === 'deactivate-agent') {
@@ -285,9 +281,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // ==================================
-    // --- AUTH & INITIALIZATION ---
-    // ==================================
     async function handleLogin(event) {
         event.preventDefault();
         loginButton.disabled = true;

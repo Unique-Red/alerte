@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alerte Agency Portal</title>
+    <title>Agency Portal | Alerte Universal</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    
     <meta name="description" content="Login to the Alerte Agency Portal to manage your agency's operations, view notifications, and access administrative tools.">
     <meta name="keywords" content="Alerte, Agency Portal, Emergency Services, Login, Dashboard, Notifications">
     <meta name="author" content="Alerte Universal">
@@ -14,149 +18,204 @@
         content="Alerte is a powerful, easy-to-use emergency alert system designed to connect you to the nearest emergency responders instantly, ensuring quick help when it matters most.">
     <meta property="og:image" content="https://www.alerteuniversal.com/images/alerte.jpg">
 
+    <link rel="stylesheet" href="../css/new_home.css">
     <link rel="stylesheet" href="../css/agencyp.css">
-
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QGCFDD5FZM"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-QGCFDD5FZM');
-</script>
 <body>
-    <!-- Full-page loader -->
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo"><a href="/"><img src="../static/Images/logo.png" alt="Alerte Logo"></a></div>
+                <ul class="nav-links">
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/#how-it-works">Features</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                </ul>
+                <a href="https://onelink.to/xe7ty9" class="btn btn-primary">Download App</a>
+            </nav>
+        </div>
+    </header>
+
     <div id="loader" class="loader-overlay hidden">
         <div class="loader-spinner"></div>
     </div>
 
-    <div id="login-container" class="container">
-        <div class="form-container">
-            <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
-            <h2>Agency Portal Login</h2>
+    <section id="login-container" class="portal-section">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="../static/Images/logo.png" alt="Alerte Universal Logo">
+                <h2>Agency Portal Login</h2>
+            </div>
+            
             <p id="login-error-message" class="error-message"></p>
+            
             <form id="login-form">
                 <div class="input-group">
                     <label for="login-email">Email Address</label>
-                    <input type="email" id="login-email" required autocomplete="email">
+                    <div style="position: relative;">
+                        <input type="email" id="login-email" required autocomplete="email" placeholder="Enter agency email">
+                        <i class="fa-solid fa-envelope" style="position: absolute; right: 15px; top: 15px; color: #999;"></i>
+                    </div>
                 </div>
                 <div class="input-group">
                     <label for="login-password">Password</label>
-                    <input type="password" id="login-password" required autocomplete="current-password">
+                    <div style="position: relative;">
+                        <input type="password" id="login-password" required autocomplete="current-password" placeholder="Enter password">
+                        <i class="fa-solid fa-lock" style="position: absolute; right: 15px; top: 15px; color: #999;"></i>
+                    </div>
                 </div>
-                <button type="submit" id="login-button">Login</button>
+                <button type="submit" id="login-button">Login to Dashboard</button>
             </form>
-            <p class="form-footer">Don't have an agency account? <a href="#" id="show-signup-link">Register Here</a></p>
+            
+            <p class="form-footer">
+                Don't have an agency account? <br>
+                <a href="#" id="show-signup-link">Register New Agency</a>
+            </p>
         </div>
-    </div>
+    </section>
     
-    <div id="signup-container" class="container hidden">
-        <div class="form-container">
-            <img src="https://alerteuniversal.com/images/StayAlerte.jpg" alt="Alerte Universal Logo" class="logo">
-            <h2>Register Your Agency</h2>
+    <section id="signup-container" class="portal-section hidden">
+        <div class="auth-card wide">
+            <div class="auth-header">
+                <img src="../static/Images/logo.png" alt="Alerte Universal Logo">
+                <h2>Register Your Agency</h2>
+                <p style="color: #666;">Join the Alerte Emergency Response Network</p>
+            </div>
+            
             <p id="signup-error-message" class="error-message"></p>
+            
             <form id="signup-form">
                 <fieldset>
-                    <legend>Agency Details</legend>
-                    <div class="input-group">
-                        <label for="agency_name">Agency Name</label>
-                        <input type="text" id="agency_name" required>
+                    <legend><i class="fa-solid fa-building-shield"></i> Agency Details</legend>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="input-group">
+                            <label for="agency_name">Agency Name</label>
+                            <input type="text" id="agency_name" required placeholder="e.g. Lagos State Ambulance">
+                        </div>
+                        <div class="input-group">
+                            <label for="agency_type">Agency Type</label>
+                            <select id="agency_type" required>
+                                <option value="">-- Select Type --</option>
+                                <option value="POLICE">Police Force</option>
+                                <option value="FIRE">Fire Department</option>
+                                <option value="MEDICAL">Medical / Ambulance</option>
+                                <option value="GENERAL_EMERGENCY">General Emergency</option>
+                            </select>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="agency_type">Agency Type</label>
-                        <select id="agency_type" required>
-                            <option value="">-- Select Type --</option>
-                            <option value="POLICE">Police</option>
-                            <option value="FIRE">Fire Department</option>
-                            <option value="MEDICAL">Medical Services</option>
-                            <option value="GENERAL_EMERGENCY">General Emergency</option>
-                        </select>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="input-group">
+                            <label for="agency_phone_number">Agency Hotline</label>
+                            <input type="tel" id="agency_phone_number" required placeholder="Agency Hotline Number">
+                        </div>
+                        <div class="input-group">
+                            <label for="agency_email">Official Email</label>
+                            <input type="email" id="agency_email" required>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="agency_phone_number">Agency Phone</label>
-                        <input type="tel" id="agency_phone_number" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="agency_email">Agency Email</label>
-                        <input type="email" id="agency_email" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="agency_city">Service City</label>
-                        <input type="text" id="agency_city" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="agency_country">Service Country</label>
-                        <input type="text" id="agency_country" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="agency_operating_hours">Operating Hours</label>
-                        <input type="text" id="agency_operating_hours" placeholder="e.g., 24/7" required>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                        <div class="input-group">
+                            <label for="agency_city">City</label>
+                            <input type="text" id="agency_city" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="agency_country">Country</label>
+                            <input type="text" id="agency_country" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="agency_operating_hours">Hours</label>
+                            <input type="text" id="agency_operating_hours" placeholder="e.g., 24/7" required>
+                        </div>
                     </div>
                 </fieldset>
                 
                 <fieldset>
-                    <legend>Administrator Account Details</legend>
-                    <div class="input-group">
-                        <label for="agent_full_name">Your Full Name</label>
-                        <input type="text" id="agent_full_name" required>
+                    <legend><i class="fa-solid fa-user-shield"></i> Admin Account</legend>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="input-group">
+                            <label for="agent_full_name">Admin Full Name</label>
+                            <input type="text" id="agent_full_name" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="agent_phone_number">Admin Phone</label>
+                            <input type="tel" id="agent_phone_number" required>
+                        </div>
                     </div>
-                    <div class="input-group">
-                        <label for="agent_email">Your Email (for login)</label>
-                        <input type="email" id="agent_email" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="agent_password">Your Password</label>
-                        <input type="password" id="agent_password" minlength="8" required>
-                    </div>
-                    <div class="input-group">
-                        <label for="agent_phone_number">Your Phone Number</label>
-                        <input type="tel" id="agent_phone_number" required>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div class="input-group">
+                            <label for="agent_email">Admin Email (Login)</label>
+                            <input type="email" id="agent_email" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="agent_password">Create Password</label>
+                            <input type="password" id="agent_password" minlength="8" required>
+                        </div>
                     </div>
                 </fieldset>
                 
-                <button type="submit" id="signup-button">Register Agency</button>
+                <button type="submit" id="signup-button">Complete Registration</button>
             </form>
-            <p class="form-footer">Already have an account? <a href="#" id="show-login-link">Login Here</a></p>
+            
+            <p class="form-footer">
+                Already have an account? <br>
+                <a href="#" id="show-login-link">Back to Login</a>
+            </p>
         </div>
-    </div>
+    </section>
 
-    <!-- Dashboard View (Initially Hidden) -->
-    <div id="dashboard-container" class="container hidden">
-        <header class="dashboard-header">
-            <h1 id="agency-name-header">Agency Dashboard</h1>
-            <div>
-                <span id="agent-name-display">Welcome, Agent!</span>
-                <button id="logout-button" class="button-danger">Logout</button>
-            </div>
-        </header>
+    <section id="dashboard-container" class="portal-section hidden" style="align-items: flex-start;">
+        <div class="dashboard-container">
+            <header class="dashboard-header">
+                <div>
+                    <h1 id="agency-name-header">Agency Dashboard</h1>
+                    <p style="color: #fff; margin-top: 5px;">Manage your emergency response unit</p>
+                </div>
+                <div class="user-controls">
+                    <span id="agent-name-display"><i class="fa-solid fa-user-circle"></i> Welcome, Agent!</span>
+                    <button id="logout-button" class="button-danger"><i class="fa-solid fa-sign-out-alt"></i> Logout</button>
+                </div>
+            </header>
 
-        <main class="dashboard-main">
-            <div class="dashboard-grid">
-                <div id="agency-profile" class="info-card">
-                    <div class="card-header">
-                        <h2>Your Agency Profile</h2>
-                        <button id="edit-profile-btn" class="button-secondary">Edit Profile</button>
+            <main class="dashboard-main">
+                <div class="dashboard-grid">
+                    <div id="agency-profile" class="info-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-id-card-clip" style="color: #c62828;"></i> Agency Profile</h2>
+                            <button id="edit-profile-btn" class="button-secondary">Edit</button>
+                        </div>
+                        <div id="agency-profile-content">
+                            <p class="loading-text">Loading agency details...</p>
+                        </div>
                     </div>
-                    <div id="agency-profile-content">
-                        <p class="loading-text">Loading agency details...</p>
+
+                    <div id="agent-list-card" class="info-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-users-gear" style="color: #c62828;"></i> Manage Agents</h2>
+                            <button id="add-agent-btn" class="button-primary">+ Add New</button>
+                        </div>
+                        <div id="agent-list-content">
+                            <p class="loading-text">Loading agent list...</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="card-header">
+                            <h2><i class="fa-solid fa-chart-line" style="color: #c62828;"></i> Recent Activity</h2>
+                        </div>
+                        <div style="color: #666; font-size: 0.9rem;">
+                            <p>No recent emergency alerts triggered in your sector.</p>
+                        </div>
                     </div>
                 </div>
+            </main>
+        </div>
+    </section>
 
-                <div id="agent-list-card" class="info-card">
-                    <div class="card-header">
-                        <h2>Manage Agents</h2>
-                        <button id="add-agent-btn" class="button-primary">Add New Agent</button>
-                    </div>
-                    <div id="agent-list-content">
-                        <p class="loading-text">Loading agent list...</p>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </div>
-
+    
     <div id="modal-overlay" class="modal-overlay hidden">
         <div id="modal-content" class="modal-content">
             <button id="modal-close-btn" class="modal-close-btn">×</button>
@@ -166,6 +225,62 @@
         </div>
     </div>
 
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <img src="../static/Images/logo.png" alt="Alerte Logo" style="height: 40px;">
+                </div>
+                <div class="footer-section">
+                    <h3>Product</h3>
+                    <ul>
+                        <li><a href="#">Agency Dashboard</a></li>
+                        <li><a href="#">Features</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="/#about">About Us</a></li>
+                        <li><a href="https://chat.whatsapp.com/JnZ7iEKB3g85BmVgXD0eXU" target="_blank"><i class="fa-brands fa-whatsapp"></i> Join Community</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="../terms">Terms and Conditions</a></li>
+                        <li><a href="../privacy-policy/">Privacy Policy</a></li>
+                        <br>
+                        <li><a href="mailto:info@alerteuniversal.com" class="text-lowercase"><i class="fa-solid fa-envelope"></i> info@alerteuniversal.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; <span id="currentYear"></span> Alerte. All rights reserved.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61569380452071" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/alerteuniversal" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/alerteuniversal" target="_blank"><i class="fa-brands fa-square-x-twitter"></i></a>
+                    <a href="https://www.linkedin.com/company/alerte-universal-ltd/" target="_blank"><i class="fa-brands fa-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Footer Year Logic
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        
+        // Navbar Scroll Logic (Matches Main Site)
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
     <script src="../js/agencyp.js"></script>
 </body>
 </html>
