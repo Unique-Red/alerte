@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         user: JSON.parse(localStorage.getItem('super_admin_info')),
         currentView: 'dashboard',
-        usersList: [] 
+        usersList: []
     };
 
     const loginContainer = document.getElementById('login-container');
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const loader = document.getElementById('loader');
     const welcomeMessage = document.getElementById('welcome-message');
-    
+
     // Modal
     const modalOverlay = document.getElementById('modal-overlay');
     const modalTitle = document.getElementById('modal-title');
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function getStatusBadge(status) {
         if (!status) return '<span class="badge bg-gray">Unknown</span>';
         status = String(status).toLowerCase();
-        
+
         if (status === 'active' || status === 'approved') return '<span class="badge bg-success">Active</span>';
         if (status.includes('pending')) return '<span class="badge bg-warning">Pending</span>';
         if (status === 'rejected' || status === 'suspended') return '<span class="badge bg-danger">Rejected</span>';
@@ -66,13 +66,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function openModal(title, content) {
-        if(modalTitle) modalTitle.textContent = title;
-        if(modalBody) modalBody.innerHTML = content;
-        if(modalOverlay) modalOverlay.classList.remove('hidden');
+        if (modalTitle) modalTitle.textContent = title;
+        if (modalBody) modalBody.innerHTML = content;
+        if (modalOverlay) modalOverlay.classList.remove('hidden');
     }
 
-    if(modalCloseBtn) modalCloseBtn.addEventListener('click', () => modalOverlay.classList.add('hidden'));
-    if(modalOverlay) modalOverlay.addEventListener('click', (e) => { if(e.target === modalOverlay) modalOverlay.classList.add('hidden'); });
+    if (modalCloseBtn) modalCloseBtn.addEventListener('click', () => modalOverlay.classList.add('hidden'));
+    if (modalOverlay) modalOverlay.addEventListener('click', (e) => { if (e.target === modalOverlay) modalOverlay.classList.add('hidden'); });
 
     function renderDashboard(stats) {
         mainContent.innerHTML = `
@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let rows = agencies.map(agency => {
             const status = (agency.status || '').toLowerCase();
             let buttons = '';
-            
+
             if (status.includes('pending')) {
                 buttons = `
                     <button class="btn-approve" data-action="approve" data-agency-id="${agency.id}" title="Approve"><i class="fa-solid fa-check"></i></button>
@@ -145,11 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
         renderUserRows(users);
 
         const searchInput = document.getElementById('user-search-input');
-        if(searchInput) {
+        if (searchInput) {
             searchInput.addEventListener('input', (e) => {
                 const term = e.target.value.toLowerCase();
-                const filtered = state.usersList.filter(u => 
-                    (u.first_name + ' ' + u.last_name).toLowerCase().includes(term) || 
+                const filtered = state.usersList.filter(u =>
+                    (u.first_name + ' ' + u.last_name).toLowerCase().includes(term) ||
                     (u.email || '').toLowerCase().includes(term)
                 );
                 renderUserRows(filtered);
@@ -160,7 +160,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderUserRows(users) {
         const tbody = document.getElementById('users-table-body');
         if (!tbody) return;
-        
+
         if (!users || users.length === 0) {
             tbody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding:20px;">No users found.</td></tr>';
             return;
@@ -171,7 +171,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const lastName = user.last_name || '';
             const fullName = `${firstName} ${lastName}`;
             const initial = firstName.charAt(0).toUpperCase();
-            
+
             let avatarHtml;
             if (user.profile_picture) {
                 avatarHtml = `
@@ -188,8 +188,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 avatarHtml = `<div class="user-thumb-text" style="width:35px; height:35px; border-radius:50%; background:#c62828; color:white; display:flex; align-items:center; justify-content:center; font-weight:bold;">${initial}</div>`;
             }
 
-            const verifiedBadge = user.is_verified 
-                ? '<span class="badge bg-success" style="font-size:0.7rem;"><i class="fa-solid fa-check"></i> Verified</span>' 
+            const verifiedBadge = user.is_verified
+                ? '<span class="badge bg-success" style="font-size:0.7rem;"><i class="fa-solid fa-check"></i> Verified</span>'
                 : '<span class="badge bg-danger" style="font-size:0.7rem;">Unverified</span>';
 
             return `
@@ -244,6 +244,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="input-group">
                         <label>Email Body</label>
                         <div id="editor-container" style="height: 250px; background: white;"></div>
+                        <div style="background:#e3f2fd; padding:10px; border-radius:0 0 5px 5px; font-size:0.85rem; color:#0d47a1; border:1px solid #bbdefb; border-top:none;">
+                            <strong><i class="fa-solid fa-wand-magic-sparkles"></i> Personalization Tips:</strong><br>
+                            Type these codes: 
+                            <span style="background:white; padding:2px 6px; border-radius:4px; margin:2px;">{{first_name}}</span>
+                            <span style="background:white; padding:2px 6px; border-radius:4px; margin:2px;">{{email}}</span>
+                        </div>
                     </div>
                     
                     <div class="input-group" style="display:flex; align-items:center; gap:10px; margin-bottom:20px; margin-top:15px;">
@@ -255,6 +261,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         <i class="fa-solid fa-paper-plane"></i> Send Email
                     </button>
                 </form>
+
+                <div id="email-progress-container" class="hidden" style="margin-top:20px; background:#f5f5f5; padding:15px; border-radius:8px; border:1px solid #ddd;">
+                    <h4 id="progress-text" style="margin:0 0 10px 0; font-size:0.9rem; color:#333;">Preparing...</h4>
+                    <div style="width:100%; height:10px; background:#ddd; border-radius:5px; overflow:hidden;">
+                        <div id="progress-bar-fill" style="width:0%; height:100%; background:#1565c0; transition:width 0.3s;"></div>
+                    </div>
+                    <div id="email-log" style="margin-top:10px; max-height:100px; overflow-y:auto; font-size:0.8rem; color:#666; font-family:monospace;"></div>
+                </div>
+
                 <div id="email-result" class="badge bg-success hidden" style="display:block; margin-top:15px; padding:10px;"></div>
             </div>`;
     }
@@ -275,13 +290,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 const agencies = await apiClient.get('/admin/agencies');
                 renderAgencies(agencies, viewName);
             } else if (viewName === 'users') {
-                const users = await apiClient.get('/users/get_all'); 
+                const users = await apiClient.get('/users/get_all');
                 renderUsers(users);
             } else if (viewName === 'test-notification') {
                 renderTestNotification();
-            } else if (viewName === 'send-email') { 
+            } else if (viewName === 'send-email') {
                 renderSendEmail();
-                
+
                 setTimeout(() => {
                     emailEditor = new Quill('#editor-container', {
                         theme: 'snow',
@@ -289,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         modules: {
                             toolbar: [
                                 ['bold', 'italic', 'underline', 'strike'],
-                                [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
                                 [{ 'header': [1, 2, 3, false] }],
                                 [{ 'color': [] }, { 'background': [] }],
                                 ['link', 'clean']
@@ -315,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function setupEventListeners() {
         const loginForm = document.getElementById('login-form');
         const logoutButton = document.getElementById('logout-button');
-        
+
         if (loginForm) loginForm.addEventListener('submit', handleLogin);
         if (logoutButton) logoutButton.addEventListener('click', handleLogout);
 
@@ -356,7 +371,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (user) {
                     const firstName = user.first_name || 'User';
                     const initial = firstName.charAt(0).toUpperCase();
-                    let avatarHtml = user.profile_picture 
+                    let avatarHtml = user.profile_picture
                         ? `<img src="${user.profile_picture}" style="width:80px; height:80px; border-radius:50%; object-fit:cover; border:2px solid #eee;">`
                         : `<div style="width:80px; height:80px; border-radius:50%; background:#c62828; color:white; display:flex; align-items:center; justify-content:center; font-size:2rem; font-weight:bold; margin:0 auto;">${initial}</div>`;
 
@@ -390,13 +405,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Form Handling (Notifications & Emails)
         mainContent.addEventListener('submit', async (e) => {
-            
+
             // 1. PUSH NOTIFICATIONS
             if (e.target.id === 'notification-form') {
                 e.preventDefault();
                 const userId = document.getElementById('user_id').value;
                 const resultDiv = document.getElementById('notification-result');
-                
+
                 try {
                     await apiClient.post('/admin/test-notification', {
                         user_id: userId ? parseInt(userId) : null,
@@ -413,47 +428,113 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // 2. SEND EMAIL (NEW)
-           // 2. SEND EMAIL
+            // 2. SEND EMAIL (BATCHED VERSION)
             if (e.target.id === 'email-form') {
                 e.preventDefault();
-                const userIdInput = document.getElementById('email_user_id').value;
-                const resultDiv = document.getElementById('email-result');
-                const btn = e.target.querySelector('button');
-                
-                const bodyContent = emailEditor ? emailEditor.root.innerHTML : '';
 
+                // Elements
+                const userIdInput = document.getElementById('email_user_id').value;
+                const subject = document.getElementById('email_subject').value;
+                const isPreview = document.getElementById('email_preview').checked;
+                const btn = e.target.querySelector('button');
+                const progressContainer = document.getElementById('email-progress-container');
+                const progressText = document.getElementById('progress-text');
+                const progressBar = document.getElementById('progress-bar-fill');
+                const logBox = document.getElementById('email-log');
+                const resultDiv = document.getElementById('email-result');
+
+                // Get Editor Content
+                const bodyContent = emailEditor ? emailEditor.root.innerHTML : '';
                 if (!bodyContent || bodyContent === '<p><br></p>') {
                     alert("Please write a message body.");
                     return;
                 }
-                
-                btn.disabled = true; btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
 
+                // Disable Form
+                btn.disabled = true;
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
+                resultDiv.classList.add('hidden');
+
+                // LOGIC: SINGLE SEND vs BULK BATCHING
                 try {
-                    const payload = {
-                        user_id: userIdInput ? parseInt(userIdInput) : 0,
-                        subject: document.getElementById('email_subject').value,
-                        body: bodyContent, // Use the editor HTML
-                        preview_only: document.getElementById('email_preview').checked
-                    };
+                    // CASE A: Sending to Specific User or Preview
+                    if (userIdInput && userIdInput !== "0" || isPreview) {
+                        const payload = {
+                            user_id: userIdInput ? parseInt(userIdInput) : 0,
+                            subject: subject,
+                            body: bodyContent,
+                            preview_only: isPreview
+                        };
+                        await apiClient.post('/admin/send-email', payload);
+                        resultDiv.textContent = "Email Sent Successfully!";
+                        resultDiv.className = "badge bg-success";
+                        resultDiv.classList.remove('hidden');
+                    }
 
-                    await apiClient.post('/admin/send-email', payload);
-                    
-                    resultDiv.textContent = "Email Sent Successfully!";
-                    resultDiv.className = "badge bg-success";
-                    resultDiv.classList.remove('hidden');
-                    
-                    // Reset Form and Editor
-                    e.target.reset(); 
-                    if(emailEditor) emailEditor.setContents([]); 
-                    
+                    // CASE B: Sending to ALL Users (BATCH MODE)
+                    else {
+                        progressContainer.classList.remove('hidden');
+                        logBox.innerHTML = 'Fetching user list...<br>';
+
+                        // 1. Get All Users First
+                        const allUsers = await apiClient.get('/users/get_all');
+                        const total = allUsers.length;
+                        let sentCount = 0;
+                        let errorCount = 0;
+
+                        logBox.innerHTML += `Found ${total} users. Starting batch send...<br>`;
+
+                        // 2. Loop and Send One by One
+                        for (const user of allUsers) {
+                            if (!user.email) continue; // Skip if no email
+
+                            try {
+                                // Update UI
+                                const percent = Math.round(((sentCount + 1) / total) * 100);
+                                progressBar.style.width = `${percent}%`;
+                                progressText.textContent = `Sending: ${sentCount + 1} of ${total}`;
+
+                                // Send API Request for THIS user only
+                                await apiClient.post('/admin/send-email', {
+                                    user_id: user.id,
+                                    subject: subject,
+                                    body: bodyContent,
+                                    preview_only: false
+                                });
+
+                                sentCount++;
+                                // logBox.innerHTML += `<span style="color:green">✓ ${user.email}</span><br>`; // Optional: noisy logs
+
+                            } catch (err) {
+                                errorCount++;
+                                logBox.innerHTML += `<span style="color:red">✗ Failed: ${user.email}</span><br>`;
+                                console.error(err);
+                            }
+
+                            // Scroll logs to bottom
+                            logBox.scrollTop = logBox.scrollHeight;
+                        }
+
+                        // Final Status
+                        resultDiv.textContent = `Batch Complete! Sent: ${sentCount}, Failed: ${errorCount}`;
+                        resultDiv.className = "badge bg-success";
+                        resultDiv.classList.remove('hidden');
+                        progressText.textContent = "Completed";
+                    }
+
+                    // Clear Form Only on Success
+                    if (!isPreview) {
+                        e.target.reset();
+                        if (emailEditor) emailEditor.setContents([]);
+                    }
+
                 } catch (error) {
                     resultDiv.textContent = `Error: ${error.message}`;
                     resultDiv.className = "badge bg-danger";
                     resultDiv.classList.remove('hidden');
                 } finally {
-                    btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Email';
+                    btn.disabled = false;
+                    btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Email';
                 }
             }
         });
@@ -492,14 +573,14 @@ document.addEventListener('DOMContentLoaded', () => {
         if (viewName === 'app') {
             loginContainer.classList.add('hidden');
             appContainer.classList.remove('hidden');
-            if(welcomeMessage) welcomeMessage.textContent = `Welcome, ${state.user.username}`;
+            if (welcomeMessage) welcomeMessage.textContent = `Welcome, ${state.user.username}`;
             loadView('dashboard');
         } else {
             appContainer.classList.add('hidden');
             loginContainer.classList.remove('hidden');
         }
     }
-    
+
     function showLoader(isLoading) {
         if (isLoading) loader.classList.remove('hidden');
         else loader.classList.add('hidden');
@@ -512,7 +593,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             showView('login');
             const form = document.getElementById('login-form');
-            if(form) form.addEventListener('submit', handleLogin);
+            if (form) form.addEventListener('submit', handleLogin);
         }
     }
 
