@@ -262,14 +262,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     </button>
                 </form>
 
-                <div id="email-progress-container" class="hidden" style="margin-top:20px; background:#f5f5f5; padding:15px; border-radius:8px; border:1px solid #ddd;">
-                    <h4 id="progress-text" style="margin:0 0 10px 0; font-size:0.9rem; color:#333;">Preparing...</h4>
-                    <div style="width:100%; height:10px; background:#ddd; border-radius:5px; overflow:hidden;">
-                        <div id="progress-bar-fill" style="width:0%; height:100%; background:#1565c0; transition:width 0.3s;"></div>
-                    </div>
-                    <div id="email-log" style="margin-top:10px; max-height:100px; overflow-y:auto; font-size:0.8rem; color:#666; font-family:monospace;"></div>
-                </div>
-
                 <div id="email-result" class="badge bg-success hidden" style="display:block; margin-top:15px; padding:10px;"></div>
             </div>`;
     }
@@ -296,21 +288,26 @@ document.addEventListener('DOMContentLoaded', () => {
                 renderTestNotification();
             } else if (viewName === 'send-email') {
                 renderSendEmail();
-
+                
                 setTimeout(() => {
-                    emailEditor = new Quill('#editor-container', {
-                        theme: 'snow',
-                        placeholder: 'Compose your email here...',
-                        modules: {
-                            toolbar: [
-                                ['bold', 'italic', 'underline', 'strike'],
-                                [{ 'list': 'ordered' }, { 'list': 'bullet' }],
-                                [{ 'header': [1, 2, 3, false] }],
-                                [{ 'color': [] }, { 'background': [] }],
-                                ['link', 'clean']
-                            ]
-                        }
-                    });
+                    const container = document.getElementById('editor-container');
+                    
+                    // Only initialize if it hasn't been done yet
+                    if (container && !container.classList.contains('ql-container')) {
+                        emailEditor = new Quill('#editor-container', {
+                            theme: 'snow',
+                            placeholder: 'Compose your email here...',
+                            modules: {
+                                toolbar: [
+                                    ['bold', 'italic', 'underline', 'strike'],
+                                    [{ 'list': 'ordered'}, { 'list': 'bullet' }],
+                                    [{ 'header': [1, 2, 3, false] }],
+                                    [{ 'color': [] }, { 'background': [] }],
+                                    ['link', 'clean']
+                                ]
+                            }
+                        });
+                    }
                 }, 0);
                 // ------------------------------------
             }
@@ -428,19 +425,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
-            // 2. SEND EMAIL (BATCHED VERSION)
             if (e.target.id === 'email-form') {
                 e.preventDefault();
-
-                // Elements
+                
                 const userIdInput = document.getElementById('email_user_id').value;
                 const subject = document.getElementById('email_subject').value;
                 const isPreview = document.getElementById('email_preview').checked;
                 const btn = e.target.querySelector('button');
-                const progressContainer = document.getElementById('email-progress-container');
-                const progressText = document.getElementById('progress-text');
-                const progressBar = document.getElementById('progress-bar-fill');
-                const logBox = document.getElementById('email-log');
                 const resultDiv = document.getElementById('email-result');
 
                 // Get Editor Content
@@ -450,82 +441,33 @@ document.addEventListener('DOMContentLoaded', () => {
                     return;
                 }
 
-                // Disable Form
-                btn.disabled = true;
-                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Processing...';
-                resultDiv.classList.add('hidden');
-
-                // LOGIC: SINGLE SEND vs BULK BATCHING
+                btn.disabled = true; 
+                btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Queuing...';
+                
                 try {
-                    // CASE A: Sending to Specific User or Preview
-                    if (userIdInput && userIdInput !== "0" || isPreview) {
-                        const payload = {
-                            user_id: userIdInput ? parseInt(userIdInput) : 0,
-                            subject: subject,
-                            body: bodyContent,
-                            preview_only: isPreview
-                        };
-                        await apiClient.post('/admin/send-email', payload);
-                        resultDiv.textContent = "Email Sent Successfully!";
-                        resultDiv.className = "badge bg-success";
-                        resultDiv.classList.remove('hidden');
-                    }
+                    // Send ONE request. Celery handles the rest.
+                    const payload = {
+                        user_id: userIdInput ? parseInt(userIdInput) : 0, // 0 = All Users
+                        subject: subject,
+                        body: bodyContent,
+                        preview_only: isPreview
+                    };
 
-                    // CASE B: Sending to ALL Users (BATCH MODE)
-                    else {
-                        progressContainer.classList.remove('hidden');
-                        logBox.innerHTML = 'Fetching user list...<br>';
+                    const response = await apiClient.post('/admin/send-email', payload);
+                    
+                    // Success Message
+                    resultDiv.innerHTML = `
+                        <strong><i class="fa-solid fa-check-circle"></i> Success!</strong><br>
+                        Your email blast has been queued. The server is sending them in the background.<br>
+                        <small>Task ID: ${response.task_id || 'Submitted'}</small>
+                    `;
+                    resultDiv.className = "badge bg-success";
+                    resultDiv.classList.remove('hidden');
 
-                        // 1. Get All Users First
-                        const allUsers = await apiClient.get('/users/get_all');
-                        const total = allUsers.length;
-                        let sentCount = 0;
-                        let errorCount = 0;
-
-                        logBox.innerHTML += `Found ${total} users. Starting batch send...<br>`;
-
-                        // 2. Loop and Send One by One
-                        for (const user of allUsers) {
-                            if (!user.email) continue; // Skip if no email
-
-                            try {
-                                // Update UI
-                                const percent = Math.round(((sentCount + 1) / total) * 100);
-                                progressBar.style.width = `${percent}%`;
-                                progressText.textContent = `Sending: ${sentCount + 1} of ${total}`;
-
-                                // Send API Request for THIS user only
-                                await apiClient.post('/admin/send-email', {
-                                    user_id: user.id,
-                                    subject: subject,
-                                    body: bodyContent,
-                                    preview_only: false
-                                });
-
-                                sentCount++;
-                                // logBox.innerHTML += `<span style="color:green">✓ ${user.email}</span><br>`; // Optional: noisy logs
-
-                            } catch (err) {
-                                errorCount++;
-                                logBox.innerHTML += `<span style="color:red">✗ Failed: ${user.email}</span><br>`;
-                                console.error(err);
-                            }
-
-                            // Scroll logs to bottom
-                            logBox.scrollTop = logBox.scrollHeight;
-                        }
-
-                        // Final Status
-                        resultDiv.textContent = `Batch Complete! Sent: ${sentCount}, Failed: ${errorCount}`;
-                        resultDiv.className = "badge bg-success";
-                        resultDiv.classList.remove('hidden');
-                        progressText.textContent = "Completed";
-                    }
-
-                    // Clear Form Only on Success
-                    if (!isPreview) {
+                    // Reset
+                    if(!isPreview) {
                         e.target.reset();
-                        if (emailEditor) emailEditor.setContents([]);
+                        if(emailEditor) emailEditor.setContents([]);
                     }
 
                 } catch (error) {
@@ -533,7 +475,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     resultDiv.className = "badge bg-danger";
                     resultDiv.classList.remove('hidden');
                 } finally {
-                    btn.disabled = false;
+                    btn.disabled = false; 
                     btn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> Send Email';
                 }
             }
