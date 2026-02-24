@@ -708,7 +708,7 @@
         const typingIndicator = addTypingIndicator();
 
         try {
-            const response = await fetch('https://alerte.pythonanywhere.com/owei/chat', {
+            const response = await fetch('https://alerte.pythonanywhere.com/owei/web-demo-chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -820,7 +820,7 @@
 
                 const typingIndicator = addTypingIndicator();
 
-                fetch('https://alerte.pythonanywhere.com/owei/chat', {
+                fetch('https://alerte.pythonanywhere.com/owei/web-demo-chat', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({
