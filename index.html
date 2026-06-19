@@ -64,10 +64,18 @@
 </script>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
+    <!-- Fonts preconnect and optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
         integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./css/new_home.css">
+
     <!-- Meta Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s)
@@ -86,21 +94,8 @@
     /></noscript>
     <!-- End Meta Pixel Code -->
 
-    
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <link rel="stylesheet" href="./css/new_home.css">
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
-        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <!-- Defer Markdown Parser for chat widget -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js" defer></script>
 
 </head>
 <body>
@@ -175,8 +170,10 @@
     <!-- Video Section -->
     <section class="video-section">
         <div class="container" data-aos="fade-right">
-                <video src="./ALERTE APP DEMO (2).mp4" width="100%" height="auto" autoplay muted controls>
+            <div class="video-wrapper">
+                <video data-src="./Alerte Explainer video optimized.mp4" poster="./static/Images/video_poster.jpg" width="100%" height="auto" muted controls playsinline preload="none">
                 </video>
+            </div>
         </div>
     </section>
 
@@ -904,6 +901,47 @@
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
+    });
+
+    // Video Lazy Loading and Autoplay on Scroll
+    document.addEventListener("DOMContentLoaded", function() {
+        const lazyVideo = document.querySelector('.video-section video');
+        if (!lazyVideo) return;
+
+        if ("IntersectionObserver" in window) {
+            const videoObserver = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const dataSrc = lazyVideo.getAttribute('data-src');
+                        if (dataSrc) {
+                            lazyVideo.src = dataSrc;
+                            lazyVideo.removeAttribute('data-src');
+                            lazyVideo.load();
+                        }
+                        lazyVideo.play().catch(error => {
+                            console.log("Autoplay prevented or video play error:", error);
+                        });
+                    } else {
+                        // Pause the video if it has loaded and is currently playing but scrolled out of view
+                        if (lazyVideo.src && !lazyVideo.paused) {
+                            lazyVideo.pause();
+                        }
+                    }
+                });
+            }, {
+                rootMargin: "150px 0px", // Start loading 150px before entering viewport
+                threshold: 0.1
+            });
+            videoObserver.observe(lazyVideo);
+        } else {
+            // Fallback for older browsers: Load immediately
+            const dataSrc = lazyVideo.getAttribute('data-src');
+            if (dataSrc) {
+                lazyVideo.src = dataSrc;
+                lazyVideo.removeAttribute('data-src');
+                lazyVideo.load();
+            }
+        }
     });
 </script>
 </body>
