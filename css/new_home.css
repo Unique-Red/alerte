@@ -1095,7 +1095,7 @@ footer {
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(0, 0, 0, 0.06);
   transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-  background: #fff;
+  background: #c62828;
   line-height: 0;
 }
 
