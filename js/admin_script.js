@@ -1,37 +1,9 @@
 let emailEditor = null;
 document.addEventListener('DOMContentLoaded', () => {
 
-    const DEFAULT_API_BASE_URL = 'https://alerte.pythonanywhere.com';
-
-    function getApiBaseUrl() {
-        return localStorage.getItem('alerte_api_base_url') || DEFAULT_API_BASE_URL;
-    }
-
-    function setApiBaseUrl(newUrl) {
-        if (!newUrl || newUrl.trim() === '' || newUrl.trim() === DEFAULT_API_BASE_URL) {
-            localStorage.removeItem('alerte_api_base_url');
-        } else {
-            localStorage.setItem('alerte_api_base_url', newUrl.trim().replace(/\/+$/, ''));
-        }
-        updateServerBadge();
-    }
-
-    function updateServerBadge() {
-        const badge = document.getElementById('active-server-badge');
-        const badgeName = document.getElementById('active-server-name');
-        if (!badge || !badgeName) return;
-
-        const currentUrl = getApiBaseUrl();
-        if (currentUrl === DEFAULT_API_BASE_URL) {
-            badgeName.textContent = 'Production';
-            badge.className = 'server-badge';
-            badge.title = `Connected to: ${currentUrl}`;
-        } else {
-            badgeName.textContent = currentUrl.includes('127.0.0.1') || currentUrl.includes('localhost') ? 'Local Dev' : 'Custom';
-            badge.className = 'server-badge dev';
-            badge.title = `Connected to: ${currentUrl}`;
-        }
-    }
+    const API_BASE_URL = 'https://alerte.pythonanywhere.com';
+    // Clear any previous local dev overrides
+    localStorage.removeItem('alerte_api_base_url');
 
     const state = {
         tokens: {
@@ -60,8 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
     async function attemptTokenRefresh() {
         if (!state.tokens.refresh) return false;
         try {
-            const baseUrl = getApiBaseUrl();
-            const res = await fetch(`${baseUrl}/super-admin-auth/refresh`, {
+            const res = await fetch(`${API_BASE_URL}/super-admin-auth/refresh`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -84,8 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const apiClient = {
         async request(method, path, data = null, isRetry = false) {
             showLoader(true);
-            const baseUrl = getApiBaseUrl();
-            const url = `${baseUrl}${path}`;
+            const url = `${API_BASE_URL}${path}`;
             const headers = {};
             if (data !== null || method === 'POST' || method === 'PUT' || method === 'PATCH') {
                 headers['Content-Type'] = 'application/json';
@@ -189,14 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <button class="btn-retry" id="btn-view-retry">
                         <i class="fa-solid fa-rotate-right"></i> Retry Request
                     </button>
-                    <button class="btn-retry" id="btn-view-diagnostics" style="background:#546e7a;">
-                        <i class="fa-solid fa-wrench"></i> Server Settings & Diagnostics
-                    </button>
                 </div>
                 <details style="text-align:left; margin-top:20px; border-top:1px solid #eee; padding-top:10px;">
                     <summary style="cursor:pointer; color:#777; font-size:0.85rem;">View Technical Diagnostics</summary>
                     <div class="diagnostics-box">
-URL: ${getApiBaseUrl()}${error.path || ''}
+URL: ${API_BASE_URL}${error.path || ''}
 Status: ${error.status || 'N/A'}
 Error: ${error.message}
 Response: ${JSON.stringify(error.data || null, null, 2)}
@@ -207,11 +174,6 @@ Response: ${JSON.stringify(error.data || null, null, 2)}
         const retryBtn = document.getElementById('btn-view-retry');
         if (retryBtn && typeof retryFn === 'function') {
             retryBtn.addEventListener('click', retryFn);
-        }
-
-        const diagBtn = document.getElementById('btn-view-diagnostics');
-        if (diagBtn) {
-            diagBtn.addEventListener('click', openServerSettingsModal);
         }
     }
 
@@ -1167,142 +1129,7 @@ Response: ${JSON.stringify(error.data || null, null, 2)}
         });
     }
 
-    function openServerSettingsModal() {
-        const currentUrl = getApiBaseUrl();
-        const content = `
-            <div style="font-size:0.9rem;">
-                <p style="color:#666; margin-bottom:15px;">Configure the backend API server used by the Admin Console. Default is PythonAnywhere production.</p>
-                
-                <div class="input-group">
-                    <label>Active API Base URL</label>
-                    <input type="text" id="custom-api-url" value="${currentUrl}" placeholder="e.g. https://alerte.pythonanywhere.com or http://127.0.0.1:5000">
-                </div>
 
-                <div style="display:flex; gap:8px; margin-bottom:12px;">
-                    <button type="button" id="btn-quick-local" class="btn-retry" style="flex:1; background:#1565c0; font-size:0.78rem; justify-content:center; padding:7px 10px;">
-                        <i class="fa-solid fa-laptop-code"></i> Localhost (5000)
-                    </button>
-                    <button type="button" id="btn-quick-prod" class="btn-retry" style="flex:1; background:#2e7d32; font-size:0.78rem; justify-content:center; padding:7px 10px;">
-                        <i class="fa-solid fa-cloud"></i> Production API
-                    </button>
-                </div>
-
-                <div style="display:flex; gap:10px; margin-bottom:20px;">
-                    <button id="btn-save-server-url" class="btn-retry" style="flex:1; justify-content:center;">
-                        <i class="fa-solid fa-floppy-disk"></i> Save & Apply
-                    </button>
-                    <button id="btn-reset-server-url" class="btn-retry" style="background:#78909c; justify-content:center;">
-                        Reset Default
-                    </button>
-                </div>
-
-                <div style="border-top:1px solid #eee; padding-top:15px; margin-top:10px;">
-                    <h4 style="margin-bottom:10px; color:#333;"><i class="fa-solid fa-stethoscope"></i> Connectivity Diagnostics</h4>
-                    <p style="font-size:0.8rem; color:#777; margin-bottom:10px;">Test endpoints against the active server with your current SuperAdmin credentials:</p>
-                    <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
-                        <button id="btn-ping-stats" class="btn-view" style="font-size:0.75rem; padding:8px;">Test /dashboard/stats</button>
-                        <button id="btn-ping-users" class="btn-view" style="font-size:0.75rem; padding:8px;">Test /users/get_all</button>
-                        <button id="btn-ping-agencies" class="btn-view" style="font-size:0.75rem; padding:8px;">Test /admin/agencies</button>
-                        <button id="btn-ping-attendance" class="btn-view" style="font-size:0.75rem; padding:8px; background:#1976d2;">Test /metrics/event-attendance</button>
-                        <button id="btn-ping-refresh" class="btn-view" style="font-size:0.75rem; padding:8px; background:#455a64; grid-column:span 2;">Test Token Refresh</button>
-                    </div>
-                    <div id="ping-results" style="margin-top:12px; font-family:monospace; font-size:0.75rem; background:#263238; color:#eceff1; padding:10px; border-radius:5px; max-height:120px; overflow-y:auto; display:none;"></div>
-                </div>
-            </div>`;
-
-        openModal("API Server & Connection Diagnostics", content);
-
-        document.getElementById('btn-quick-local')?.addEventListener('click', () => {
-            const input = document.getElementById('custom-api-url');
-            if (input) input.value = 'http://127.0.0.1:5000';
-            setApiBaseUrl('http://127.0.0.1:5000');
-            modalOverlay.classList.add('hidden');
-            loadView(state.currentView);
-        });
-
-        document.getElementById('btn-quick-prod')?.addEventListener('click', () => {
-            const input = document.getElementById('custom-api-url');
-            if (input) input.value = DEFAULT_API_BASE_URL;
-            setApiBaseUrl(DEFAULT_API_BASE_URL);
-            modalOverlay.classList.add('hidden');
-            loadView(state.currentView);
-        });
-
-        document.getElementById('btn-save-server-url')?.addEventListener('click', () => {
-            const val = document.getElementById('custom-api-url')?.value;
-            setApiBaseUrl(val);
-            modalOverlay.classList.add('hidden');
-            loadView(state.currentView);
-        });
-
-        document.getElementById('btn-reset-server-url')?.addEventListener('click', () => {
-            setApiBaseUrl('');
-            modalOverlay.classList.add('hidden');
-            loadView(state.currentView);
-        });
-
-        const logPing = (msg, isErr = false) => {
-            const out = document.getElementById('ping-results');
-            if (!out) return;
-            out.style.display = 'block';
-            out.innerHTML += `<div style="color:${isErr ? '#ef5350' : '#81c784'}">[${new Date().toLocaleTimeString()}] ${msg}</div>`;
-            out.scrollTop = out.scrollHeight;
-        };
-
-        document.getElementById('btn-ping-stats')?.addEventListener('click', async () => {
-            logPing("Pinging /admin/dashboard/stats...");
-            try {
-                const start = Date.now();
-                const res = await apiClient.get('/admin/dashboard/stats');
-                logPing(`OK (${Date.now() - start}ms) - Total Users: ${res.total_users || 0}`);
-            } catch(e) {
-                logPing(`ERROR: HTTP ${e.status || 'ERR'} - ${e.message}`, true);
-            }
-        });
-
-        document.getElementById('btn-ping-users')?.addEventListener('click', async () => {
-            logPing("Pinging /users/get_all...");
-            try {
-                const start = Date.now();
-                const res = await apiClient.get('/users/get_all');
-                const count = Array.isArray(res) ? res.length : (res?.users?.length || 0);
-                logPing(`OK (${Date.now() - start}ms) - Fetched ${count} users`);
-            } catch(e) {
-                logPing(`ERROR: HTTP ${e.status || 'ERR'} - ${e.message}`, true);
-            }
-        });
-
-        document.getElementById('btn-ping-agencies')?.addEventListener('click', async () => {
-            logPing("Pinging /admin/agencies...");
-            try {
-                const start = Date.now();
-                const res = await apiClient.get('/admin/agencies');
-                logPing(`OK (${Date.now() - start}ms) - Fetched ${res.length || 0} agencies`);
-            } catch(e) {
-                logPing(`ERROR: HTTP ${e.status || 'ERR'} - ${e.message}`, true);
-            }
-        });
-
-        document.getElementById('btn-ping-attendance')?.addEventListener('click', async () => {
-            logPing("Pinging /admin/metrics/event-attendance (days=30)...");
-            try {
-                const start = Date.now();
-                const res = await apiClient.get('/admin/metrics/event-attendance?days=30');
-                const overallRate = res?.overall_attendance_summary?.overall_attendance_rate_pct ?? 'N/A';
-                const totalEvents = res?.overall_attendance_summary?.total_events_logged ?? 0;
-                logPing(`OK (${Date.now() - start}ms) - Rate: ${overallRate}%, Events: ${totalEvents}`);
-            } catch(e) {
-                logPing(`ERROR: HTTP ${e.status || 'ERR'} - ${e.message}`, true);
-            }
-        });
-
-        document.getElementById('btn-ping-refresh')?.addEventListener('click', async () => {
-            logPing("Testing token refresh...");
-            const ok = await attemptTokenRefresh();
-            if (ok) logPing("Refresh Success: New access token acquired");
-            else logPing("Refresh Failed: Check refresh token or credentials", true);
-        });
-    }
 
     async function handleLogin(event) {
         event.preventDefault();
@@ -1360,13 +1187,6 @@ Response: ${JSON.stringify(error.data || null, null, 2)}
     }
 
     function initApp() {
-        updateServerBadge();
-        const serverBtn = document.getElementById('server-settings-btn');
-        if (serverBtn) {
-            serverBtn.removeEventListener('click', openServerSettingsModal);
-            serverBtn.addEventListener('click', openServerSettingsModal);
-        }
-
         if (state.tokens.access) {
             showView('app');
             setupEventListeners();
