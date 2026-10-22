@@ -48,13 +48,27 @@
         
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h3><i class="fa-solid fa-user-shield"></i> Alerte Admin</h3>
-                <p style="font-size: 0.8rem; color: #777; margin-top: 5px;">Internal Operations</p>
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <h3 style="margin: 0;"><i class="fa-solid fa-user-shield"></i> Alerte Admin</h3>
+                    <button id="server-settings-btn" title="API Server Settings & Diagnostics" style="background: none; border: none; color: #888; cursor: pointer; font-size: 0.95rem; padding: 4px;">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px;">
+                    <span style="font-size: 0.78rem; color: #777;">Internal Operations</span>
+                    <span id="active-server-badge" class="server-badge" title="Active Backend API">
+                        <i class="fa-solid fa-circle" style="font-size: 0.5rem;"></i>
+                        <span id="active-server-name">Production</span>
+                    </span>
+                </div>
             </div>
             
             <nav class="main-nav">
                 <a href="#dashboard" class="nav-link active" data-view="dashboard">
                     <i class="fa-solid fa-gauge-high"></i> Dashboard
+                </a>
+                <a href="#event-attendance" class="nav-link" data-view="event-attendance">
+                    <i class="fa-solid fa-chart-line"></i> Event Attendance
                 </a>
                 <a href="#pending-agencies" class="nav-link" data-view="pending-agencies">
                     <i class="fa-solid fa-hourglass-half"></i> Pending Agencies
