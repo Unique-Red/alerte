@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Subscribe to Alerte Premium | Family Circle & Individual Protection</title>
+    <title>Subscribe to Alerte Premium | Family Circle &amp; Individual Protection</title>
     <meta name="description" content="Upgrade to Alerte Premium. Get 24/7 emergency SOS protection, Owei AI threat intelligence, 5km radar alerts, and family circle safety for up to 5 members.">
     <link rel="canonical" href="https://alerteuniversal.com/subscribe">
 
@@ -26,11 +26,11 @@
             --brand-red: #c62828;
             --brand-red-dark: #8e0101;
             --brand-red-light: #ff6b6b;
-            --brand-dark: #121417;
+            --brand-dark: #0b0c0e;
             --brand-surface: #1a1e24;
             --brand-gray-light: #f4f6f9;
-            --brand-text-dark: #222b45;
-            --brand-text-muted: #6b778c;
+            --brand-text-dark: #1e293b;
+            --brand-text-muted: #64748b;
             --brand-green: #2e7d32;
             --brand-green-bg: #e8f5e9;
         }
@@ -45,7 +45,7 @@
         }
 
         header {
-            background-color: #0b0c0e !important;
+            background-color: var(--brand-dark) !important;
             padding: 16px 0;
             position: fixed;
             width: 100%;
@@ -56,8 +56,8 @@
         }
 
         .subscribe-hero {
-            padding: 140px 20px 50px;
-            background: linear-gradient(180deg, #0b0c0e 0%, #1a1f29 70%, #f7f9fc 100%);
+            padding: 140px 20px 45px;
+            background: linear-gradient(180deg, #0b0c0e 0%, #171d27 65%, #f7f9fc 100%);
             color: #ffffff;
             text-align: center;
         }
@@ -91,7 +91,7 @@
             align-items: center;
             gap: 15px;
             flex-wrap: wrap;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
 
         /* Plan Toggle Pill */
@@ -134,42 +134,15 @@
             font-weight: 700;
         }
 
-        /* Currency Selector */
-        .currency-toggle {
-            display: inline-flex;
-            background: rgba(255, 255, 255, 0.08);
-            backdrop-filter: blur(12px);
-            padding: 5px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .currency-btn {
-            border: none;
-            background: transparent;
-            color: #b0bec5;
-            padding: 8px 16px;
-            border-radius: 30px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .currency-btn.active {
-            background: rgba(255, 255, 255, 0.2);
-            color: #ffffff;
-        }
-
         /* Main Content Grid */
         .subscription-main-section {
             padding: 0 20px 80px;
-            margin-top: -20px;
+            margin-top: -15px;
         }
 
         .subscription-grid {
             display: grid;
-            grid-template-columns: 1.15fr 0.85fr;
+            grid-template-columns: 1.1fr 0.9fr;
             gap: 30px;
             max-width: 1100px;
             margin: 0 auto;
@@ -187,8 +160,8 @@
             background: #ffffff;
             border-radius: 20px;
             padding: 40px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
-            border: 2px solid transparent;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+            border: 2px solid #edf2f7;
             position: relative;
             transition: transform 0.3s ease, border-color 0.3s ease;
         }
@@ -310,32 +283,148 @@
             margin-top: 2px;
         }
 
-        /* Checkout / Action Panel */
-        .action-panel {
+        /* Action / Checkout Panel */
+        .checkout-panel {
             background: #ffffff;
             border-radius: 20px;
             padding: 35px 30px;
-            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
             border: 1px solid #edf2f7;
             position: sticky;
             top: 90px;
         }
 
-        .action-panel h3 {
-            font-size: 1.3rem;
+        .checkout-panel-header {
+            margin-bottom: 20px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .checkout-panel-header h3 {
+            font-size: 1.35rem;
             font-weight: 700;
-            color: #1a202c;
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .checkout-panel-header p {
+            font-size: 0.88rem;
+            color: #64748b;
+        }
+
+        /* Currency Selector inside Checkout Card */
+        .currency-selection-group {
+            margin-bottom: 22px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.88rem;
+            font-weight: 600;
+            color: #334155;
             margin-bottom: 8px;
         }
 
-        .action-panel p.action-subtitle {
-            font-size: 0.9rem;
-            color: var(--brand-text-muted);
+        .currency-cards-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .currency-card-option {
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 12px 14px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-align: left;
+            position: relative;
+            background: #f8fafc;
+        }
+
+        .currency-card-option:hover {
+            border-color: #cbd5e1;
+            background: #ffffff;
+        }
+
+        .currency-card-option.selected {
+            border-color: #c62828;
+            background: #fff8f8;
+            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.1);
+        }
+
+        .currency-card-option input[type="radio"] {
+            display: none;
+        }
+
+        .currency-card-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 2px;
+        }
+
+        .currency-gateway-badge {
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 500;
+        }
+
+        .currency-card-price {
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #c62828;
+            margin-top: 4px;
+        }
+
+        /* Email Input Group */
+        .form-group {
             margin-bottom: 24px;
         }
 
-        /* Primary Action Button (Deep Link) */
-        .btn-subscribe-primary {
+        .input-with-icon {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            color: #94a3b8;
+            font-size: 1rem;
+        }
+
+        .input-with-icon input {
+            width: 100%;
+            padding: 14px 14px 14px 44px;
+            border: 2px solid #cbd5e1;
+            border-radius: 12px;
+            font-size: 0.98rem;
+            font-family: inherit;
+            color: #0f172a;
+            outline: none;
+            transition: all 0.2s ease;
+            background: #ffffff;
+        }
+
+        .input-with-icon input:focus {
+            border-color: #c62828;
+            box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.12);
+        }
+
+        .input-hint {
+            display: block;
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 6px;
+        }
+
+        /* Checkout CTA Button */
+        .btn-checkout-submit {
             width: 100%;
             padding: 16px 20px;
             background: linear-gradient(135deg, #c62828 0%, #a71d1d 100%);
@@ -351,134 +440,74 @@
             justify-content: center;
             gap: 10px;
             box-shadow: 0 8px 24px rgba(198, 40, 40, 0.35);
-            text-decoration: none;
-            margin-bottom: 15px;
         }
 
-        .btn-subscribe-primary:hover {
+        .btn-checkout-submit:hover:not(:disabled) {
             transform: translateY(-2px);
             box-shadow: 0 12px 28px rgba(198, 40, 40, 0.45);
             background: linear-gradient(135deg, #b71c1c 0%, #8e0101 100%);
-            color: #ffffff;
         }
 
-        .divider-or {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: #a0aec0;
-            font-size: 0.8rem;
-            margin: 20px 0;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .btn-checkout-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none !important;
         }
 
-        .divider-or::before,
-        .divider-or::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid #e2e8f0;
-        }
-
-        .divider-or span {
-            padding: 0 10px;
-        }
-
-        /* Store Buttons in Card */
-        .store-buttons-compact {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 22px;
-        }
-
-        .store-btn-compact {
-            flex: 1;
-            background: #1a1e24;
-            color: #ffffff;
-            padding: 10px 14px;
-            border-radius: 10px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .store-btn-compact:hover {
-            background: #000000;
-            transform: translateY(-2px);
-            color: #ffffff;
-        }
-
-        .store-btn-compact i {
-            font-size: 1.1rem;
-        }
-
-        /* Web Email Activation Form */
-        .web-activation-box {
-            background: #f8fafc;
-            border: 1px dashed #cbd5e1;
-            border-radius: 12px;
-            padding: 18px;
-            margin-top: 15px;
-        }
-
-        .web-activation-box label {
-            display: block;
-            font-size: 0.82rem;
-            font-weight: 600;
-            color: #475569;
-            margin-bottom: 6px;
-        }
-
-        .web-activation-box .input-row {
-            display: flex;
-            gap: 8px;
-        }
-
-        .web-activation-box input {
-            flex: 1;
-            padding: 10px 14px;
-            border: 1px solid #cbd5e1;
-            border-radius: 8px;
-            font-size: 0.9rem;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .web-activation-box input:focus {
-            border-color: #c62828;
-        }
-
-        .web-activation-box button {
-            background: #1e293b;
-            color: white;
-            border: none;
-            padding: 10px 16px;
-            border-radius: 8px;
-            font-weight: 600;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background 0.2s;
-            white-space: nowrap;
-        }
-
-        .web-activation-box button:hover {
-            background: #0f172a;
-        }
-
-        .activation-status-msg {
-            font-size: 0.8rem;
-            margin-top: 8px;
+        /* Status & Alert Box */
+        .status-alert {
             display: none;
+            padding: 14px 16px;
+            border-radius: 12px;
+            font-size: 0.88rem;
+            line-height: 1.5;
+            margin-top: 18px;
+            animation: fadeIn 0.3s ease;
         }
 
-        /* Guarantees Box */
-        .guarantees-list {
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .status-alert.error {
+            background: #fef2f2;
+            border: 1px solid #fecaca;
+            color: #991b1b;
+        }
+
+        .status-alert.success {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            color: #166534;
+        }
+
+        .status-alert.loading {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+        }
+
+        /* App Deep Link Sub-Option */
+        .app-link-subtext {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .app-link-subtext a {
+            color: #c62828;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .app-link-subtext a:hover {
+            text-decoration: underline;
+        }
+
+        /* Trust Badges */
+        .checkout-trust-area {
             margin-top: 25px;
             border-top: 1px solid #edf2f7;
             padding-top: 20px;
@@ -487,7 +516,7 @@
             gap: 10px;
         }
 
-        .guarantee-item {
+        .trust-item {
             display: flex;
             align-items: center;
             gap: 10px;
@@ -495,7 +524,7 @@
             color: #64748b;
         }
 
-        .guarantee-item i {
+        .trust-item i {
             color: #2e7d32;
             font-size: 0.9rem;
         }
@@ -582,49 +611,43 @@
                 </div>
                 <ul class="nav-links">
                     <li><a href="/#about">About</a></li>
-                    <li><a href="/subscribe?plan=individual">Individual Plan</a></li>
                     <li><a href="/subscribe?plan=family">Family Plan</a></li>
+                    <li><a href="/subscribe?plan=individual">Individual Plan</a></li>
                 </ul>
-                <a href="#action-panel" class="btn btn-primary" style="padding: 9px 20px; font-size: 0.9rem;">
-                    <i class="fa-solid fa-bolt"></i> Get Protected
+                <a href="#checkout-panel" class="btn btn-primary" style="padding: 9px 20px; font-size: 0.9rem;">
+                    <i class="fa-solid fa-bolt"></i> Subscribe Now
                 </a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section with Plan & Currency Toggles -->
+    <!-- Hero Section -->
     <section class="subscribe-hero">
         <div class="container">
             <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; color: #ff7676; margin-bottom: 8px;">
-                <i class="fa-solid fa-shield-halved"></i> Alerte Universal Premium
+                <i class="fa-solid fa-shield-halved"></i> Alerte Universal Protection
             </p>
             <h1>Protect Yourself &amp; <span>Your Loved Ones</span></h1>
             <p class="subtitle">
                 Instant one-swipe SOS, automated police &amp; emergency agency dispatch, 5km threat radar, and 24/7 AI-powered safety intelligence.
             </p>
 
-            <!-- Interactive Plan Selector Controls -->
+            <!-- Plan Selector Buttons -->
             <div class="controls-wrapper">
                 <div class="plan-switch-container" role="tablist" aria-label="Select Subscription Plan">
-                    <button type="button" class="plan-tab-btn" id="tab-plan-individual" role="tab" aria-selected="false" onclick="selectPlan('individual')">
-                        <i class="fa-solid fa-user"></i> Individual Premium
-                    </button>
-                    <button type="button" class="plan-tab-btn" id="tab-plan-family" role="tab" aria-selected="false" onclick="selectPlan('family')">
+                    <button type="button" class="plan-tab-btn" id="tab-plan-family" role="tab" aria-selected="true" onclick="selectPlan('family')">
                         <i class="fa-solid fa-people-roof"></i> Family Circle
                         <span class="badge-pill">Up to 5 Users</span>
                     </button>
-                </div>
-
-                <!-- Currency Switcher -->
-                <div class="currency-toggle" aria-label="Select Currency">
-                    <button type="button" class="currency-btn active" id="btn-curr-ngn" onclick="selectCurrency('NGN')">₦ NGN</button>
-                    <button type="button" class="currency-btn" id="btn-curr-gbp" onclick="selectCurrency('GBP')">£ GBP</button>
+                    <button type="button" class="plan-tab-btn" id="tab-plan-individual" role="tab" aria-selected="false" onclick="selectPlan('individual')">
+                        <i class="fa-solid fa-user"></i> Individual Premium
+                    </button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Subscription Content Area -->
+    <!-- Main Content Area -->
     <main class="subscription-main-section">
         <div class="container">
             <div class="subscription-grid">
@@ -642,7 +665,7 @@
                             <p id="plan-summary-display">Complete safety protection for up to 5 family members under one umbrella.</p>
                         </div>
                         <div class="plan-price-area">
-                            <div class="plan-price-tag" id="plan-price-display">₦6,000</div>
+                            <div class="plan-price-tag" id="plan-price-display">£30</div>
                             <span class="plan-price-period" id="plan-period-display">per month / up to 5 users</span>
                         </div>
                     </div>
@@ -657,63 +680,92 @@
                             <i class="fa-solid fa-clock-rotate-left" style="color: #c62828;"></i> Instant Activation:
                         </div>
                         <div style="font-size: 0.88rem; color: #475569;" id="plan-activation-note">
-                            Once subscribed, you can instantly invite up to 4 other family members via their phone or unique invite link at no extra cost.
+                            Once payment is confirmed, your family subscription activates automatically and you receive a unique invite code to connect up to 4 other family members.
                         </div>
                     </div>
                 </article>
 
-                <!-- Right: Action / Checkout & Mobile App Redirection Panel -->
-                <aside class="action-panel" id="action-panel">
-                    <h3 id="action-heading">Subscribe to Family Circle</h3>
-                    <p class="action-subtitle">Open in the Alerte app on your phone for 1-tap activation, or download to get started.</p>
-
-                    <!-- Deep Link CTA Button -->
-                    <a href="alerte://subscribe?plan=family" class="btn-subscribe-primary" id="btn-deep-link-subscribe">
-                        <i class="fa-solid fa-mobile-screen-button"></i>
-                        <span id="deep-link-btn-text">Open in Alerte App</span>
-                    </a>
-
-                    <div style="text-align: center; font-size: 0.8rem; color: #718096; margin-bottom: 12px;">
-                        <i class="fa-solid fa-circle-info"></i> Automatically opens your account and applies the plan.
+                <!-- Right: Direct Checkout Panel -->
+                <aside class="checkout-panel" id="checkout-panel">
+                    <div class="checkout-panel-header">
+                        <h3 id="checkout-plan-heading">Subscribe to Family Circle</h3>
+                        <p>Complete checkout securely to activate 24/7 protection.</p>
                     </div>
 
-                    <div class="divider-or"><span>or download app</span></div>
+                    <form id="subscribe-checkout-form" onsubmit="handleSubscribeSubmit(event)">
+                        
+                        <!-- Currency Selection -->
+                        <div class="currency-selection-group">
+                            <label class="form-label">Select Payment Currency</label>
+                            <div class="currency-cards-grid">
+                                
+                                <div class="currency-card-option selected" id="opt-curr-gbp" onclick="selectCurrency('GBP')">
+                                    <div class="currency-card-title">
+                                        <span>£ GBP (UK / Global)</span>
+                                        <i class="fa-solid fa-circle-check" style="color: #c62828;"></i>
+                                    </div>
+                                    <span class="currency-gateway-badge">Stripe • Cards &amp; Apple Pay</span>
+                                    <div class="currency-card-price" id="curr-card-price-gbp">£30 / mo</div>
+                                </div>
 
-                    <!-- Direct App Store Links -->
-                    <div class="store-buttons-compact">
-                        <a href="https://apps.apple.com/ng/app/alerte-universal/id6741043541" target="_blank" rel="noopener noreferrer" class="store-btn-compact">
-                            <i class="fa-brands fa-apple"></i> App Store
-                        </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.alerteuniversal.alerte" target="_blank" rel="noopener noreferrer" class="store-btn-compact">
-                            <i class="fa-brands fa-google-play"></i> Google Play
-                        </a>
-                    </div>
+                                <div class="currency-card-option" id="opt-curr-ngn" onclick="selectCurrency('NGN')">
+                                    <div class="currency-card-title">
+                                        <span>₦ NGN (Nigeria)</span>
+                                        <i class="fa-regular fa-circle" style="color: #94a3b8;"></i>
+                                    </div>
+                                    <span class="currency-gateway-badge">Paystack • Cards &amp; Transfer</span>
+                                    <div class="currency-card-price" id="curr-card-price-ngn">₦6,000 / mo</div>
+                                </div>
 
-                    <!-- Web Email Activation Box -->
-                    <div class="web-activation-box">
-                        <label for="user-email-input"><i class="fa-solid fa-envelope"></i> Already have an account? Link your email:</label>
-                        <div class="input-row">
-                            <input type="email" id="user-email-input" placeholder="name@example.com" autocomplete="email">
-                            <button type="button" id="btn-start-checkout" onclick="handleEmailCheckout()">
-                                Continue <i class="fa-solid fa-arrow-right"></i>
-                            </button>
+                            </div>
                         </div>
-                        <div id="activation-msg" class="activation-status-msg"></div>
+
+                        <!-- Email Input Field -->
+                        <div class="form-group">
+                            <label for="subscriber-email" class="form-label">Your Alerte Account Email</label>
+                            <div class="input-with-icon">
+                                <i class="fa-solid fa-envelope"></i>
+                                <input 
+                                    type="email" 
+                                    id="subscriber-email" 
+                                    name="email" 
+                                    required 
+                                    placeholder="e.g. name@example.com" 
+                                    autocomplete="email"
+                                >
+                            </div>
+                            <span class="input-hint">Your receipt, activation receipt, and family code will be linked to this email.</span>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <button type="submit" class="btn-checkout-submit" id="btn-submit-checkout">
+                            <span id="btn-submit-label">Proceed to Payment (GBP £30)</span>
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                        <!-- Dynamic Alert Message -->
+                        <div id="checkout-status-alert" class="status-alert"></div>
+
+                    </form>
+
+                    <!-- Mobile Deep Link Alternative -->
+                    <div class="app-link-subtext">
+                        Already have the app? <a href="alerte://subscribe?plan=family" id="btn-deep-link">Open in Alerte App</a>
                     </div>
 
-                    <!-- Trust Guarantees -->
-                    <div class="guarantees-list">
-                        <div class="guarantee-item">
-                            <i class="fa-solid fa-shield-check"></i>
-                            <span>256-bit bank-grade encryption &amp; secure data privacy</span>
+                    <!-- Trust Reassurance -->
+                    <div class="checkout-trust-area">
+                        <div class="trust-item">
+                            <i class="fa-solid fa-lock"></i>
+                            <span>256-bit SSL encrypted checkout session</span>
                         </div>
-                        <div class="guarantee-item">
+                        <div class="trust-item">
+                            <i class="fa-solid fa-shield-halved"></i>
+                            <span>Powered by Stripe (GBP) &amp; Paystack (NGN)</span>
+                        </div>
+                        <div class="trust-item">
                             <i class="fa-solid fa-ban"></i>
-                            <span>Cancel or change your subscription plan anytime</span>
-                        </div>
-                        <div class="guarantee-item">
-                            <i class="fa-solid fa-tower-broadcast"></i>
-                            <span>24/7 Rapid automated emergency responder dispatch</span>
+                            <span>Cancel or change subscription anytime</span>
                         </div>
                     </div>
                 </aside>
@@ -743,7 +795,7 @@
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="faq-a-body">
-                    After subscribing, open the Alerte app, go to your Family Circle tab, and tap "Invite Member". You can share an invite link or a 6-character code (e.g., <code>alerteuniversal.com/join-family?code=...</code>). Your loved ones can accept the invitation instantly from their device.
+                    After subscribing, you will receive your unique Family Circle code (e.g. <code>https://alerteuniversal.com/join-family?code=XYZ892</code>). You can share this link with up to 4 other family members to join your protective circle instantly.
                 </div>
             </div>
 
@@ -759,21 +811,11 @@
 
             <div class="faq-accordion-item">
                 <button type="button" class="faq-q-btn" onclick="toggleFaq(this)">
-                    <span>Can I upgrade from Individual to Family Circle later?</span>
+                    <span>Which payment gateways do you use?</span>
                     <i class="fa-solid fa-chevron-down"></i>
                 </button>
                 <div class="faq-a-body">
-                    Yes! You can upgrade anytime through your account settings in the Alerte app or right here on this page. Any remaining time on your existing individual plan is seamlessly prorated.
-                </div>
-            </div>
-
-            <div class="faq-accordion-item">
-                <button type="button" class="faq-q-btn" onclick="toggleFaq(this)">
-                    <span>Which payment methods are accepted?</span>
-                    <i class="fa-solid fa-chevron-down"></i>
-                </button>
-                <div class="faq-a-body">
-                    We accept debit cards, credit cards (Mastercard, Visa, Verve), Apple Pay, Google Pay, bank transfers, and direct app store billing via the iOS App Store and Google Play Store.
+                    For GBP (£) payments, we use Stripe (supporting credit/debit cards, Apple Pay, Google Pay). For NGN (₦) payments, we use Paystack (supporting debit cards, bank transfer, and USSD).
                 </div>
             </div>
         </div>
@@ -812,9 +854,11 @@
         </div>
     </footer>
 
-    <!-- Interactive Plan Switcher and Deep Link Logic -->
+    <!-- Interactive Plan Switcher, Form Handling & Stripe/Paystack Checkout Redirection -->
     <script>
         document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const API_BASE_URL = 'https://alerte.pythonanywhere.com';
 
         const PLANS_DATA = {
             family: {
@@ -824,11 +868,11 @@
                 badge: 'Recommended for Families',
                 summary: 'Complete safety protection for up to 5 family members under one unified account.',
                 prices: {
-                    NGN: '₦6,000',
-                    GBP: '£30'
+                    GBP: '£30',
+                    NGN: '₦6,000'
                 },
                 period: 'per month / up to 5 users',
-                activationNote: 'Once subscribed, you can instantly invite up to 4 other family members via their phone or unique invite link at no extra cost.',
+                activationNote: 'Once payment is confirmed, your family subscription activates automatically and you receive a unique invite code to connect up to 4 other family members.',
                 features: [
                     {
                         title: 'Alerte Family Circle (5 Users Included)',
@@ -867,8 +911,8 @@
                 badge: 'Essential Personal Safety',
                 summary: 'Dedicated 24/7 emergency SOS, AI threat intelligence, and priority rapid response dispatch for 1 user.',
                 prices: {
-                    NGN: '₦2,000',
-                    GBP: '£10'
+                    GBP: '£10',
+                    NGN: '₦2,000'
                 },
                 period: 'per month / 1 user',
                 activationNote: 'Instant activation on your registered mobile device upon subscription confirmation.',
@@ -902,12 +946,12 @@
         };
 
         let currentPlanKey = 'family';
-        let currentCurrency = 'NGN';
+        let currentCurrency = 'GBP'; // Default to GBP for international diaspora or NGN
 
         function updateUI() {
             const plan = PLANS_DATA[currentPlanKey];
 
-            // Update Tab Buttons
+            // Tab Buttons
             const indTab = document.getElementById('tab-plan-individual');
             const famTab = document.getElementById('tab-plan-family');
             if (currentPlanKey === 'family') {
@@ -922,11 +966,7 @@
                 famTab.setAttribute('aria-selected', 'false');
             }
 
-            // Update Currency Buttons
-            document.getElementById('btn-curr-ngn').className = currentCurrency === 'NGN' ? 'currency-btn active' : 'currency-btn';
-            document.getElementById('btn-curr-gbp').className = currentCurrency === 'GBP' ? 'currency-btn active' : 'currency-btn';
-
-            // Update Plan Details Card
+            // Plan Details Card
             document.getElementById('plan-badge-text').textContent = plan.badge;
             document.getElementById('plan-title').innerHTML = `<i class="fa-solid ${plan.icon}" style="color: #c62828;"></i> <span>${plan.name}</span>`;
             document.getElementById('plan-summary-display').textContent = plan.summary;
@@ -949,28 +989,158 @@
                 listEl.appendChild(li);
             });
 
-            // Update Action Panel
-            document.getElementById('action-heading').textContent = `Subscribe to ${plan.name}`;
-            const deepLinkUrl = `alerte://subscribe?plan=${plan.id}`;
-            const deepLinkBtn = document.getElementById('btn-deep-link-subscribe');
-            deepLinkBtn.href = deepLinkUrl;
-            document.getElementById('deep-link-btn-text').textContent = `Open & Subscribe in App`;
+            // Update Currency Option Cards inside checkout
+            document.getElementById('curr-card-price-gbp').textContent = `${plan.prices.GBP} / mo`;
+            document.getElementById('curr-card-price-ngn').textContent = `${plan.prices.NGN} / mo`;
 
-            // Update URL without page reload
-            const newUrl = `${window.location.pathname}?plan=${plan.id}`;
+            const gbpCard = document.getElementById('opt-curr-gbp');
+            const ngnCard = document.getElementById('opt-curr-ngn');
+            if (currentCurrency === 'GBP') {
+                gbpCard.className = 'currency-card-option selected';
+                gbpCard.querySelector('i').className = 'fa-solid fa-circle-check';
+                gbpCard.querySelector('i').style.color = '#c62828';
+
+                ngnCard.className = 'currency-card-option';
+                ngnCard.querySelector('i').className = 'fa-regular fa-circle';
+                ngnCard.querySelector('i').style.color = '#94a3b8';
+            } else {
+                ngnCard.className = 'currency-card-option selected';
+                ngnCard.querySelector('i').className = 'fa-solid fa-circle-check';
+                ngnCard.querySelector('i').style.color = '#c62828';
+
+                gbpCard.className = 'currency-card-option';
+                gbpCard.querySelector('i').className = 'fa-regular fa-circle';
+                gbpCard.querySelector('i').style.color = '#94a3b8';
+            }
+
+            // Update Checkout Heading & CTA Button
+            document.getElementById('checkout-plan-heading').textContent = `Subscribe to ${plan.name}`;
+            const formattedPrice = plan.prices[currentCurrency];
+            document.getElementById('btn-submit-label').textContent = `Proceed to Payment (${currentCurrency} ${formattedPrice})`;
+
+            // Update Deep Link
+            const deepLinkEl = document.getElementById('btn-deep-link');
+            deepLinkEl.href = `alerte://subscribe?plan=${plan.id}&currency=${currentCurrency}`;
+
+            // Sync URL query without reloading
+            const currentParams = new URLSearchParams(window.location.search);
+            currentParams.set('plan', plan.id);
+            const newUrl = `${window.location.pathname}?${currentParams.toString()}`;
             window.history.replaceState({ plan: plan.id }, '', newUrl);
         }
 
         function selectPlan(planKey) {
             if (PLANS_DATA[planKey]) {
                 currentPlanKey = planKey;
+                hideAlert();
                 updateUI();
             }
         }
 
         function selectCurrency(curr) {
-            if (curr === 'NGN' || curr === 'GBP') {
+            if (curr === 'GBP' || curr === 'NGN') {
                 currentCurrency = curr;
+                hideAlert();
+                updateUI();
+            }
+        }
+
+        function hideAlert() {
+            const alertEl = document.getElementById('checkout-status-alert');
+            alertEl.style.display = 'none';
+            alertEl.className = 'status-alert';
+            alertEl.innerHTML = '';
+        }
+
+        function showAlert(type, htmlContent) {
+            const alertEl = document.getElementById('checkout-status-alert');
+            alertEl.className = `status-alert ${type}`;
+            alertEl.innerHTML = htmlContent;
+            alertEl.style.display = 'block';
+        }
+
+        async function handleSubscribeSubmit(event) {
+            event.preventDefault();
+            hideAlert();
+
+            const emailInput = document.getElementById('subscriber-email');
+            const submitBtn = document.getElementById('btn-submit-checkout');
+            const btnLabel = document.getElementById('btn-submit-label');
+            const email = (emailInput.value || '').trim();
+
+            if (!email || !email.includes('@')) {
+                showAlert('error', '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.');
+                emailInput.focus();
+                return;
+            }
+
+            // Enter loading state
+            submitBtn.disabled = true;
+            btnLabel.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Initializing Checkout...';
+            showAlert('loading', '<i class="fa-solid fa-spinner fa-spin"></i> Contacting secure payment gateway...');
+
+            const payload = {
+                email: email,
+                plan_type: currentPlanKey,
+                currency: currentCurrency
+            };
+
+            try {
+                const response = await fetch(`${API_BASE_URL}/payments/subscribe`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                let data = null;
+                try {
+                    data = await response.json();
+                } catch(e) {
+                    data = null;
+                }
+
+                if (!response.ok) {
+                    const errMsg = (data && (data.error || data.message)) || `Server returned status ${response.status}`;
+                    
+                    if (errMsg.toLowerCase().includes('user not found')) {
+                        showAlert('error', `
+                            <div style="font-weight: 700; margin-bottom: 4px;">
+                                <i class="fa-solid fa-circle-exclamation"></i> Account Not Found
+                            </div>
+                            <div>No Alerte account is registered with <strong>${escapeHtml(email)}</strong>. Please verify your email, or download the Alerte app to create your account first.</div>
+                            <div style="margin-top: 10px; display: flex; gap: 8px; flex-wrap: wrap;">
+                                <a href="https://apps.apple.com/ng/app/alerte-universal/id6741043541" target="_blank" style="color: #c62828; font-weight: 600; text-decoration: underline;">App Store</a> |
+                                <a href="https://play.google.com/store/apps/details?id=com.alerteuniversal.alerte" target="_blank" style="color: #c62828; font-weight: 600; text-decoration: underline;">Google Play</a>
+                            </div>
+                        `);
+                    } else {
+                        showAlert('error', `<i class="fa-solid fa-circle-exclamation"></i> ${escapeHtml(errMsg)}`);
+                    }
+                    submitBtn.disabled = false;
+                    updateUI();
+                    return;
+                }
+
+                // Extract checkout URL from response
+                const checkoutUrl = data?.checkout_url || data?.authorization_url || data?.url || data?.data?.checkout_url || data?.data?.authorization_url || data?.data?.url;
+
+                if (checkoutUrl) {
+                    showAlert('success', '<i class="fa-solid fa-circle-check"></i> Checkout session initialized! Redirecting to secure payment...');
+                    setTimeout(() => {
+                        window.location.href = checkoutUrl;
+                    }, 600);
+                } else {
+                    showAlert('success', '<i class="fa-solid fa-circle-check"></i> Subscription initiated successfully! Please check your email or Alerte app.');
+                    submitBtn.disabled = false;
+                    updateUI();
+                }
+
+            } catch (err) {
+                console.error('Subscription error:', err);
+                showAlert('error', '<i class="fa-solid fa-triangle-exclamation"></i> Network error connecting to payment gateway. Please check your connection and try again.');
+                submitBtn.disabled = false;
                 updateUI();
             }
         }
@@ -982,38 +1152,8 @@
             if (!isOpen) item.classList.add('open');
         }
 
-        function handleEmailCheckout() {
-            const emailInput = document.getElementById('user-email-input');
-            const msgEl = document.getElementById('activation-msg');
-            const email = (emailInput.value || '').trim();
-
-            if (!email || !email.includes('@')) {
-                msgEl.style.display = 'block';
-                msgEl.style.color = '#c62828';
-                msgEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.';
-                emailInput.focus();
-                return;
-            }
-
-            msgEl.style.display = 'block';
-            msgEl.style.color = '#2e7d32';
-            msgEl.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Preparing ${PLANS_DATA[currentPlanKey].name} checkout for <strong>${escapeHtml(email)}</strong>...`;
-
-            // Attempt deep link or provide download/app checkout guidance
-            setTimeout(() => {
-                const deepLink = `alerte://subscribe?plan=${currentPlanKey}&email=${encodeURIComponent(email)}`;
-                window.location.href = deepLink;
-
-                msgEl.innerHTML = `
-                    <div style="margin-top:6px; padding:10px; background:#e8f5e9; border-radius:6px; color:#1b5e20;">
-                        <i class="fa-solid fa-circle-check"></i> Plan selected! If the Alerte app did not open automatically, open Alerte on your mobile device to complete your subscription.
-                    </div>
-                `;
-            }, 800);
-        }
-
         function escapeHtml(str) {
-            return str.replace(/[&<>'"]/g, tag => ({
+            return String(str || '').replace(/[&<>'"]/g, tag => ({
                 '&': '&amp;',
                 '<': '&lt;',
                 '>': '&gt;',
@@ -1022,16 +1162,26 @@
             }[tag] || tag));
         }
 
-        // Initialize from URL parameters on page load
+        // Initialize from URL query parameters
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const planParam = (params.get('plan') || '').toLowerCase().trim();
+            const emailParam = (params.get('email') || '').trim();
+            const currParam = (params.get('currency') || '').toUpperCase().trim();
 
             if (planParam === 'individual') {
                 currentPlanKey = 'individual';
             } else {
-                // Default to 'family' or if ?plan=family
                 currentPlanKey = 'family';
+            }
+
+            if (currParam === 'NGN' || currParam === 'GBP') {
+                currentCurrency = currParam;
+            }
+
+            if (emailParam) {
+                const emailInput = document.getElementById('subscriber-email');
+                if (emailInput) emailInput.value = emailParam;
             }
 
             updateUI();
