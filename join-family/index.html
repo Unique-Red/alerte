@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Family Circle | Alerte Universal</title>
+    <meta name="description" content="You have been invited to join an Alerte Family Circle. Connect with your loved ones for 24/7 emergency SOS, group alerts, and rapid agency dispatch.">
+    <link rel="canonical" href="https://alerteuniversal.com/join-family">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alerteuniversal.com/join-family">
+    <meta property="og:title" content="Join Family Circle | Alerte Universal">
+    <meta property="og:description" content="Accept your invitation to join your family's 24/7 safety and emergency response circle on Alerte.">
+    <meta property="og:image" content="https://alerteuniversal.com/static/Images/logo.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/new_home.css">
+
+    <style>
+        :root {
+            --brand-red: #c62828;
+            --brand-red-dark: #8e0101;
+            --brand-red-light: #ff6b6b;
+            --brand-dark: #0b0c0e;
+            --brand-surface: #141820;
+            --brand-green: #2e7d32;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f7f9fc;
+            color: #1e293b;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: var(--brand-dark) !important;
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .join-hero-section {
+            padding: 140px 20px 60px;
+            background: linear-gradient(180deg, #0b0c0e 0%, #151b24 60%, #f7f9fc 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .join-container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .badge-invite {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(198, 40, 40, 0.2);
+            border: 1px solid rgba(255, 107, 107, 0.35);
+            color: #ff8a80;
+            font-size: 0.82rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 6px 18px;
+            border-radius: 30px;
+            margin-bottom: 20px;
+        }
+
+        .join-hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 15px;
+            letter-spacing: -0.5px;
+        }
+
+        .join-hero-section h1 span {
+            background: linear-gradient(135deg, #ff7676 0%, #ff3b3b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .join-hero-section p.subtitle {
+            font-size: 1.1rem;
+            color: #b0bec5;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Card Container */
+        .join-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 45px 40px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border: 1px solid #edf2f7;
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        @media (max-width: 600px) {
+            .join-card {
+                padding: 30px 20px;
+            }
+            .join-hero-section h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .avatar-circle-icon {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ffebee 0%, #ffcdd2 100%);
+            color: #c62828;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 20px;
+            box-shadow: 0 8px 20px rgba(198, 40, 40, 0.15);
+        }
+
+        .code-display-box {
+            background: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin: 25px 0 30px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .code-display-label {
+            text-align: left;
+        }
+
+        .code-display-label span {
+            display: block;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #64748b;
+            font-weight: 600;
+        }
+
+        .code-display-label strong {
+            font-size: 1.8rem;
+            font-family: 'Inter', monospace;
+            color: #0f172a;
+            letter-spacing: 3px;
+        }
+
+        .btn-copy-code {
+            background: #ffffff;
+            border: 1px solid #cbd5e1;
+            color: #334155;
+            padding: 10px 18px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-copy-code:hover {
+            background: #f1f5f9;
+            border-color: #94a3b8;
+            color: #0f172a;
+        }
+
+        .btn-copy-code.copied {
+            background: #e8f5e9;
+            border-color: #a5d6a7;
+            color: #2e7d32;
+        }
+
+        /* Action Buttons */
+        .btn-join-primary {
+            width: 100%;
+            padding: 18px 24px;
+            background: linear-gradient(135deg, #c62828 0%, #a71d1d 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.15rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            box-shadow: 0 10px 25px rgba(198, 40, 40, 0.35);
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+
+        .btn-join-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 30px rgba(198, 40, 40, 0.45);
+            background: linear-gradient(135deg, #b71c1c 0%, #8e0101 100%);
+            color: #ffffff;
+        }
+
+        /* Missing Code Manual Input Box */
+        .manual-code-form {
+            display: none;
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 24px;
+            margin: 20px 0 30px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .manual-code-form label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #334155;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .manual-code-input-row {
+            display: flex;
+            gap: 10px;
+        }
+
+        .manual-code-input-row input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #cbd5e1;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-family: monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            outline: none;
+        }
+
+        .manual-code-input-row input:focus {
+            border-color: #c62828;
+        }
+
+        .manual-code-input-row button {
+            background: #1e293b;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .manual-code-input-row button:hover {
+            background: #0f172a;
+        }
+
+        /* How it works steps */
+        .steps-container {
+            margin-top: 40px;
+            text-align: left;
+        }
+
+        .steps-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 700px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .step-item {
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 14px;
+            padding: 20px;
+            position: relative;
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #c62828;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            margin-bottom: 12px;
+        }
+
+        .step-item h4 {
+            font-size: 0.98rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 6px;
+        }
+
+        .step-item p {
+            font-size: 0.85rem;
+            color: #64748b;
+            line-height: 1.5;
+            margin: 0;
+        }
+
+        /* Perks Section */
+        .perks-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-top: 30px;
+            text-align: left;
+        }
+
+        @media (max-width: 600px) {
+            .perks-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .perk-box {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 14px;
+            background: #f1f5f9;
+            border-radius: 12px;
+        }
+
+        .perk-icon {
+            font-size: 1.1rem;
+            color: #c62828;
+            margin-top: 2px;
+        }
+
+        .perk-text strong {
+            display: block;
+            font-size: 0.9rem;
+            color: #0f172a;
+        }
+
+        .perk-text span {
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        /* Store Buttons */
+        .store-download-area {
+            margin-top: 35px;
+            border-top: 1px solid #edf2f7;
+            padding-top: 25px;
+        }
+
+        .store-buttons-row {
+            display: flex;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            margin-top: 15px;
+        }
+
+        .btn-store-badge {
+            background: #0f172a;
+            color: #ffffff;
+            padding: 12px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .btn-store-badge:hover {
+            background: #000000;
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .btn-store-badge i {
+            font-size: 1.3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="/"><img src="../static/Images/logo.png" alt="Alerte Universal Logo" style="height: 38px;"></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/subscribe?plan=family">Family Plan</a></li>
+                    <li><a href="/subscribe?plan=individual">Individual Plan</a></li>
+                </ul>
+                <a href="#join-action-area" class="btn btn-primary" style="padding: 9px 20px; font-size: 0.9rem;">
+                    <i class="fa-solid fa-user-plus"></i> Join Circle
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="join-hero-section">
+        <div class="join-container">
+            <div class="badge-invite">
+                <i class="fa-solid fa-people-roof"></i> Family Circle Invitation
+            </div>
+            <h1>You've Been Invited to Join an <span>Alerte Family Circle</span></h1>
+            <p class="subtitle">
+                A family member has invited you to join their private 24/7 emergency response safety circle. Connect now to receive instant mutual protection at no cost to you.
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Invite Processing Card -->
+    <main class="join-container" style="padding: 0 20px 80px; margin-top: -30px;">
+        <div class="join-card" id="join-action-area">
+            
+            <div class="avatar-circle-icon">
+                <i class="fa-solid fa-shield-heart"></i>
+            </div>
+
+            <h2 id="invite-status-title" style="font-size: 1.6rem; font-weight: 800; color: #0f172a; margin-bottom: 8px;">
+                Join Family Protection Circle
+            </h2>
+            <p id="invite-status-desc" style="color: #64748b; font-size: 0.95rem; max-width: 520px; margin: 0 auto;">
+                Accept the invitation below to connect your Alerte account to your family's emergency network.
+            </p>
+
+            <!-- Dynamic Code Display (Shown when code is in URL) -->
+            <div class="code-display-box" id="code-box">
+                <div class="code-display-label">
+                    <span>Your Family Invitation Code</span>
+                    <strong id="display-invite-code">------</strong>
+                </div>
+                <button type="button" class="btn-copy-code" id="btn-copy-code" onclick="copyInviteCode()">
+                    <i class="fa-regular fa-clone"></i> <span>Copy Code</span>
+                </button>
+            </div>
+
+            <!-- Manual Code Input (Shown when code is not in URL) -->
+            <div class="manual-code-form" id="manual-code-box">
+                <label for="input-manual-code"><i class="fa-solid fa-key"></i> Have a Family Circle invite code?</label>
+                <div class="manual-code-input-row">
+                    <input type="text" id="input-manual-code" placeholder="e.g. FAM892" maxlength="20">
+                    <button type="button" onclick="applyManualCode()">Apply Code</button>
+                </div>
+            </div>
+
+            <!-- Primary Deep Link Action Button -->
+            <a href="alerte://join-family" class="btn-join-primary" id="btn-open-app">
+                <i class="fa-solid fa-mobile-screen-button"></i>
+                <span id="btn-join-text">Accept &amp; Open in Alerte App</span>
+            </a>
+
+            <div style="font-size: 0.85rem; color: #64748b; line-height: 1.5;">
+                <i class="fa-solid fa-bolt" style="color: #c62828;"></i>
+                Tap to open Alerte directly on your phone and automatically join the circle.
+            </div>
+
+            <!-- Included Circle Benefits -->
+            <div class="perks-grid">
+                <div class="perk-box">
+                    <i class="fa-solid fa-circle-check perk-icon"></i>
+                    <div class="perk-text">
+                        <strong>Free Premium Access</strong>
+                        <span>Covered entirely under your family's circle plan.</span>
+                    </div>
+                </div>
+                <div class="perk-box">
+                    <i class="fa-solid fa-bell perk-icon"></i>
+                    <div class="perk-text">
+                        <strong>Instant Group SOS</strong>
+                        <span>One-swipe emergency alert rings all circle members simultaneously.</span>
+                    </div>
+                </div>
+                <div class="perk-box">
+                    <i class="fa-solid fa-map-location-dot perk-icon"></i>
+                    <div class="perk-text">
+                        <strong>Live Radar &amp; Location</strong>
+                        <span>Check in on safety status with real-time GPS tracking.</span>
+                    </div>
+                </div>
+                <div class="perk-box">
+                    <i class="fa-solid fa-shield-halved perk-icon"></i>
+                    <div class="perk-text">
+                        <strong>24/7 Agency Dispatch</strong>
+                        <span>Instant automated routing to police and emergency responders.</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- How It Works 3-Step Guide -->
+            <div class="steps-container">
+                <div class="steps-title">How To Join In 3 Easy Steps</div>
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <h4>Install Alerte</h4>
+                        <p>Download the free Alerte app from the Apple App Store or Google Play Store.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <h4>Sign Up or Log In</h4>
+                        <p>Create your verified profile in under 60 seconds with your phone number.</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <h4>Join Circle</h4>
+                        <p>Tap "Join Circle" and paste your code <span id="step-code-preview" style="font-weight:700; color:#c62828;"></span>.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Store Download Links -->
+            <div class="store-download-area">
+                <p style="font-size: 0.9rem; font-weight: 600; color: #334155; margin-bottom: 5px;">
+                    Don't have the Alerte app installed yet?
+                </p>
+                <div class="store-buttons-row">
+                    <a href="https://apps.apple.com/ng/app/alerte-universal/id6741043541" target="_blank" rel="noopener noreferrer" class="btn-store-badge">
+                        <i class="fa-brands fa-apple"></i>
+                        <span>Download on <strong>App Store</strong></span>
+                    </a>
+                    <a href="https://play.google.com/store/apps/details?id=com.alerteuniversal.alerte" target="_blank" rel="noopener noreferrer" class="btn-store-badge">
+                        <i class="fa-brands fa-google-play"></i>
+                        <span>Get it on <strong>Google Play</strong></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" style="background:#0b0c0e; color:#fff; padding:60px 0 30px;">
+        <div class="container">
+            <div class="footer-content" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; margin-bottom:40px;">
+                <div class="footer-section">
+                    <img src="../static/Images/logo.png" alt="Alerte Universal" style="height:35px; margin-bottom:15px;">
+                    <p style="color:#8892b0; font-size:0.9rem; max-width:320px;">
+                        Alerte Universal is a cutting-edge rapid emergency response and personal safety ecosystem safeguarding communities worldwide.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 style="color:#fff; font-size:1.1rem; margin-bottom:15px;">Safety Plans</h3>
+                    <ul style="list-style:none; padding:0; line-height:2.2;">
+                        <li><a href="/subscribe?plan=family" style="color:#8892b0; text-decoration:none;">Family Circle (5 Users)</a></li>
+                        <li><a href="/subscribe?plan=individual" style="color:#8892b0; text-decoration:none;">Individual Premium</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 style="color:#fff; font-size:1.1rem; margin-bottom:15px;">Legal &amp; Support</h3>
+                    <ul style="list-style:none; padding:0; line-height:2.2;">
+                        <li><a href="/terms" style="color:#8892b0; text-decoration:none;">Terms &amp; Conditions</a></li>
+                        <li><a href="/privacy-policy" style="color:#8892b0; text-decoration:none;">Privacy Policy</a></li>
+                        <li><a href="mailto:info@alerteuniversal.com" style="color:#8892b0; text-decoration:none;"><i class="fa-solid fa-envelope"></i> info@alerteuniversal.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; text-align:center; color:#8892b0; font-size:0.85rem;">
+                &copy; <span id="currentYear"></span> Alerte Universal. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Dynamic Code Parsing & Clipboard Script -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        let activeCode = '';
+
+        function getCodeFromUrl() {
+            const params = new URLSearchParams(window.location.search);
+            let code = (params.get('code') || '').trim();
+
+            // Also check hash or path in case it was passed like #code=XYZ
+            if (!code && window.location.hash) {
+                const hashParams = new URLSearchParams(window.location.hash.replace(/^#/, ''));
+                code = (hashParams.get('code') || '').trim();
+            }
+
+            return code;
+        }
+
+        function updateInviteUI(code) {
+            activeCode = code;
+            const codeBox = document.getElementById('code-box');
+            const manualBox = document.getElementById('manual-code-box');
+            const codeDisplay = document.getElementById('display-invite-code');
+            const stepPreview = document.getElementById('step-code-preview');
+            const appBtn = document.getElementById('btn-open-app');
+            const btnJoinText = document.getElementById('btn-join-text');
+
+            if (code) {
+                codeBox.style.display = 'flex';
+                manualBox.style.display = 'none';
+                codeDisplay.textContent = code;
+                stepPreview.textContent = `(${code})`;
+
+                const deepLinkUrl = `alerte://join-family?code=${encodeURIComponent(code)}`;
+                appBtn.href = deepLinkUrl;
+                btnJoinText.innerHTML = `Accept &amp; Open with Code (${escapeHtml(code)})`;
+
+                // Update URL parameter without reload
+                const newUrl = `${window.location.pathname}?code=${encodeURIComponent(code)}`;
+                window.history.replaceState({ code }, '', newUrl);
+            } else {
+                codeBox.style.display = 'none';
+                manualBox.style.display = 'block';
+                stepPreview.textContent = '';
+                appBtn.href = 'alerte://join-family';
+                btnJoinText.textContent = 'Open Alerte App to Join';
+            }
+        }
+
+        function copyInviteCode() {
+            if (!activeCode) return;
+            const copyBtn = document.getElementById('btn-copy-code');
+            navigator.clipboard.writeText(activeCode).then(() => {
+                copyBtn.classList.add('copied');
+                copyBtn.innerHTML = '<i class="fa-solid fa-check"></i> <span>Copied!</span>';
+                setTimeout(() => {
+                    copyBtn.classList.remove('copied');
+                    copyBtn.innerHTML = '<i class="fa-regular fa-clone"></i> <span>Copy Code</span>';
+                }, 2500);
+            }).catch(err => {
+                console.warn('Clipboard write failed:', err);
+            });
+        }
+
+        function applyManualCode() {
+            const input = document.getElementById('input-manual-code');
+            const val = (input.value || '').trim().toUpperCase();
+            if (!val) {
+                input.focus();
+                return;
+            }
+            updateInviteUI(val);
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag));
+        }
+
+        // Initialize on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const detectedCode = getCodeFromUrl();
+            updateInviteUI(detectedCode);
+
+            // Allow Enter key on manual input
+            const manualInput = document.getElementById('input-manual-code');
+            if (manualInput) {
+                manualInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        applyManualCode();
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Subscribe to Alerte Premium | Family Circle & Individual Protection</title>
+    <meta name="description" content="Upgrade to Alerte Premium. Get 24/7 emergency SOS protection, Owei AI threat intelligence, 5km radar alerts, and family circle safety for up to 5 members.">
+    <link rel="canonical" href="https://alerteuniversal.com/subscribe">
+
+    <!-- Open Graph / Meta -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://alerteuniversal.com/subscribe">
+    <meta property="og:title" content="Subscribe to Alerte Premium | Alerte Universal">
+    <meta property="og:description" content="Protect what matters most. Choose between Alerte Family Circle (up to 5 users) or Individual Premium.">
+    <meta property="og:image" content="https://alerteuniversal.com/static/Images/logo.png">
+
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"/>
+    <link rel="stylesheet" href="../css/new_home.css">
+
+    <style>
+        :root {
+            --brand-red: #c62828;
+            --brand-red-dark: #8e0101;
+            --brand-red-light: #ff6b6b;
+            --brand-dark: #121417;
+            --brand-surface: #1a1e24;
+            --brand-gray-light: #f4f6f9;
+            --brand-text-dark: #222b45;
+            --brand-text-muted: #6b778c;
+            --brand-green: #2e7d32;
+            --brand-green-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #f7f9fc;
+            color: var(--brand-text-dark);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        header {
+            background-color: #0b0c0e !important;
+            padding: 16px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+        }
+
+        .subscribe-hero {
+            padding: 140px 20px 50px;
+            background: linear-gradient(180deg, #0b0c0e 0%, #1a1f29 70%, #f7f9fc 100%);
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .subscribe-hero h1 {
+            font-size: 2.6rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .subscribe-hero h1 span {
+            background: linear-gradient(135deg, #ff7676 0%, #ff3b3b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subscribe-hero p.subtitle {
+            font-size: 1.15rem;
+            color: #b0bec5;
+            max-width: 680px;
+            margin: 0 auto 30px;
+            font-weight: 400;
+        }
+
+        /* Controls Section */
+        .controls-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 35px;
+        }
+
+        /* Plan Toggle Pill */
+        .plan-switch-container {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 5px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .plan-tab-btn {
+            border: none;
+            background: transparent;
+            color: #b0bec5;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .plan-tab-btn.active {
+            background: #ffffff;
+            color: #c62828;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+        }
+
+        .plan-tab-btn .badge-pill {
+            font-size: 0.72rem;
+            background: #ffebee;
+            color: #c62828;
+            padding: 2px 7px;
+            border-radius: 10px;
+            font-weight: 700;
+        }
+
+        /* Currency Selector */
+        .currency-toggle {
+            display: inline-flex;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 5px;
+            border-radius: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .currency-btn {
+            border: none;
+            background: transparent;
+            color: #b0bec5;
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .currency-btn.active {
+            background: rgba(255, 255, 255, 0.2);
+            color: #ffffff;
+        }
+
+        /* Main Content Grid */
+        .subscription-main-section {
+            padding: 0 20px 80px;
+            margin-top: -20px;
+        }
+
+        .subscription-grid {
+            display: grid;
+            grid-template-columns: 1.15fr 0.85fr;
+            gap: 30px;
+            max-width: 1100px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        @media (max-width: 900px) {
+            .subscription-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Plan Card */
+        .plan-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+            border: 2px solid transparent;
+            position: relative;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .plan-card.featured {
+            border-color: #c62828;
+        }
+
+        .plan-featured-badge {
+            position: absolute;
+            top: -14px;
+            left: 35px;
+            background: linear-gradient(135deg, #c62828 0%, #8e0101 100%);
+            color: white;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 4px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.35);
+        }
+
+        .plan-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            border-bottom: 1px solid #edf2f7;
+            padding-bottom: 25px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .plan-name-area h2 {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .plan-name-area p {
+            color: var(--brand-text-muted);
+            font-size: 0.95rem;
+        }
+
+        .plan-price-area {
+            text-align: right;
+        }
+
+        .plan-price-tag {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #c62828;
+            line-height: 1;
+        }
+
+        .plan-price-period {
+            font-size: 0.85rem;
+            color: var(--brand-text-muted);
+            display: block;
+            margin-top: 4px;
+        }
+
+        /* Features List */
+        .features-title {
+            font-size: 1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #4a5568;
+            margin-bottom: 18px;
+        }
+
+        .plan-features-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .plan-features-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            font-size: 0.98rem;
+            color: #2d3748;
+            line-height: 1.45;
+        }
+
+        .feature-icon-check {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: #e8f5e9;
+            color: #2e7d32;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .feature-strong {
+            font-weight: 600;
+            color: #1a202c;
+        }
+
+        .feature-subtext {
+            display: block;
+            font-size: 0.83rem;
+            color: #718096;
+            margin-top: 2px;
+        }
+
+        /* Checkout / Action Panel */
+        .action-panel {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 35px 30px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.07);
+            border: 1px solid #edf2f7;
+            position: sticky;
+            top: 90px;
+        }
+
+        .action-panel h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+        }
+
+        .action-panel p.action-subtitle {
+            font-size: 0.9rem;
+            color: var(--brand-text-muted);
+            margin-bottom: 24px;
+        }
+
+        /* Primary Action Button (Deep Link) */
+        .btn-subscribe-primary {
+            width: 100%;
+            padding: 16px 20px;
+            background: linear-gradient(135deg, #c62828 0%, #a71d1d 100%);
+            color: #ffffff;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            box-shadow: 0 8px 24px rgba(198, 40, 40, 0.35);
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+
+        .btn-subscribe-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(198, 40, 40, 0.45);
+            background: linear-gradient(135deg, #b71c1c 0%, #8e0101 100%);
+            color: #ffffff;
+        }
+
+        .divider-or {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #a0aec0;
+            font-size: 0.8rem;
+            margin: 20px 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .divider-or::before,
+        .divider-or::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .divider-or span {
+            padding: 0 10px;
+        }
+
+        /* Store Buttons in Card */
+        .store-buttons-compact {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 22px;
+        }
+
+        .store-btn-compact {
+            flex: 1;
+            background: #1a1e24;
+            color: #ffffff;
+            padding: 10px 14px;
+            border-radius: 10px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        .store-btn-compact:hover {
+            background: #000000;
+            transform: translateY(-2px);
+            color: #ffffff;
+        }
+
+        .store-btn-compact i {
+            font-size: 1.1rem;
+        }
+
+        /* Web Email Activation Form */
+        .web-activation-box {
+            background: #f8fafc;
+            border: 1px dashed #cbd5e1;
+            border-radius: 12px;
+            padding: 18px;
+            margin-top: 15px;
+        }
+
+        .web-activation-box label {
+            display: block;
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 6px;
+        }
+
+        .web-activation-box .input-row {
+            display: flex;
+            gap: 8px;
+        }
+
+        .web-activation-box input {
+            flex: 1;
+            padding: 10px 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .web-activation-box input:focus {
+            border-color: #c62828;
+        }
+
+        .web-activation-box button {
+            background: #1e293b;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .web-activation-box button:hover {
+            background: #0f172a;
+        }
+
+        .activation-status-msg {
+            font-size: 0.8rem;
+            margin-top: 8px;
+            display: none;
+        }
+
+        /* Guarantees Box */
+        .guarantees-list {
+            margin-top: 25px;
+            border-top: 1px solid #edf2f7;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .guarantee-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        .guarantee-item i {
+            color: #2e7d32;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .subscribe-faq-section {
+            background: #ffffff;
+            padding: 80px 20px;
+            border-top: 1px solid #edf2f7;
+        }
+
+        .faq-inner-container {
+            max-width: 850px;
+            margin: 0 auto;
+        }
+
+        .subscribe-faq-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            text-align: center;
+            color: #1a202c;
+            margin-bottom: 40px;
+        }
+
+        .faq-accordion-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 18px 0;
+        }
+
+        .faq-q-btn {
+            width: 100%;
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: #2d3748;
+            cursor: pointer;
+            padding: 5px 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .faq-q-btn:hover {
+            color: #c62828;
+        }
+
+        .faq-a-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .faq-accordion-item.open .faq-a-body {
+            max-height: 200px;
+            margin-top: 10px;
+        }
+
+        .faq-accordion-item.open .faq-q-btn i {
+            transform: rotate(180deg);
+            color: #c62828;
+        }
+
+        .faq-q-btn i {
+            transition: transform 0.25s ease;
+            font-size: 0.85rem;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <a href="/"><img src="../static/Images/logo.png" alt="Alerte Universal Logo" style="height: 38px;"></a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/#about">About</a></li>
+                    <li><a href="/subscribe?plan=individual">Individual Plan</a></li>
+                    <li><a href="/subscribe?plan=family">Family Plan</a></li>
+                </ul>
+                <a href="#action-panel" class="btn btn-primary" style="padding: 9px 20px; font-size: 0.9rem;">
+                    <i class="fa-solid fa-bolt"></i> Get Protected
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section with Plan & Currency Toggles -->
+    <section class="subscribe-hero">
+        <div class="container">
+            <p style="text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 700; color: #ff7676; margin-bottom: 8px;">
+                <i class="fa-solid fa-shield-halved"></i> Alerte Universal Premium
+            </p>
+            <h1>Protect Yourself &amp; <span>Your Loved Ones</span></h1>
+            <p class="subtitle">
+                Instant one-swipe SOS, automated police &amp; emergency agency dispatch, 5km threat radar, and 24/7 AI-powered safety intelligence.
+            </p>
+
+            <!-- Interactive Plan Selector Controls -->
+            <div class="controls-wrapper">
+                <div class="plan-switch-container" role="tablist" aria-label="Select Subscription Plan">
+                    <button type="button" class="plan-tab-btn" id="tab-plan-individual" role="tab" aria-selected="false" onclick="selectPlan('individual')">
+                        <i class="fa-solid fa-user"></i> Individual Premium
+                    </button>
+                    <button type="button" class="plan-tab-btn" id="tab-plan-family" role="tab" aria-selected="false" onclick="selectPlan('family')">
+                        <i class="fa-solid fa-people-roof"></i> Family Circle
+                        <span class="badge-pill">Up to 5 Users</span>
+                    </button>
+                </div>
+
+                <!-- Currency Switcher -->
+                <div class="currency-toggle" aria-label="Select Currency">
+                    <button type="button" class="currency-btn active" id="btn-curr-ngn" onclick="selectCurrency('NGN')">₦ NGN</button>
+                    <button type="button" class="currency-btn" id="btn-curr-gbp" onclick="selectCurrency('GBP')">£ GBP</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Subscription Content Area -->
+    <main class="subscription-main-section">
+        <div class="container">
+            <div class="subscription-grid">
+
+                <!-- Left: Dynamic Plan Details Card -->
+                <article class="plan-card featured" id="main-plan-card">
+                    <div class="plan-featured-badge" id="plan-badge-text">Recommended for Families</div>
+
+                    <div class="plan-header">
+                        <div class="plan-name-area">
+                            <h2 id="plan-title">
+                                <i class="fa-solid fa-people-roof" style="color: #c62828;"></i>
+                                <span id="plan-name-display">Family Circle</span>
+                            </h2>
+                            <p id="plan-summary-display">Complete safety protection for up to 5 family members under one umbrella.</p>
+                        </div>
+                        <div class="plan-price-area">
+                            <div class="plan-price-tag" id="plan-price-display">₦6,000</div>
+                            <span class="plan-price-period" id="plan-period-display">per month / up to 5 users</span>
+                        </div>
+                    </div>
+
+                    <div class="features-title">What's included in this plan:</div>
+                    <ul class="plan-features-list" id="plan-features-container">
+                        <!-- Populated by JavaScript -->
+                    </ul>
+
+                    <div style="background: #f8fafc; border-radius: 12px; padding: 18px; border-left: 4px solid #c62828;">
+                        <div style="font-weight: 700; color: #1e293b; margin-bottom: 4px; font-size: 0.92rem;">
+                            <i class="fa-solid fa-clock-rotate-left" style="color: #c62828;"></i> Instant Activation:
+                        </div>
+                        <div style="font-size: 0.88rem; color: #475569;" id="plan-activation-note">
+                            Once subscribed, you can instantly invite up to 4 other family members via their phone or unique invite link at no extra cost.
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Right: Action / Checkout & Mobile App Redirection Panel -->
+                <aside class="action-panel" id="action-panel">
+                    <h3 id="action-heading">Subscribe to Family Circle</h3>
+                    <p class="action-subtitle">Open in the Alerte app on your phone for 1-tap activation, or download to get started.</p>
+
+                    <!-- Deep Link CTA Button -->
+                    <a href="alerte://subscribe?plan=family" class="btn-subscribe-primary" id="btn-deep-link-subscribe">
+                        <i class="fa-solid fa-mobile-screen-button"></i>
+                        <span id="deep-link-btn-text">Open in Alerte App</span>
+                    </a>
+
+                    <div style="text-align: center; font-size: 0.8rem; color: #718096; margin-bottom: 12px;">
+                        <i class="fa-solid fa-circle-info"></i> Automatically opens your account and applies the plan.
+                    </div>
+
+                    <div class="divider-or"><span>or download app</span></div>
+
+                    <!-- Direct App Store Links -->
+                    <div class="store-buttons-compact">
+                        <a href="https://apps.apple.com/ng/app/alerte-universal/id6741043541" target="_blank" rel="noopener noreferrer" class="store-btn-compact">
+                            <i class="fa-brands fa-apple"></i> App Store
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.alerteuniversal.alerte" target="_blank" rel="noopener noreferrer" class="store-btn-compact">
+                            <i class="fa-brands fa-google-play"></i> Google Play
+                        </a>
+                    </div>
+
+                    <!-- Web Email Activation Box -->
+                    <div class="web-activation-box">
+                        <label for="user-email-input"><i class="fa-solid fa-envelope"></i> Already have an account? Link your email:</label>
+                        <div class="input-row">
+                            <input type="email" id="user-email-input" placeholder="name@example.com" autocomplete="email">
+                            <button type="button" id="btn-start-checkout" onclick="handleEmailCheckout()">
+                                Continue <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                        <div id="activation-msg" class="activation-status-msg"></div>
+                    </div>
+
+                    <!-- Trust Guarantees -->
+                    <div class="guarantees-list">
+                        <div class="guarantee-item">
+                            <i class="fa-solid fa-shield-check"></i>
+                            <span>256-bit bank-grade encryption &amp; secure data privacy</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fa-solid fa-ban"></i>
+                            <span>Cancel or change your subscription plan anytime</span>
+                        </div>
+                        <div class="guarantee-item">
+                            <i class="fa-solid fa-tower-broadcast"></i>
+                            <span>24/7 Rapid automated emergency responder dispatch</span>
+                        </div>
+                    </div>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- FAQ Accordion -->
+    <section class="subscribe-faq-section">
+        <div class="container faq-inner-container">
+            <h2>Frequently Asked Questions</h2>
+
+            <div class="faq-accordion-item">
+                <button type="button" class="faq-q-btn" onclick="toggleFaq(this)">
+                    <span>How does the Family Circle plan work?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    With Family Circle, one family manager pays a single consolidated subscription (₦6,000 or £30/month) that covers up to 5 total family members. Each invited member receives full Premium protection, including 24/7 one-swipe SOS, group emergency broadcasts, unlimited 5km radar, and live circle location check-ins.
+                </div>
+            </div>
+
+            <div class="faq-accordion-item">
+                <button type="button" class="faq-q-btn" onclick="toggleFaq(this)">
+                    <span>How do I invite members to my family circle?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    After subscribing, open the Alerte app, go to your Family Circle tab, and tap "Invite Member". You can share an invite link or a 6-character code (e.g., <code>alerteuniversal.com/join-family?code=...</code>). Your loved ones can accept the invitation instantly from their device.
+                </div>
+            </div>
+
+            <div class="faq-accordion-item">
+                <button type="button" class="faq-q-btn" onclick="toggleFaq(this)">
+                    <span>What happens when someone in my Family Circle triggers an SOS?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    When any member swipes the Emergency SOS, high-priority audible alerts and live GPS tracking are immediately sent to all other members of your circle. Simultaneously, the incident is routed to local emergency authorities, police, and rapid-response security agencies.
+                </div>
+            </div>
+
+            <div class="faq-accordion-item">
+                <button type="button" class="faq-q-btn" onclick="toggleFaq(this)">
+                    <span>Can I upgrade from Individual to Family Circle later?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    Yes! You can upgrade anytime through your account settings in the Alerte app or right here on this page. Any remaining time on your existing individual plan is seamlessly prorated.
+                </div>
+            </div>
+
+            <div class="faq-accordion-item">
+                <button type="button" class="faq-q-btn" onclick="toggleFaq(this)">
+                    <span>Which payment methods are accepted?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+                <div class="faq-a-body">
+                    We accept debit cards, credit cards (Mastercard, Visa, Verve), Apple Pay, Google Pay, bank transfers, and direct app store billing via the iOS App Store and Google Play Store.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" style="background:#0b0c0e; color:#fff; padding:60px 0 30px;">
+        <div class="container">
+            <div class="footer-content" style="display:flex; justify-content:space-between; flex-wrap:wrap; gap:30px; margin-bottom:40px;">
+                <div class="footer-section">
+                    <img src="../static/Images/logo.png" alt="Alerte Universal" style="height:35px; margin-bottom:15px;">
+                    <p style="color:#8892b0; font-size:0.9rem; max-width:320px;">
+                        Alerte Universal is a cutting-edge rapid emergency response and personal safety ecosystem safeguarding communities worldwide.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h3 style="color:#fff; font-size:1.1rem; margin-bottom:15px;">Protection Plans</h3>
+                    <ul style="list-style:none; padding:0; line-height:2.2;">
+                        <li><a href="/subscribe?plan=family" style="color:#8892b0; text-decoration:none;">Family Circle (5 Users)</a></li>
+                        <li><a href="/subscribe?plan=individual" style="color:#8892b0; text-decoration:none;">Individual Premium</a></li>
+                        <li><a href="/join-family" style="color:#8892b0; text-decoration:none;">Join a Family Circle</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3 style="color:#fff; font-size:1.1rem; margin-bottom:15px;">Legal &amp; Support</h3>
+                    <ul style="list-style:none; padding:0; line-height:2.2;">
+                        <li><a href="/terms" style="color:#8892b0; text-decoration:none;">Terms &amp; Conditions</a></li>
+                        <li><a href="/privacy-policy" style="color:#8892b0; text-decoration:none;">Privacy Policy</a></li>
+                        <li><a href="mailto:info@alerteuniversal.com" style="color:#8892b0; text-decoration:none;"><i class="fa-solid fa-envelope"></i> info@alerteuniversal.com</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; text-align:center; color:#8892b0; font-size:0.85rem;">
+                &copy; <span id="currentYear"></span> Alerte Universal. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Plan Switcher and Deep Link Logic -->
+    <script>
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+
+        const PLANS_DATA = {
+            family: {
+                id: 'family',
+                name: 'Family Circle',
+                icon: 'fa-people-roof',
+                badge: 'Recommended for Families',
+                summary: 'Complete safety protection for up to 5 family members under one unified account.',
+                prices: {
+                    NGN: '₦6,000',
+                    GBP: '£30'
+                },
+                period: 'per month / up to 5 users',
+                activationNote: 'Once subscribed, you can instantly invite up to 4 other family members via their phone or unique invite link at no extra cost.',
+                features: [
+                    {
+                        title: 'Alerte Family Circle (5 Users Included)',
+                        desc: 'Connect up to 5 family members under one shared protective shield with centralized billing.'
+                    },
+                    {
+                        title: 'Group Emergency SOS & Broadcast',
+                        desc: 'One swipe immediately alerts all members in your circle with real-time GPS coordinates and audio.'
+                    },
+                    {
+                        title: '24/7 Automated Agency Dispatch',
+                        desc: 'Direct prioritized emergency signal transmission to vetted police, medical, and rapid response units.'
+                    },
+                    {
+                        title: 'Owei AI Threat Intelligence',
+                        desc: 'Smart risk analysis, localized emergency advisories, and instant voice/text safety assistance.'
+                    },
+                    {
+                        title: 'Unlimited Expanded Radar (5km)',
+                        desc: 'Real-time hazard notifications, incident alerts, and community security awareness.'
+                    },
+                    {
+                        title: '24-Hour Location History',
+                        desc: 'Verify safe arrivals and view timeline routes for all authorized family members.'
+                    },
+                    {
+                        title: 'Automatic Incident & Abuse Reporting',
+                        desc: 'Formal incident reports with timestamped evidentiary trails generated automatically.'
+                    }
+                ]
+            },
+            individual: {
+                id: 'individual',
+                name: 'Individual Premium',
+                icon: 'fa-user-shield',
+                badge: 'Essential Personal Safety',
+                summary: 'Dedicated 24/7 emergency SOS, AI threat intelligence, and priority rapid response dispatch for 1 user.',
+                prices: {
+                    NGN: '₦2,000',
+                    GBP: '£10'
+                },
+                period: 'per month / 1 user',
+                activationNote: 'Instant activation on your registered mobile device upon subscription confirmation.',
+                features: [
+                    {
+                        title: '24/7 One-Swipe Emergency SOS',
+                        desc: 'Instant distress broadcast to emergency services and your designated emergency contacts.'
+                    },
+                    {
+                        title: 'Owei AI Personal Safety Intelligence',
+                        desc: 'Smart danger detection, automated incident summaries, and 24/7 security guidance.'
+                    },
+                    {
+                        title: 'Unlimited Expanded Radar (5km)',
+                        desc: 'Unlimited real-time scanning of nearby safety incidents, police reports, and threats.'
+                    },
+                    {
+                        title: '24-Hour Location History & Route Insights',
+                        desc: 'Private, secure breadcrumb tracking to review your safe transit history.'
+                    },
+                    {
+                        title: 'Direct Emergency Agency Dispatch',
+                        desc: 'Automatic priority routing to the nearest active control rooms and tactical responders.'
+                    },
+                    {
+                        title: 'Automatic Incident & Distress Reporting',
+                        desc: 'Instant reporting with location logs dispatched to authorized regulatory agencies.'
+                    }
+                ]
+            }
+        };
+
+        let currentPlanKey = 'family';
+        let currentCurrency = 'NGN';
+
+        function updateUI() {
+            const plan = PLANS_DATA[currentPlanKey];
+
+            // Update Tab Buttons
+            const indTab = document.getElementById('tab-plan-individual');
+            const famTab = document.getElementById('tab-plan-family');
+            if (currentPlanKey === 'family') {
+                famTab.classList.add('active');
+                famTab.setAttribute('aria-selected', 'true');
+                indTab.classList.remove('active');
+                indTab.setAttribute('aria-selected', 'false');
+            } else {
+                indTab.classList.add('active');
+                indTab.setAttribute('aria-selected', 'true');
+                famTab.classList.remove('active');
+                famTab.setAttribute('aria-selected', 'false');
+            }
+
+            // Update Currency Buttons
+            document.getElementById('btn-curr-ngn').className = currentCurrency === 'NGN' ? 'currency-btn active' : 'currency-btn';
+            document.getElementById('btn-curr-gbp').className = currentCurrency === 'GBP' ? 'currency-btn active' : 'currency-btn';
+
+            // Update Plan Details Card
+            document.getElementById('plan-badge-text').textContent = plan.badge;
+            document.getElementById('plan-title').innerHTML = `<i class="fa-solid ${plan.icon}" style="color: #c62828;"></i> <span>${plan.name}</span>`;
+            document.getElementById('plan-summary-display').textContent = plan.summary;
+            document.getElementById('plan-price-display').textContent = plan.prices[currentCurrency];
+            document.getElementById('plan-period-display').textContent = plan.period;
+            document.getElementById('plan-activation-note').textContent = plan.activationNote;
+
+            // Render Features
+            const listEl = document.getElementById('plan-features-container');
+            listEl.innerHTML = '';
+            plan.features.forEach(feat => {
+                const li = document.createElement('li');
+                li.innerHTML = `
+                    <span class="feature-icon-check"><i class="fa-solid fa-check"></i></span>
+                    <div>
+                        <span class="feature-strong">${feat.title}</span>
+                        <span class="feature-subtext">${feat.desc}</span>
+                    </div>
+                `;
+                listEl.appendChild(li);
+            });
+
+            // Update Action Panel
+            document.getElementById('action-heading').textContent = `Subscribe to ${plan.name}`;
+            const deepLinkUrl = `alerte://subscribe?plan=${plan.id}`;
+            const deepLinkBtn = document.getElementById('btn-deep-link-subscribe');
+            deepLinkBtn.href = deepLinkUrl;
+            document.getElementById('deep-link-btn-text').textContent = `Open & Subscribe in App`;
+
+            // Update URL without page reload
+            const newUrl = `${window.location.pathname}?plan=${plan.id}`;
+            window.history.replaceState({ plan: plan.id }, '', newUrl);
+        }
+
+        function selectPlan(planKey) {
+            if (PLANS_DATA[planKey]) {
+                currentPlanKey = planKey;
+                updateUI();
+            }
+        }
+
+        function selectCurrency(curr) {
+            if (curr === 'NGN' || curr === 'GBP') {
+                currentCurrency = curr;
+                updateUI();
+            }
+        }
+
+        function toggleFaq(btn) {
+            const item = btn.parentElement;
+            const isOpen = item.classList.contains('open');
+            document.querySelectorAll('.faq-accordion-item').forEach(i => i.classList.remove('open'));
+            if (!isOpen) item.classList.add('open');
+        }
+
+        function handleEmailCheckout() {
+            const emailInput = document.getElementById('user-email-input');
+            const msgEl = document.getElementById('activation-msg');
+            const email = (emailInput.value || '').trim();
+
+            if (!email || !email.includes('@')) {
+                msgEl.style.display = 'block';
+                msgEl.style.color = '#c62828';
+                msgEl.innerHTML = '<i class="fa-solid fa-circle-exclamation"></i> Please enter a valid email address.';
+                emailInput.focus();
+                return;
+            }
+
+            msgEl.style.display = 'block';
+            msgEl.style.color = '#2e7d32';
+            msgEl.innerHTML = `<i class="fa-solid fa-spinner fa-spin"></i> Preparing ${PLANS_DATA[currentPlanKey].name} checkout for <strong>${escapeHtml(email)}</strong>...`;
+
+            // Attempt deep link or provide download/app checkout guidance
+            setTimeout(() => {
+                const deepLink = `alerte://subscribe?plan=${currentPlanKey}&email=${encodeURIComponent(email)}`;
+                window.location.href = deepLink;
+
+                msgEl.innerHTML = `
+                    <div style="margin-top:6px; padding:10px; background:#e8f5e9; border-radius:6px; color:#1b5e20;">
+                        <i class="fa-solid fa-circle-check"></i> Plan selected! If the Alerte app did not open automatically, open Alerte on your mobile device to complete your subscription.
+                    </div>
+                `;
+            }, 800);
+        }
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>'"]/g, tag => ({
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                "'": '&#39;',
+                '"': '&quot;'
+            }[tag] || tag));
+        }
+
+        // Initialize from URL parameters on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const params = new URLSearchParams(window.location.search);
+            const planParam = (params.get('plan') || '').toLowerCase().trim();
+
+            if (planParam === 'individual') {
+                currentPlanKey = 'individual';
+            } else {
+                // Default to 'family' or if ?plan=family
+                currentPlanKey = 'family';
+            }
+
+            updateUI();
+        });
+    </script>
+</body>
+</html>
